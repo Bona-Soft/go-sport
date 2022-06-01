@@ -1,0 +1,26 @@
+﻿CREATE PROCEDURE [dbo].[AddMatchPlayerRequest]
+	@MatchID BIGINT,
+	@PlayerRequestSenderID BIGINT,
+	@PlayerRequestReceiverID BIGINT,
+	@CommentID BIGINT = NULL,
+	@MatchPlayerRequestStateID TINYINT
+AS
+BEGIN
+
+	INSERT INTO MatchPlayerRequests
+		(MatchID,
+		PlayerRequestSenderID,
+		PlayerRequestReceiverID,
+		CommentID,
+		MatchPlayerRequestStateID, 
+		RecieveDate)
+	VALUES
+		(@MatchID,
+		@PlayerRequestSenderID,
+		@PlayerRequestReceiverID,
+		@CommentID,
+		@MatchPlayerRequestStateID,
+		GETUTCDATE())
+
+	RETURN SCOPE_IDENTITY()
+END

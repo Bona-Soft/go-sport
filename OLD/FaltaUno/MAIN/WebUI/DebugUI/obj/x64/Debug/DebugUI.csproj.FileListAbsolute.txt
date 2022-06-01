@@ -1,0 +1,6 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.MatchUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.MatchUI.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\DebugUI\obj\x64\Debug\DebugUI.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\DebugUI\obj\x64\Debug\DebugUI.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\DebugUI\obj\x64\Debug\MYB.FaltaUno.WebUI.MatchUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\DebugUI\obj\x64\Debug\MYB.FaltaUno.WebUI.MatchUI.pdb

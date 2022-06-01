@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Testing\MYB.BaseApplication.Testing.UnitTest.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Testing\MYB.BaseApplication.Testing.UnitTest.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Testing\MYB.BaseApplication.Testing.UnitTest.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\UnitTest\obj\Debug\UnitTest.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\UnitTest\obj\Debug\MYB.BaseApplication.Testing.UnitTest.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\UnitTest\obj\Debug\MYB.BaseApplication.Testing.UnitTest.pdb

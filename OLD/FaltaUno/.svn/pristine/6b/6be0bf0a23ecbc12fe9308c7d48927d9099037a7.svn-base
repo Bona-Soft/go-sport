@@ -1,0 +1,15 @@
+﻿CREATE PROCEDURE [dbo].[AddUserPrivacy]
+	@MobileNumber CHAR(1),
+	@BirthDate CHAR(1)
+AS
+BEGIN
+
+	INSERT INTO UserPrivacy
+		(MobileNumber
+		,BirthDate)
+	VALUES
+		(@MobileNumber
+		,@BirthDate)
+
+	RETURN SCOPE_IDENTITY()
+END

@@ -1,0 +1,138 @@
+﻿body.futbol {
+	/*BONA css*/
+	/*background: #d2fbc7;*/
+	/*background: -webkit-linear-gradient(#ffffff,#dbf9d3,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#012701);*/ /* For Safari 5.1 to 6.0 */
+	/*background: -o-linear-gradient(#ffffff,#dbf9d3,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#012701);*/ /* For Opera 11.1 to 12.0 */
+	/*background: -moz-linear-gradient(#ffffff,#dbf9d3,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#012701);*/ /* For Firefox 3.6 to 15 */
+	/*background: linear-gradient(#ffffff,#dbf9d3,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#d2fbc7,#012701);*/ /* Standard syntax */
+
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #e3f5ab 77%, #b4dd31 90%, #012701 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#e3f5ab 77%,#b4dd31 90%,#012701 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ffffff 0%,#e3f5ab 77%,#b4dd31 90%,#012701 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#012701',GradientType=0 ); /* IE6-9 */
+}
+
+.navbar.futbol {
+	background-image: url(img/header_bar4.png);
+	background-size: 100%;
+}
+.nav-logo.futbol {
+	background-image: url(img/futbol_ball_icon.png);
+	height: 44px;
+	top: 3px;
+	width: 45px;
+}
+
+/***********************************
+Theme colors
+************************************/
+
+.primary.futbol, .primary-after.futbol:after {
+	background-color: #004D40 !important;
+	color: #fff !important;
+}
+
+.primary-light.futbol, .primary-light-after.futbol:after {
+	background-color: #00796B !important;
+	color: #fff !important;
+}
+
+.primary-fc.futbol, .primary-fc-after.futbol:after {
+	color: #004D40 !important;
+}
+
+.primary-fc-light.futbol, .primary-fc-light-after.futbol:after {
+	color: #00796B !important;
+}
+
+.secondary.futbol, .secondary-after.futbol:after {
+	background-color: #B71C1C !important;
+	color: #fff !important;
+}
+
+.secondary-border.futbol {
+	border-color: #B71C1C !important;
+}
+
+.secondary-light.futbol, .secondary-light-after.futbol:after {
+	background-color: #D32F2F !important;
+	color: #fff !important;
+}
+
+.secondary-light-border.futbol {
+	border-color: #D32F2F !important;
+}
+
+
+.secondary-fc.futbol, .secondary-fc-after.futbol:after {
+	color: #B71C1C !important;
+}
+
+.secondary-fc-light.futbol, .secondary-fc-light-after.futbol:after {
+	color: #D32F2F !important;
+}
+
+.form-group.form-md-line-input .form-control:focus:not([readonly]) ~ label,
+.form-group.form-md-line-input .form-control:focus:not([readonly]) ~ .form-control-focus,
+.form-group.form-md-line-input .form-control.focus:not([readonly]) ~ label,
+.form-group.form-md-line-input .form-control.focus:not([readonly]) ~ .form-control-focus {
+   color: #00796B !important
+}
+
+md-select .md-select-value:after {
+	background-color: #00796B;
+}
+
+md-select-menu.md-default-theme md-content md-option[selected],
+md-select-menu md-content md-option[selected] {
+	color: #00796B;
+}
+
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused label,
+md-input-container:not(.md-input-invalid).md-input-focused label,
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused md-icon,
+md-input-container:not(.md-input-invalid).md-input-focused md-icon {
+	color: #00796B;
+}
+
+md-select-menu.md-default-theme md-content md-option[selected]:focus,
+md-select-menu md-content md-option[selected]:focus {
+	color: #00796B;
+}
+
+md-select.md-default-theme:not([disabled]):focus .md-select-value.md-select-placeholder,
+md-select:not([disabled]):focus .md-select-value.md-select-placeholder {
+	color: #00796B;
+}
+
+
+/**************************** 
+MD RADIOS 
+*****************************/
+
+md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
+	background-color: #D32F2F !important;
+}
+
+md-radio-button.md-default-theme.md-checked .md-off, md-radio-button.md-checked .md-off {
+	border-color: #D32F2F !important;
+}
+
+/***************************
+MD SWITCH
+****************************/
+
+md-switch.md-default-theme.md-checked .md-bar, md-switch.md-checked .md-bar {
+	background-color: #D32F2F !important;
+	opacity: 0.5;
+}
+
+md-switch.md-default-theme.md-checked .md-ink-ripple, md-switch.md-checked .md-ink-ripple {
+	color: #D32F2F !important;
+}
+
+md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb {
+	background-color: #D32F2F !important;
+}
+

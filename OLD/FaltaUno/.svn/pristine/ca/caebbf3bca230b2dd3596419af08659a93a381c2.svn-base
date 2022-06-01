@@ -1,0 +1,8 @@
+SET LPATH=%cd%
+cd..
+cd..
+cd..
+cd..
+XCOPY "%cd%\BaseApplication\Build\debug" "%LPATH%" /Y /I
+XCOPY "%cd%\BaseApplication\Build\debug" "%cd%\FaltaUno\Build\bin" /Y /I
+pause

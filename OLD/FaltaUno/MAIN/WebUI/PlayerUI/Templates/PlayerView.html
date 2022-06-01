@@ -1,0 +1,430 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="portlet bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i sport-class class="icon-settings primary-fc-light"></i>
+						<span sport-class class="caption-subject bold uppercase primary-fc-light"> Ficha del jugador</span>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+
+					<div class="row">
+
+						<div class="col-xs-12 col-sm-3 col-md-3">
+							<div class="profile-userpic">
+								<img src="{{getCurrentUserAvatarURL()}}" class="img-responsive" alt="">
+							</div>
+
+							<div class="portlet sale-summary">
+								<div class="portlet-title">
+									<div class="caption font-red sbold"> Estad&iacute;sticas </div>
+									<div class="tools">
+										<a class="reload" href="javascript:;"> </a>
+									</div>
+								</div>
+								<div class="portlet-body">
+									<ul class="list-unstyled">
+										<li>
+											<span class="sale-info">
+												Partidos jugados
+												<i class="fa fa-img-up"></i>
+											</span>
+											<span class="sale-num"> 23 </span>
+										</li>
+										<li>
+											<span class="sale-info">
+												WEEKLY SALES
+												<i class="fa fa-img-down"></i>
+											</span>
+											<span class="sale-num"> 87 </span>
+										</li>
+										<li>
+											<span class="sale-info"> TOTAL SOLD </span>
+											<span class="sale-num"> 2377 </span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-9 col-md-9">
+
+							<div class="row">
+								<div class="col-md-12 profile-info">
+									<h1 class="font-green sbold uppercase" ng-show="player.User.Alias"> {{player.User.Alias}}</h1>
+									<h1 class="font-green sbold uppercase" ng-hide="player.User.Alias"> {{player.User.Name}} {{player.User.LastName}}</h1>
+									<h3 class="font-green sbold uppercase" ng-show="player.User.Alias"> {{player.User.Name}} {{player.User.LastName}}</h3>
+									<p>
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.
+									</p>
+
+									<ul class="list-inline">
+										<li>
+											<i class="fa fa-map-marker"></i> Spain
+										</li>
+										<li>
+											<i class="fa fa-calendar"></i> 18 Jan 1982
+										</li>
+										<li>
+											<i class="fa fa-briefcase"></i> Design
+										</li>
+										<li>
+											<i class="fa fa-star"></i> Top Seller
+										</li>
+										<li>
+											<i class="fa fa-heart"></i> BASE Jumping
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!--end row-->
+
+							<div class="tabbable-line tabbable-custom-profile">
+								<ul class="nav nav-tabs">
+									<li class="active">
+										<a data-ng-click="tabHistoryPosition = 1" ng-init="1" data-toggle="tab" aria-expanded="true"> Historial </a>
+									</li>
+								</ul>
+								<div class="tab-content">
+
+									<div class="tab-pane active" id="AccountHistory" ng-show="tabHistoryPosition == 1">
+
+										<div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
+											<ul class="feeds">
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-success">
+																	<i class="fa fa-bell-o"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc">
+																	You have 4 pending tasks.
+																	<span class="label label-danger label-sm">
+																		Take action
+																		<i class="fa fa-share"></i>
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> Just now </div>
+													</div>
+												</li>
+												<li>
+													<a href="javascript:;">
+														<div class="col1">
+															<div class="cont">
+																<div class="cont-col1">
+																	<div class="label label-success">
+																		<i class="fa fa-bell-o"></i>
+																	</div>
+																</div>
+																<div class="cont-col2">
+																	<div class="desc"> New version v1.4 just lunched! </div>
+																</div>
+															</div>
+														</div>
+														<div class="col2">
+															<div class="date"> 20 mins </div>
+														</div>
+													</a>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-danger">
+																	<i class="fa fa-bolt"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> Database server #12 overloaded. Please fix the issue. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 24 mins </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-info">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 30 mins </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-success">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 40 mins </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-warning">
+																	<i class="fa fa-plus"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New user registered. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 1.5 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-success">
+																	<i class="fa fa-bell-o"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc">
+																	Web server hardware needs to be upgraded.
+																	<span class="label label-inverse label-sm"> Overdue </span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 2 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-default">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 3 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-warning">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 5 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-info">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 18 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-default">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 21 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-info">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 22 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-default">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 21 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-info">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 22 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-default">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 21 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-info">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 22 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-default">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 21 hours </div>
+													</div>
+												</li>
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-info">
+																	<i class="fa fa-bullhorn"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc"> New order received. Please take care of it. </div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date"> 22 hours </div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!--tab-pane-->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

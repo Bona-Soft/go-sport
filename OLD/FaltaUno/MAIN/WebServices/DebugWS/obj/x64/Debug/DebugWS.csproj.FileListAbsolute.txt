@@ -1,0 +1,7 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebServices.DebugWS.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebServices.DebugWS.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\DebugWS\obj\x64\Debug\DebugWS.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\DebugWS\obj\x64\Debug\DebugWS.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\DebugWS\obj\x64\Debug\DebugWS.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\DebugWS\obj\x64\Debug\MYB.FaltaUno.WebServices.DebugWS.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\DebugWS\obj\x64\Debug\MYB.FaltaUno.WebServices.DebugWS.pdb

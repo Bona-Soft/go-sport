@@ -1,0 +1,23 @@
+﻿CREATE PROCEDURE [dbo].[AddUserPrivacy]
+	@UserID BIGINT,
+	@UserPrivacyDefaultID INT,
+	@Value CHAR(1)
+AS
+BEGIN
+
+	IF NOT EXISTS(SELECT 1 FROM UserPrivacyDefault WHERE @UserPrivacyDefaultID = UserPrivacyDefaultID)
+	BEGIN
+		RETURN -1
+	END
+
+	INSERT INTO UserPrivacy
+		(UserID,
+		UserPrivacyDefaultID,
+		[Value])
+	VALUES
+		(@UserID,
+		@UserPrivacyDefaultID,
+		@Value)
+
+	RETURN SCOPE_IDENTITY()
+END

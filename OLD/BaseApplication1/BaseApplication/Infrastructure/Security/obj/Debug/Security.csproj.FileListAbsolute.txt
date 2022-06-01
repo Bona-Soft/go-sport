@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.Security.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.Security.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.Security.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Security\obj\Debug\Security.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Security\obj\Debug\Security.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Security\obj\Debug\Security.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Security\obj\Debug\MYB.BaseApplication.Infrastructure.Security.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Security\obj\Debug\MYB.BaseApplication.Infrastructure.Security.pdb

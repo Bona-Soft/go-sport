@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Domain.Mail.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Domain.Mail.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Domain.Mail.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\MailManager\obj\Debug\MailManager.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\MailManager\obj\Debug\MailManager.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\MailManager\obj\Debug\MailManager.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\MailManager\obj\Debug\MYB.BaseApplication.Domain.Mail.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\MailManager\obj\Debug\MYB.BaseApplication.Domain.Mail.pdb

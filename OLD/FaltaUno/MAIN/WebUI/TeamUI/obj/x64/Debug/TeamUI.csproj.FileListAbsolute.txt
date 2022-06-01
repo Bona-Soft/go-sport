@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.TeamUI.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.TeamUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.TeamUI.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\TeamUI\obj\x64\Debug\TeamUI.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\TeamUI\obj\x64\Debug\TeamUI.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\TeamUI\obj\x64\Debug\MYB.FaltaUno.WebUI.TeamUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\TeamUI\obj\x64\Debug\MYB.FaltaUno.WebUI.TeamUI.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\TeamUI\obj\x64\Debug\TeamUI.csprojAssemblyReference.cache

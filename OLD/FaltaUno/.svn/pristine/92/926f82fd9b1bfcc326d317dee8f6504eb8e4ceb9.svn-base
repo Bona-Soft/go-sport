@@ -1,0 +1,283 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content" ng-show="base.isLoading == 0">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="portlet bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i sport-class class="icon-settings primary-fc-light"></i>
+						<span sport-class class="caption-subject bold uppercase primary-fc-light"> Nuevo partido de {{$parent.settings.sportSelected.Name}}</span>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-8">
+							<form role="form" name="MatchForm">
+								<div class="form-body">
+									<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+										<input type="text"
+												 name="Name"
+												 myb-md-input
+												 myb-validator="required"
+												 class="form-control"
+												 data-ng-model="data.Match.Name"
+												 id="Name"
+												 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+										<label for="Name" sport-class class="primary-light-after">Nombre de partido</label>
+										<span sFport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingresa un nombre para el partido</span>
+										<span myb-validator-error-message></span>
+									</div>
+
+									<!-- test -->
+									<div myb-validator-group class="form-group form-md-line-input form-md-floating-label">
+										<div sport-class myb-validator-group class="form-group">
+											<md-autocomplete sport-class
+																  myb-md-input-autocomplete
+																  md-input-name="Loc"
+																  md-selected-item="locationSuggestSelected"
+																  md-selected-item-change="setLocationGroup(item,locSearchText)"
+																  md-search-text="locSearchText"
+																  md-min-lenght="3"
+																  md-no-cache="noCache"
+																  md-item-text="inputMethods.getLocationGroupText(item)"
+																  md-items="item in inputMethods.getLocationGroups(locSearchText)"
+																  md-floating-label="Cancha, club o ubicación">
+												<md-item-template>
+													<i class="fa fa-home" ng-hide="item.Headquarter.Name == null"></i>
+													{{item.Headquarter.Name.trim()}}
+													<i class="fa fa-map-pin"></i>
+													{{item.Location.Display.trim()}}
+												</md-item-template>
+											</md-autocomplete>
+											<span myb-validator-error-message></span>
+										</div>
+									</div>
+
+									<!--
+
+									<div myb-validator-group class="form-group form-md-line-input form-md-floating-label">
+										<div sport-class myb-validator-group class="form-group">
+											<md-autocomplete sport-class
+																  myb-md-input-autocomplete
+																  md-input-name="Headquarter"
+																  md-selected-item="data.Match.LocationGroup"
+																  md-selected-item-change="setMapLocation(item.Location)"
+																  md-search-text="headquarterSearchText"
+																  md-min-lenght="3"
+																  md-no-cache="noCache"
+																  md-items="item in inputMethods.getLocations(headquarterSearchText,1)"
+																  md-item-text="inputMethods.getLocationGroupText(item)"
+																  md-floating-label="Cancha, club o ubicación">
+												<md-item-template>
+													<i class="fa fa-home" ng-hide="item.Headquarter.Name == null"></i>
+													{{item.Headquarter.Name.trim()}}
+													<i class="fa fa-map-pin"></i>
+													{{item.Location.Display.trim()}}
+												</md-item-template>
+												<span md-highlight-text="searchText">{{inputMethods.getLocationGroupText(item)}}</span>
+											</md-autocomplete>
+											<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingres&aacute; el lugar donde se jugar&aacute; el partido</span>
+											<span myb-validator-error-message></span>
+										</div>
+									</div>
+										-->
+
+									<div class="row">
+										<div class="col-xs-6 col-sm-4 col-md-4">
+											<div myb-validator-group class="form-group form-md-line-input form-md-floating-label">
+												<input type="text"
+														 name="Date"
+														 myb-md-input
+														 myb-datepicker="{format:'dd/mm/yyyy',defaultDate: 'today'}"
+														 myb-validator="required date"
+														 class="form-control"
+														 data-ng-model="auxMatchDate"
+														 ng-change="setMatchDateTime()"
+														 id="Date"
+														 data-ng-model-options="{updateOn: 'default blur', debounce: {blur: 100}}"
+														 autocomplete="off">
+												<label sport-class for="Date" class="primary-light-after">Fecha</label>
+												<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingresa la fecha del encuentro</span>
+												<span myb-validator-error-message></span>
+											</div>
+										</div>
+										<div class="col-xs-6 col-sm-4 col-md-4">
+											<div myb-validator-group class="form-group form-md-line-input form-md-floating-label">
+												<input type="text"
+														 name="Time"
+														 myb-md-input
+														 myb-timepicker="{defaultTime: '20:00'}"
+														 myb-validator="required time"
+														 class="form-control"
+														 data-ng-model="auxMatchTime"
+														 ng-change="setMatchDateTime()"
+														 id="Time"
+														 data-ng-model-options="{updateOn: 'default blur', debounce: {blur: 100}}"
+														 autocomplete="off">
+												<label sport-class for="Date" class="primary-light-after">Hora</label>
+												<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingresa la hora del encuentro</span>
+												<span myb-validator-error-message></span>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-2 col-md-2">
+											<br />
+											<div myb-md-checkbox class="form-group form-md-checkboxes">
+												<div class="md-checkbox-list">
+													<div class="md-checkbox">
+														<input type="checkbox"
+																 name="Public"
+																 id="Public"
+																 class="md-check"
+																 data-ng-model="data.Match.Public">
+														<label for="Public">
+															<span></span>
+															<span sport-class class="check secondary-light-border"></span>
+															<span class="box"></span> Público
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-6 col-sm-2 col-md-2">
+											<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+												<input type="number"
+														 name="AverageAge"
+														 myb-md-input
+														 myb-validator="number"
+														 class="form-control"
+														 data-ng-model="data.Match.AverageAge"
+														 id="AverageAge"
+														 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+												<label for="AverageAge" sport-class class="primary-light-after">Edad aprox</label>
+												<span myb-validator-error-message></span>
+											</div>
+										</div>
+									</div>
+
+									<div data-ng-include="'Templates/Includes/Match_QtyPlayers_Futbol.html'"></div>
+
+									<div class="row">
+										<div class="col-xs-12 col-sm-4 col-md-4">
+											<md-input-container>
+												<label sport-class>Tipo de Partido</label>
+												<md-select sport-class
+															  myb-md-select
+															  data-ng-model="data.Match.MatchType">
+													<md-option ng-repeat="item in matchTypes | filter: {Sport:{SportID: settings.sportSelected.SportID}}"
+																  ng-value="item"
+																  ng-selected="item.Default">
+														{{item.Description}}
+													</md-option>
+												</md-select>
+											</md-input-container>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-4">
+											<md-input-container>
+												<label sport-class>Tipo de cancha</label>
+												<md-select sport-class
+															  myb-md-select
+															  data-ng-model="data.Match.Field">
+													<md-option ng-repeat="item in fields | filter: {Sport:{SportID: settings.sportSelected.SportID}}"
+																  ng-value="item"
+																  ng-selected="item.Default">
+														{{item.Description}}
+													</md-option>
+												</md-select>
+											</md-input-container>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-4">
+											<md-input-container>
+												<label sport-class>Tipo de Desafio</label>
+												<md-select sport-class
+															  myb-md-select
+															  data-ng-model="data.Match.ChallengeType">
+													<md-option ng-repeat="item in challengeTypes "
+																  ng-value="item"
+																  ng-selected="item.Default">
+														{{item.Description}}
+													</md-option>
+												</md-select>
+											</md-input-container>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group form-md-line-input form-md-floating-label" ng-class="">
+												<textarea name="Comments"
+															 rows="3"
+															 myb-md-input
+															 class="form-control"
+															 data-ng-model="data.Match.Comments"
+															 id="Comments"
+															 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+                                     </textarea>
+												<label for="Comments" sport-class class="primary-light-after">Comentarios</label>
+												<span sport-class class="help-block primary-fc-light">Ingresa un comentario (Opcional)</span>
+											</div>
+										</div>
+									</div>
+									<!-- TODO: include="Tipo de cancha"
+
+									<div data-ng-include="'Templates/Includes/Match_FieldTypes_Futbol.html'"></div>
+
+										-->
+									<div class="form-actions noborder">
+										<button type="button" sport-class class="btn secondary" myb-validator-on-click myb-validator-preventEventsOnInvalid data-ng-click="save()">Guardar</button>
+										<button type="button" class="btn default">Cancelar</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-4 hidden-sm hidden-xs">
+							<div class="row">
+								<div sport-class class="panel primary-light">
+									<div sport-class class="panel-heading primary">Detalle del partido</div>
+									<div class="panel-body">
+										<div><label class="bold">Partido:&nbsp;</label>{{data.Match.Name}}</div>
+										<div ng-hide="data.Match.LocationGroup.Headquarter.Name == null"><label class="bold">Club:&nbsp;</label>{{data.Match.LocationGroup.Headquarter.Name}}</div>
+										<div>
+											<label class="bold">Lugar:&nbsp;</label>
+											{{data.Match.LocationGroup.Location.Display}}
+											<leaflet width="100%" height="180px" markers="mapMarker" lf-center="mapLocation"></leaflet>
+										</div>
+										<div><label class="bold">Fecha:&nbsp;</label>{{auxMatchDate | date : $settings.dateFormat}}</div>
+										<div><label class="bold">Hora:&nbsp;</label>{{auxMatchTime}}</div>
+										<div ng-hide="data.Match.TeamsRequest == null">
+											<label class="bold">Equipos:</label>
+											<div ng-repeat="teamRequest in data.Match.TeamsRequest">
+												{{teamRequest.Team.Name}} - {{teamRequest.State}}
+											</div>
+										</div>
+										<div ng-hide="data.Match.PlayersRequest == null">
+											<label class="bold">Jugadores:</label>
+											<div ng-repeat="playerRequest in data.Match.PlayersRequest">
+												{{playerRequest.Player.Name}} {{playerRequest.Player.LastName}} - {{playerRequest.State}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								<!-- GoSport - Match -->
+								<ins class="adsbygoogle"
+									  style="display:block"
+									  data-ad-client="ca-pub-7085005982700735"
+									  data-ad-slot="3422972597"
+									  data-ad-format="auto"
+									  data-full-width-responsive="true"></ins>
+								<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

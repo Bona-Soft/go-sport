@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Extensions\MYB.BaseApplication.UserInterfaces.VirtualPages.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Extensions\MYB.BaseApplication.UserInterfaces.VirtualPages.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Extensions\MYB.BaseApplication.UserInterfaces.VirtualPages.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\User Interface\VirtualPages\obj\Debug\VirtualPages.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\User Interface\VirtualPages\obj\Debug\VirtualPages.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\User Interface\VirtualPages\obj\Debug\VirtualPages.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\User Interface\VirtualPages\obj\Debug\MYB.BaseApplication.UserInterfaces.VirtualPages.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\User Interface\VirtualPages\obj\Debug\MYB.BaseApplication.UserInterfaces.VirtualPages.pdb

@@ -1,0 +1,110 @@
+﻿using MYB.BaseApplication.Framework.Helpers;
+using MYB.BaseApplication.Framework.Helpers.TypesExt;
+using MYB.FaltaUno.Application.Interfaces.RepositoriesService;
+using MYB.FaltaUno.Model.Interfaces.Entities;
+using System;
+using System.Data;
+
+namespace MYB.FaltaUno.Application.RepositoriesService
+{
+   public class UserRepoService : RepoServices, IUserRepositoryService
+   {
+      public long Save(IUser user)
+      {
+         Dictionary<string, Type, object> dic = Key.EntityToDictionary(user);
+         dic.Rename("SportID", "DefaultSportID");
+         if (user.ActiveSport != null)
+            dic.Add("ActiveSportID", typeof(short), user.ActiveSport.SportID.Value);
+         if (user.UserID > 0)
+            return UserRepo.Update(dic, BaseRepoService.CurrentTransaction);
+         dic.Remove<long>("UserID");
+         //TODO: llamar al crear user de base
+         return UserRepo.Add(dic, BaseRepoService.CurrentTransaction);
+      }
+
+		public IUserPrivacy GetPrivacy(long id)
+		{
+			DataTable dt = UserRepo.GetPrivacy(id);
+			IUserPrivacy up = UserFactory.NewUserPrivacy(id);
+			Fill(up, dt);
+			return up;
+		}
+
+		public void SavePrivacy(IUserPrivacy up)
+		{
+			Dictionary<string, Type, object> dic = Key.EntityToDictionary(up);
+			UserRepo.UpdatePrivacy(dic, BaseRepoService.CurrentTransaction);
+		}
+
+		public bool SaveAvatar(long userID, string fileName)
+		{
+			return UserRepo.UpdateAvatar(userID, fileName, BaseRepoService.CurrentTransaction);
+		}
+
+		public IUser GetCurrent()
+      {
+         IUser user = UserFactory.CurrentUser();
+         Fill(user, UserRepo.Get);
+
+         return user;
+      }
+
+      public IUser GetByID(long userID)
+      {
+         IUser user = UserFactory.User(userID);
+         Fill(user, UserRepo.Get);
+
+         return user;
+      }
+
+      public IUser GetByEmail(string email)
+      {
+         DataTable dt = UserRepo.GetByEmail(email);
+         IUser user;
+         if (dt.Rows.Count > 0)
+         {
+            user = UserFactory.User(dt.Rows[0]["UserID"].ToDefType<long>());
+            Fill(user, dt);
+            return user;
+         }
+         throw new Exception("User can not be found");
+      }
+
+      #region "Fills Entity Methods"
+
+      private void Fill(IUser user, Func<long, DataTable> getFunc)
+      {
+         if (user != null && !user.Initialized())
+         {
+            DataTable dt = getFunc(user.UserID);
+            Fill(user, dt);
+         }
+      }
+
+      private void Fill(IUser user, DataTable dt)
+      {
+         if (dt == null || dt.Rows.Count == 0)
+            throw new Exception("User can not be found");
+         DataRow dr = dt.Rows[0];
+         Key.FillEntity(user, dr);
+         user.DefaultSport = SportFactory.NewDef(dr["DefaultSportID"], null);
+			user.ActiveSport = SportFactory.NewDef(dr["ActiveSportID"], null);
+			user.UserPrivacy = UserFactory.NewUserPrivacy(dr["UserPrivacyID"].ToDefType<long>());
+			user.Init();
+      }
+
+		private IUserPrivacy Fill(IUserPrivacy up, DataTable dt)
+		{
+			if (dt == null || dt.Rows.Count == 0)
+				throw new Exception("User can not be found");
+			DataRow dr = dt.Rows[0];
+			Key.FillEntity(up, dr);
+			return up;
+			
+		}
+
+
+		#endregion "Fills Entity Methods"
+
+	}
+}

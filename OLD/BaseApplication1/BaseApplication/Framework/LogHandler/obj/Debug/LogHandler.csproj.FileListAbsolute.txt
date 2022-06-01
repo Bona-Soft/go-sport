@@ -1,0 +1,7 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Framework.LogHandler.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Framework.LogHandler.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\LogHandler\obj\Debug\LogHandler.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\LogHandler\obj\Debug\LogHandler.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\LogHandler\obj\Debug\LogHandler.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\LogHandler\obj\Debug\MYB.BaseApplication.Framework.LogHandler.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\LogHandler\obj\Debug\MYB.BaseApplication.Framework.LogHandler.pdb

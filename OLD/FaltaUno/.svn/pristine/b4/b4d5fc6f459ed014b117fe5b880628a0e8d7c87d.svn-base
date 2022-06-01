@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[UserPrivacy]
+(
+	[UserPrivacyID] BIGINT NOT NULL IDENTITY (1,1) PRIMARY KEY,
+	[MobileNumber] CHAR(1) NOT NULL CONSTRAINT [UserPrivacy_MobileNumber_Default] DEFAULT 'N',
+	[BirthDate] CHAR(1) NOT NULL CONSTRAINT [UserPrivacy_BirthDate_Default] DEFAULT 'N'
+)

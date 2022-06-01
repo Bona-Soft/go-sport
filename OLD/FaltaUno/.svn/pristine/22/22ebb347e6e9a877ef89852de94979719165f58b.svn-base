@@ -1,0 +1,8 @@
+SET LPATH=%cd%
+cd..
+cd..
+cd..
+XCOPY "%LPATH%" "%cd%\Build\bin" /Y /I
+del "%cd%\Build\bin\CopyToBuild.bat" /F /Q
+del "%cd%\Build\bin\UpdatePackage.bat" /F /Q
+pause

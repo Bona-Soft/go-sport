@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  https://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+  <configSections>
+    <section name="BaseConnectionStrings" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigConnectionStringSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="BaseConnectionData" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigConnectionDataSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="BaseMongoConnectionStrings" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigMonoConnectionStringSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="BaseMongoConnectionData" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigMonoConnectionDataSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="ResolveHostList" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigResolveHostListSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="CustomConfigSection" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigSection`1[[TestApp.TestConfigElement, TestApp]], MYB.BaseApplication.Security.Configuration" />
+  </configSections>
+
+  <connectionStrings>
+    <remove name="MainConnectionString" />
+    <add name="MainConnectionString" connectionString="Provider=SQLOLEDB;Data Source=MASTER\sqlexpress;Initial Catalog=GoSports;User Id=web_admin;Password=Homero32" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  
+  <system.web>
+    <compilation debug="true" targetFramework="4.5.2" />
+    <httpRuntime targetFramework="4.5.2" />
+  </system.web>
+  <system.webServer>
+  <handlers>
+      <remove name="WebDAV" />
+      <remove name="PageHandlerFactory-Integrated-4.0" />
+      <remove name="PageHandlerFactory-Integrated" />
+      <add name="PageHandlerFactory-Integrated" path="*.aspx" verb="GET,HEAD,POST,DEBUG,PUT,DELETE" type="System.Web.UI.PageHandlerFactory" resourceType="Unspecified" requireAccess="Script" preCondition="integratedMode" />
+      <add name="PageHandlerFactory-Integrated-4.0" path="*.aspx" verb="GET,HEAD,POST,DEBUG,PUT,DELETE" type="System.Web.UI.PageHandlerFactory" resourceType="Unspecified" requireAccess="Script" preCondition="integratedMode,runtimeVersionv4.0" />
+    </handlers>
+     <staticContent>
+            <remove fileExtension=".woff2" />
+            <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+        </staticContent>   
+  </system.webServer>
+  
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0"/>
+      </dependentAssembly>
+    </assemblyBinding>
+	
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+       <dependentAssembly>
+           <assemblyIdentity name="Newtonsoft.Json"
+               publicKeyToken="30AD4FE6B2A6AEED" culture="neutral"/>
+           <bindingRedirect oldVersion="0.0.0.0-11.0.0.0" newVersion="11.0.0.0"/>
+       </dependentAssembly>
+    </assemblyBinding>
+
+  </runtime>
+  <appSettings>
+	<add key="owin:AppStartup" value="SignalRChat.Startup"/>
+  </appSettings>
+</configuration>

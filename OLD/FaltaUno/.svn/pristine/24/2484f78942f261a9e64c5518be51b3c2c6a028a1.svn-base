@@ -1,0 +1,88 @@
+﻿using MYB.BaseApplication.Framework.Helpers;
+using MYB.BaseApplication.Framework.Helpers.JTools;
+using MYB.BaseApplication.Framework.Helpers.TypesExt;
+using MYB.FaltaUno.Model.Entities.SubEntities;
+using MYB.FaltaUno.Model.Interfaces.Entities;
+using MYB.FaltaUno.Model.Interfaces.SubEntities;
+using System;
+using System.Collections.Generic;
+
+namespace MYB.FaltaUno.Model.Entities
+{
+	public class UserPrivacy : Dictionary<string,Dictionary<long,string,char>>, IUserPrivacy
+   {
+      private long UserID { get; set; }
+
+      public void Add(long userPrivacyID, string entity, string property, char value)
+      {
+         if (base.ContainsKey(entity))
+         {
+            if (base[entity].ContainsKey(userPrivacyID,property))
+            {
+               base[entity].Remove(userPrivacyID, property);
+            }
+
+            base[entity].Add(userPrivacyID, property, value);  
+         }
+         else
+         {
+            Dictionary<long, string, char> aux = new Dictionary<long, string, char>();
+            aux.Add(userPrivacyID, property, value);
+            base.Add(entity, aux);
+         }
+      }
+
+      #region "TODO: Implement in BaseApp.Framework.Dictionary"
+
+      public void Add(string key, IDictionary<long, string, char> value)
+      {
+         throw new NotImplementedException();
+      }
+
+      public bool TryGetValue(string key, out IDictionary<long, string, char> value)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void Add(KeyValuePair<string, IDictionary<long, string, char>> item)
+      {
+         throw new NotImplementedException();
+      }
+
+      public bool Contains(KeyValuePair<string, IDictionary<long, string, char>> item)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void CopyTo(KeyValuePair<string, IDictionary<long, string, char>>[] array, int arrayIndex)
+      {
+         throw new NotImplementedException();
+      }
+
+      public bool Remove(KeyValuePair<string, IDictionary<long, string, char>> item)
+      {
+         throw new NotImplementedException();
+      }
+
+      IEnumerator<KeyValuePair<string, IDictionary<long, string, char>>> IEnumerable<KeyValuePair<string, IDictionary<long, string, char>>>.GetEnumerator()
+      {
+         throw new NotImplementedException();
+      }
+
+      ICollection<string> IDictionary<string, IDictionary<long, string, char>>.Keys => throw new NotImplementedException();
+
+      ICollection<IDictionary<long, string, char>> IDictionary<string, IDictionary<long, string, char>>.Values => throw new NotImplementedException();
+
+      public bool IsReadOnly => throw new NotImplementedException();
+
+      IDictionary<long, string, char> IDictionary<string, IDictionary<long, string, char>>.this[string key] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+      #endregion
+
+      public UserPrivacy(long userID)
+		{
+         UserID = userID;
+
+      }
+	}
+}

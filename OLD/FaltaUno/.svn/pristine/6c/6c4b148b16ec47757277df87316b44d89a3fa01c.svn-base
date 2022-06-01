@@ -1,0 +1,243 @@
+﻿<div style="/*min-height:100%;*/">
+
+	<div class="page-main-content {{$parent.settings.sportSelected.Value}}">
+		<div class="row">
+			<div class="col-xs-12">
+				<div style="min-height: 80px;" class="text-center form-group">
+					<h3>¿Aun no estas registrado? Registrate, es gratis!</h3>
+					<button type="button" class="btn btn-success" data-ng-click="$parent.goRegister();">REGISTRATE</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">
+				<h4>DEPORTES</h4>
+			</div>
+			<div class="col-xs-offset-1 col-xs-10 col-sm-7 col-sm-offset-0 slick-container">
+				<slick settings="infoSlickConfig" class="baseSlick">
+					<div ng-repeat="sport in sports">
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%; background-image: url({{sport.Value}}_ball_icon.png);">
+								<div style="text-align: center;">{{sport.Name}}</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%;">
+								<div style="text-align: center;">Deportes 1</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%;">
+								<div style="text-align: center;">Deportes 2</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%;">
+								<div style="text-align: center;">Deportes 3</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%;">
+								<div style="text-align: center;">Deportes 4</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%;">
+								<div style="text-align: center;">Deportes 5</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%;">
+								<div style="text-align: center;">Deportes 6</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:bisque; height: 100%;">
+								<div style="text-align: center;">Deportes 7</div>
+							</div>
+						</div>
+					</div>
+				</slick>
+			</div>
+			<div class="hidden-xs col-sm-3">
+				<h4>DEPORTES</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">
+				<h4>PARTIDOS DISPONIBLES</h4>
+			</div>
+			<div class="col-xs-offset-1 col-xs-10 col-sm-7 col-sm-offset-0 slick-container">
+				<slick settings="infoSlickConfig" class="baseSlick">
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:palegoldenrod; height: 100%;">
+								<div style="text-align: center;">Partidos disponibles 1</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:palegoldenrod; height: 100%;">
+								<div style="text-align: center;">Partidos disponibles 2</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:palegoldenrod; height: 100%;">
+								<div style="text-align: center;">Partidos disponibles 3</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:palegoldenrod; height: 100%;">
+								<div style="text-align: center;">Partidos disponibles 4</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:palegoldenrod; height: 100%;">
+								<div style="text-align: center;">Partidos disponibles 5</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:palegoldenrod; height: 100%;">
+								<div style="text-align: center;">Partidos disponibles 6</div>
+							</div>
+						</div>
+					</div>
+				</slick>
+			</div>
+			<div class="hidden-xs col-sm-3">
+				<h4>PARTIDOS DISPONIBLES</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">
+				<h4>TOP EQUIPOS</h4>
+			</div>
+			<div class="col-xs-offset-1 col-xs-10 col-sm-7 col-sm-offset-0 slick-container">
+				<slick settings="infoSlickConfig" class="baseSlick">
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightgreen; height: 100%;">
+								<div style="text-align: center;">Top Equipos 1</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightgreen; height: 100%;">
+								<div style="text-align: center;">Top Equipos 2</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightgreen; height: 100%;">
+								<div style="text-align: center;">Top Equipos 3</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightgreen; height: 100%;">
+								<div style="text-align: center;">Top Equipos 4</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightgreen; height: 100%;">
+								<div style="text-align: center;">Top Equipos 5</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightgreen; height: 100%;">
+								<div style="text-align: center;">Top Equipos 6</div>
+							</div>
+						</div>
+					</div>
+				</slick>
+			</div>
+			<div class="hidden-xs col-sm-3">
+				<h4>TOP EQUIPOS</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">
+				<h4>TOP JUGADORES</h4>
+			</div>
+			<div class="col-xs-offset-1 col-xs-10 col-sm-7 col-sm-offset-0 slick-container">
+				<slick settings="infoSlickConfig" class="baseSlick">
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightcoral; height: 100%;">
+								<div style="text-align: center;">Top Jugadores 1</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightcoral; height: 100%;">
+								<div style="text-align: center;">Top Jugadores 2</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightcoral; height: 100%;">
+								<div style="text-align: center;">Top Jugadores 3</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightcoral; height: 100%;">
+								<div style="text-align: center;">Top Jugadores 4</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightcoral; height: 100%;">
+								<div style="text-align: center;">Top Jugadores 5</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div style="margin: auto; padding: 5px; width:150px; height: 150px; display: block;">
+							<div style="display: block; background-color:lightcoral; height: 100%;">
+								<div style="text-align: center;">Top Jugadores 6</div>
+							</div>
+						</div>
+					</div>
+				</slick>
+			</div>
+			<div class="hidden-xs col-sm-3">
+				<h4>TOP JUGADORES</h4>
+			</div>
+		</div>
+	</div>
+</div>

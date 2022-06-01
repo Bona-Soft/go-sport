@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{42F61D73-15A7-48A7-956D-4D8D5D54DF93}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MYB.FaltaUno.Application.MainApplication</RootNamespace>
+    <AssemblyName>MYB.FaltaUno.Application.MainApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\Build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MYB.BaseApplication.Application.CoreApplication">
+      <HintPath>..\..\..\Packages\BaseApp\MYB.BaseApplication.Application.CoreApplication.dll</HintPath>
+    </Reference>
+    <Reference Include="MYB.BaseApplication.Application.CoreInterfaces">
+      <HintPath>..\..\..\Packages\BaseApp\MYB.BaseApplication.Application.CoreInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MYB.BaseApplication.Framework.BaseSchedulerJobs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="MYB.BaseApplication.Framework.Cryptography, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Packages\BaseApp\MYB.BaseApplication.Framework.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="MYB.BaseApplication.Framework.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Packages\BaseApp\MYB.BaseApplication.Framework.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Jobs\RefreshMatchesStatusAndRequests.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Services\HeadquarterService.cs" />
+    <Compile Include="Services\JobService.cs" />
+    <Compile Include="Services\MainService.cs" />
+    <Compile Include="Services\MatchService.cs" />
+    <Compile Include="Services\PlayerService.cs" />
+    <Compile Include="Services\Services.cs" />
+    <Compile Include="Implementation.cs" />
+    <Compile Include="MailManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SportService.cs" />
+    <Compile Include="Services\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Helpers\Helpers.csproj">
+      <Project>{934E835A-D5E1-443A-BE96-E698DB9B5378}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\InfrastructureInterfaces\InfrastructureInterfaces.csproj">
+      <Project>{699409D5-6355-4490-829D-885D28ED2844}</Project>
+      <Name>InfrastructureInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Repositories\Repositories.csproj">
+      <Project>{AA094ABC-8136-40A9-8F9C-2BC3E4E7A246}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Model\ModelInterfaces\ModelInterfaces.csproj">
+      <Project>{100C37A4-C0EE-4AF8-A0A7-7202CBA0BF17}</Project>
+      <Name>ModelInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{481D06F6-170B-42F1-948E-78BBB20238F0}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoriesService\RepositoriesService.csproj">
+      <Project>{D395BDD4-DDC5-4FFC-8C79-8E203C902669}</Project>
+      <Name>RepositoriesService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.Windsor.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.Windsor.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.Windsor.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Windsor\obj\Debug\Windsor.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Windsor\obj\Debug\Windsor.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Windsor\obj\Debug\Windsor.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Windsor\obj\Debug\MYB.BaseApplication.Infrastructure.Windsor.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\Windsor\obj\Debug\MYB.BaseApplication.Infrastructure.Windsor.pdb

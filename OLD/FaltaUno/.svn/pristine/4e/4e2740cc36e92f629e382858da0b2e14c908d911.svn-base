@@ -1,0 +1,54 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+         <div class="portlet bordered">
+
+            <div class="row" id="MatchListContainer">
+               <div class="col-xs-12">
+
+						<div ng-show="showNoMatch()" style="height: 200px;">
+							<br /><br /><br />
+							<h3 style="text-align: center; vertical-align: central; color: grey;"> NO TIENES PARTIDOS REGISTRADOS </h3>
+						</div>
+                  <div class="item-list">
+                     <div class="item" ng-click="viewMatch(item)" ng-repeat="item in matchList track by $index">
+                        <div class="item-side-left">
+                           <img class="circle-img" style="height: 70px;" src="img/avatar.png">
+                        </div>
+                        <div class="item-main">
+                           <div class="item-head">
+                              <span class="item-status">
+                                 <span class="badge badge-empty badge-success" data-ng-class="matchstate-badge-{{item.MatchState.Value}}"></span> {{item.MatchState.Description}}
+                              </span>
+                              <div class="item-details">
+                                 <span class="item-name primary-fc-light bold" sport-class>{{item.Name}}</span>
+                                 <span class="item-label grey">{{item.MatchDateTime | date: 'dd MMM yyyy'}} - {{item.MatchDateTime | date: 'hh:mm a'}}</span>
+                              </div>
+
+                           </div>
+                           <div class="item-body light-grey">
+                              <div>
+                                 <span ng-show="item.Headquarter">
+                                    {{item.Headquarter.Name}}
+                                 </span>
+
+                                 {{item.Location.Display}}
+                              </div>
+                              <div>
+                                 {{item.MatchType.Description}} - {{item.ChallengeType.Description}}
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+         </div>
+		</div>
+	</div>
+</div>

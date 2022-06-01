@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.DeployManager.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.DeployManager.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.DeployManager.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\DeployManager\obj\Debug\DeployManager.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\DeployManager\obj\Debug\DeployManager.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\DeployManager\obj\Debug\MYB.BaseApplication.Infrastructure.DeployManager.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\DeployManager\obj\Debug\MYB.BaseApplication.Infrastructure.DeployManager.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\DeployManager\obj\Debug\DeployManager.csprojAssemblyReference.cache

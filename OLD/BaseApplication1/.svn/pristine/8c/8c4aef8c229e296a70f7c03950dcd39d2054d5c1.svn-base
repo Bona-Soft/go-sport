@@ -1,0 +1,58 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[GeneralParameters] (Table)
+       [dbo].[Implementations] (Table)
+       [dbo].[LoginNames] (Table)
+       [dbo].[LoginNames].[IX_LoginNames] (Index)
+       [dbo].[LoginPasswords] (Table)
+       [dbo].[MailServerConfigurations] (Table)
+       [dbo].[Sessions] (Table)
+       [dbo].[Sessions].[IX_Sessions_Session] (Index)
+       [dbo].[Translations] (Table)
+       [dbo].[UserIPAccessStatus] (Table)
+       [dbo].[Users] (Table)
+       Default Constraint: unnamed constraint on [dbo].[GeneralParameters] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LoginNames] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LoginNames] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LoginNames] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LoginNames] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LoginNames] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[MailServerConfigurations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[MailServerConfigurations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[MailServerConfigurations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[MailServerConfigurations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[MailServerConfigurations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[MailServerConfigurations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[MailServerConfigurations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Sessions] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Translations] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[UserIPAccessStatus] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[UserIPAccessStatus] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Users] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Users] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Users] (Default Constraint)
+       [dbo].[FK_GeneralParameters_Implementations_ImplementationID] (Foreign Key)
+       [dbo].[FK_LoginNames_Users_UserID] (Foreign Key)
+       [dbo].[FK_LoginNames_Implementations_ImplementationID] (Foreign Key)
+       [dbo].[FK_LoginPasswords_LoginNames_LoginID] (Foreign Key)
+       [dbo].[FK_Sessions_LoginNames_LoginID] (Foreign Key)
+       [dbo].[FK_UserIPAccessStatus_Users_UserID] (Foreign Key)
+       [dbo].[FK_UserIPAccessStatus_USers_ImplementationID] (Foreign Key)
+       [dbo].[GetMailServerConfiguration] (Procedure)
+     Alter
+       [dbo].[GetTranslations] (Procedure)
+
+** Supporting actions
+
+The project and target databases have different collation settings. Deployment errors might occur.
+

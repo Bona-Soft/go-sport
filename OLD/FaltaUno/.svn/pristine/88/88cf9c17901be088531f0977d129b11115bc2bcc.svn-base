@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [dbo].[GetTopPlayers]
+AS
+BEGIN
+	SELECT * FROM Players
+END

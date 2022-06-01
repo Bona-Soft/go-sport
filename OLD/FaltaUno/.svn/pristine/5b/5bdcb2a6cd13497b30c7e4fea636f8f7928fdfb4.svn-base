@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MYB.FaltaUno.Model.Interfaces.Entities.Filters
+{
+   public interface FPlayerSearch
+   {
+      string SearchText { get; set; }
+      long UserID { get; set; }
+      short SportID { get; set; }
+   }
+}

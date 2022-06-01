@@ -1,0 +1,7 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.BaseUnitTesting.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.BaseUnitTesting.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\BaseUnitTesting\obj\Debug\BaseUnitTesting.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\BaseUnitTesting\obj\Debug\BaseUnitTesting.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\BaseUnitTesting\obj\Debug\BaseUnitTesting.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\BaseUnitTesting\obj\Debug\MYB.BaseApplication.Infrastructure.BaseUnitTesting.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\BaseUnitTesting\obj\Debug\MYB.BaseApplication.Infrastructure.BaseUnitTesting.pdb

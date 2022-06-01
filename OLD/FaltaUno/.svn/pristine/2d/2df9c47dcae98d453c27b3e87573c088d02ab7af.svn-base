@@ -1,0 +1,79 @@
+﻿app.controller('Home', ['$scope', '$http', '$controller', '$uibModal', 'settings', 'alertService','ws_MatchSearch',
+   function ($scope, $http, $controller, $uibModal, settings, alertService, ws_MatchSearch) {
+      //$controller('BaseController', { $scope: $scope });
+
+       var _init = function () {
+
+       };
+
+       var _getAvailableMatches = function () {
+           var _search = {};
+
+           return ws_MatchSearch.get(_search).then(function (response) {
+               return response.data;
+           }, function (error) {
+               return [];
+           });
+       };
+       _getAvailableMatches();
+       var _getTopPlayers = function () {
+
+       };
+
+      $scope.infoSlickConfig = {
+         enabled: true,
+         autoplay: false,
+         draggable: true,
+         slidesToShow: 4,
+         slidesToScroll: 4,
+         method: {},
+         event: {
+            beforeChange: function (event, slick, currentSlide, nextSlide) {
+            },
+            afterChange: function (event, slick, currentSlide, nextSlide) {
+            }
+         },
+         responsive: [
+            {
+               breakpoint: 1072,
+               settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3
+               }
+            },
+            {
+               breakpoint: 810,
+               settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+               }
+            },
+            {
+               breakpoint: 768,
+               settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3
+               }
+            },
+            {
+               breakpoint: 600,
+               settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+               }
+            },
+            {
+               breakpoint: 500,
+               settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+               }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+         ]
+      };
+
+       _init();
+   }]);

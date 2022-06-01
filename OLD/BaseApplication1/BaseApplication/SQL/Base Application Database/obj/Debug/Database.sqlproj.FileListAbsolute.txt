@@ -1,0 +1,6 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\DataBase\Base Application SQL Database Chema.dacpac
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\DataBase\Base_Application_Database.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\DataBase\Base_Application_Database.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\SQL\Base Application Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\SQL\Base Application Database\obj\Debug\Base_Application_Database.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\SQL\Base Application Database\obj\Debug\Base_Application_Database.pdb

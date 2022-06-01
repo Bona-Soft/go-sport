@@ -1,0 +1,8 @@
+<configuration>
+  <configSections>
+    <sectionGroup name="Security">
+	  <section name ="securitySection" type="KtcAR.CZTT.Common.Security.Configuration.SecuritySection,KtcAR.CZTT.Common.Security.Configuration"/>
+	  <section name ="publicPages" type="KtcAR.CZTT.Common.Security.Configuration.PagesSection,KtcAR.CZTT.Common.Security.Configuration" />
+	</sectionGroup>
+  </configSections>
+</configuration>

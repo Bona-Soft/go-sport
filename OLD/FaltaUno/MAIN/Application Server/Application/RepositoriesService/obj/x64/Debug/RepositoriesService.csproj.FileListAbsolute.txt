@@ -1,0 +1,7 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Application.RepositoriesService.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Application.RepositoriesService.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Application\RepositoriesService\obj\x64\Debug\RepositoriesService.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Application\RepositoriesService\obj\x64\Debug\RepositoriesService.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Application\RepositoriesService\obj\x64\Debug\RepositoriesService.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Application\RepositoriesService\obj\x64\Debug\MYB.FaltaUno.Application.RepositoriesService.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Application\RepositoriesService\obj\x64\Debug\MYB.FaltaUno.Application.RepositoriesService.pdb

@@ -1,0 +1,5 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Framework.BaseSchedulerJobs.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Framework.BaseSchedulerJobs.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\SchedulerJob\obj\Debug\SchedulerJob.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\SchedulerJob\obj\Debug\MYB.BaseApplication.Framework.BaseSchedulerJobs.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Framework\SchedulerJob\obj\Debug\MYB.BaseApplication.Framework.BaseSchedulerJobs.pdb

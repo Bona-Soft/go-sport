@@ -1,0 +1,14 @@
+﻿body.volley{
+	background-color: #08088A !important;
+}
+
+.navbar.volley {
+	background-image: url(img/header_bar.png);
+	background-size: cover;
+}
+.nav-logo.volley {
+	background-image: url(img/volley_ball_icon.png);
+	height: 44px;
+	top: 3px;
+	width: 45px;
+}

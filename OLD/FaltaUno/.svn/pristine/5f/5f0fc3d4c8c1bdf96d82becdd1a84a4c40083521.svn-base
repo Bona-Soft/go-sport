@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDA7D1C8-16D0-4C30-B759-6A6EA7AC1307}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MYB.FaltaUno.WebServices.Player</RootNamespace>
+    <AssemblyName>MYB.FaltaUno.WebServices.Player</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MYB.BaseApplication.Application.CoreApplication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\BaseApp\MYB.BaseApplication.Application.CoreApplication.dll</HintPath>
+    </Reference>
+    <Reference Include="MYB.BaseApplication.Application.CoreInterfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\BaseApp\MYB.BaseApplication.Application.CoreInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MYB.BaseApplication.Framework.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayerEnable.aspx.cs">
+      <DependentUpon>PlayerEnable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerEnable.aspx.designer.cs">
+      <DependentUpon>PlayerEnable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerFrecuently.aspx.cs">
+      <DependentUpon>PlayerFrecuently.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerFrecuently.aspx.designer.cs">
+      <DependentUpon>PlayerFrecuently.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerProfile.aspx.cs">
+      <DependentUpon>PlayerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerProfile.aspx.designer.cs">
+      <DependentUpon>PlayerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerRecommended.aspx.cs">
+      <DependentUpon>PlayerRecommended.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerRecommended.aspx.designer.cs">
+      <DependentUpon>PlayerRecommended.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TopPlayer.aspx.cs">
+      <DependentUpon>TopPlayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TopPlayer.aspx.designer.cs">
+      <DependentUpon>TopPlayer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserAvatarUpload.aspx.cs">
+      <DependentUpon>UserAvatarUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserAvatarUpload.aspx.designer.cs">
+      <DependentUpon>UserAvatarUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Player.aspx.cs">
+      <DependentUpon>Player.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Player.aspx.designer.cs">
+      <DependentUpon>Player.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerSearch.aspx.cs">
+      <DependentUpon>PlayerSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerSearch.aspx.designer.cs">
+      <DependentUpon>PlayerSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserMatchPlayerRequests.aspx.cs">
+      <DependentUpon>UserMatchPlayerRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserMatchPlayerRequests.aspx.designer.cs">
+      <DependentUpon>UserMatchPlayerRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserOwnerMatches.aspx.cs">
+      <DependentUpon>UserOwnerMatches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserOwnerMatches.aspx.designer.cs">
+      <DependentUpon>UserOwnerMatches.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPassword.aspx.cs">
+      <DependentUpon>UserPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPassword.aspx.designer.cs">
+      <DependentUpon>UserPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPersonalInfo.aspx.cs">
+      <DependentUpon>UserPersonalInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPersonalInfo.aspx.designer.cs">
+      <DependentUpon>UserPersonalInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPrivacy.aspx.cs">
+      <DependentUpon>UserPrivacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPrivacy.aspx.designer.cs">
+      <DependentUpon>UserPrivacy.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PlayerEnable.aspx" />
+    <Content Include="PlayerFrecuently.aspx" />
+    <Content Include="PlayerProfile.aspx" />
+    <Content Include="PlayerRecommended.aspx" />
+    <Content Include="TopPlayer.aspx" />
+    <Content Include="UserAvatarUpload.aspx" />
+    <Content Include="Player.aspx" />
+    <Content Include="PlayerSearch.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application Server\Application\UIServices\UIServices.csproj">
+      <Project>{A0130A01-786A-47EF-A5DD-7DE756061319}</Project>
+      <Name>UIServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UserMatchPlayerRequests.aspx" />
+    <Content Include="UserOwnerMatches.aspx" />
+    <Content Include="UserPassword.aspx" />
+    <Content Include="UserPersonalInfo.aspx" />
+    <Content Include="UserPrivacy.aspx" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64872</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64872/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY  "$(ProjectDir)*.aspx"  "$(TargetDir)..\"  /y
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

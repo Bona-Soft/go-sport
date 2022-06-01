@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\WebTest.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\WebTest.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\WebTest.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\WebTest\obj\x64\Debug\WebTest.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\WebTest\obj\x64\Debug\WebTest.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\WebTest\obj\x64\Debug\WebTest.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\WebTest\obj\x64\Debug\WebTest.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\WebTest\obj\x64\Debug\WebTest.pdb

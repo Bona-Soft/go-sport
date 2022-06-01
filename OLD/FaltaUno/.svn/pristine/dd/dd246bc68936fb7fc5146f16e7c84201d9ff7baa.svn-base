@@ -1,0 +1,50 @@
+﻿using MYB.BaseApplication.Framework.Helpers;
+using MYB.BaseApplication.Framework.Helpers.TypesExt;
+using MYB.FaltaUno.Application.UIService;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace MYB.FaltaUno.WebServices.Match
+{
+   public partial class MatchSearch : AppWebServices
+   {
+      protected override void ProcessGET(Filter data)
+      {
+         
+         DateTime matchStartTime;
+         if (!DateTime.TryParseExact(
+               getRequestParam<string>("starTime","00:00 AM")
+                  ,"HH:mm tt"
+                  ,CultureInfo.InvariantCulture
+                  ,DateTimeStyles.None
+                  ,out matchStartTime))
+         {
+            matchStartTime = new DateTime();
+         }
+         DateTime matchEndTime;
+         if (!DateTime.TryParseExact(
+               getRequestParam<string>("endTime", "11:59 PM")
+                  , "HH:mm tt"
+                  , CultureInfo.InvariantCulture
+                  , DateTimeStyles.None
+                  , out matchEndTime))
+         {
+            matchEndTime = new DateTime();
+         }
+
+
+         JArray arr = MatchUIService.SearchMatches(data);
+
+         sendSerializeObject(arr);
+
+      }
+
+
+   }
+}

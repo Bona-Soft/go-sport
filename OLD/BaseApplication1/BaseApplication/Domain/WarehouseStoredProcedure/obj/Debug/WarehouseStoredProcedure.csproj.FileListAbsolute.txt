@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Domain.WarehouseStoredProcedure.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Domain.WarehouseStoredProcedure.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Domain.WarehouseStoredProcedure.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\WarehouseStoredProcedure\obj\Debug\WarehouseStoredProcedure.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\WarehouseStoredProcedure\obj\Debug\WarehouseStoredProcedure.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\WarehouseStoredProcedure\obj\Debug\WarehouseStoredProcedure.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\WarehouseStoredProcedure\obj\Debug\MYB.BaseApplication.Domain.WarehouseStoredProcedure.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Domain\WarehouseStoredProcedure\obj\Debug\MYB.BaseApplication.Domain.WarehouseStoredProcedure.pdb

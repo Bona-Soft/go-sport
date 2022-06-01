@@ -1,0 +1,35 @@
+﻿using Microsoft.AspNet.SignalR;
+using SignalRChat.model;
+using System;
+
+namespace SignalRChat
+{
+	public class ChatHub : Hub
+	{
+		public void Send(string name, string message)
+		{
+			//save chat in DB.
+			Chat chat = new Chat(1);
+
+			chat.FromUser = name;
+			chat.Message = message;
+
+			// Call the broadcastMessage method to update clients.
+			Clients.All.broadcastMessage(name, message);
+		}
+	}
+
+	public class Chat
+	{
+		public int Id { get; set; }
+		public string FromUser { get; set; }
+		public string Message { get; set; }
+
+		public Chat(int id)
+		{
+			Id = id;
+		}
+	}
+
+}
+

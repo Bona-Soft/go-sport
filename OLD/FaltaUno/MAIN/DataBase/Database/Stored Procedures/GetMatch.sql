@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE dbo.GetMatch
+	@MatchID BIGINT
+AS
+
+	SELECT * FROM MATCHES WHERE MatchID = @MatchID

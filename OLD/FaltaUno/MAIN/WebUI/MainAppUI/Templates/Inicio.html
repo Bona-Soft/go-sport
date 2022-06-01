@@ -1,0 +1,67 @@
+﻿<div class="page-main-content {{$parent.settings.sportSelected.Value}}">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-8">
+			<div class="panel panel-default" style="background-color: #fff; border-color: #eee;">
+				<div class="panel-body">
+					<div class="row" ng-repeat="item in data.userNews track by $index">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+
+
+							<div class="item-list">
+								<div class="item">
+									<div class="item-side-left">
+										<img class="circle-img" style="height: 70px;" src="{{getCurrentUserAvatarURL()}}">
+									</div>
+									<div class="item-main">
+										<div class="item-head">
+											<span class="item-status">
+												<span class="badge badge-empty badge-success" data-ng-class="matchstate-badge-{{item.MatchState.Value}}"></span> {{item.MatchState.Description}}
+											</span>
+											<div class="item-details">
+												<span class="item-name primary-fc-light bold" sport-class>{{item.Name}}</span>
+												<span class="item-label grey">{{item.MatchDateTime | date: 'dd MMM yyyy'}} - {{item.MatchDateTime | date: 'hh:mm a'}}</span>
+											</div>
+										</div>
+										<div class="item-body light-grey">
+											<div>
+												<span ng-show="item.Headquarter">
+													{{item.Headquarter.Name}}
+												</span>
+
+												{{item.Location.Display}}
+											</div>
+											<div>
+												{{item.MatchType.Description}} - {{item.ChallengeType.Description}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hidden-xs hidden-sm col-md-4 ">
+			<div class="panel panel-default" style="background-color: #fff; border-color: #eee;">
+				<div class="panel-body">
+					<div class="row">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- GoSport - Home de usuario - vertica -->
+						<ins class="adsbygoogle"
+							  style="display:block"
+							  data-ad-client="ca-pub-7085005982700735"
+							  data-ad-slot="1221859828"
+							  data-ad-format="auto"
+							  data-full-width-responsive="true"></ins>
+						<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

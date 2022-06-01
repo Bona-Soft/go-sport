@@ -1,0 +1,15 @@
+﻿using MYB.BaseApplication.Application.CoreInterfaces.DataBase;
+using System.Collections.Generic;
+using System.Data.OleDb;
+
+namespace MYB.BaseApplication.Application.CoreInterfaces
+{
+	public interface IStoredProcedure<T>
+	{
+		string Name { get; set; }
+		List<OleDbParameter> Params { get; set; }
+		OleDbTransaction Trx { get; set; }
+
+		T Execute(IDataBase pDB);
+	}
+}

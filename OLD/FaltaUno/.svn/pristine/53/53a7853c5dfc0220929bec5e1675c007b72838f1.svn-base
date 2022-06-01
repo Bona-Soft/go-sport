@@ -1,0 +1,284 @@
+﻿/***********************************
+Theme colors
+************************************/
+
+.primary, .primary-after:after {
+	background-color: #006064 !important;
+	color: #fff !important;
+}
+
+.primary-border {
+	border-color: #006064 !important;
+}
+
+.primary-light, .primary-light-after:after {
+	background-color: #0097A7 !important;
+	color: #fff !important;
+}
+
+.primary-light-border {
+	border-color: #0097A7 !important;
+}
+
+.primary-fc, .primary-fc-after:after {
+	color: #006064 !important;
+}
+
+.primary-fc-light, .primary-fc-light-after:after {
+	color: #0097A7 !important;
+}
+
+.secondary, .secondary-after:after {
+	background-color: #D81B60 !important;
+	color: #fff !important;
+}
+
+.secondary-border {
+	border-color: #D81B60 !important;
+}
+
+.secondary-light, .secondary-light-after:after {
+	background-color: #D81B60 !important;
+	color: #fff !important;
+}
+
+.secondary-light-border {
+	border-color: #D81B60 !important;
+}
+
+.secondary-fc, .secondary-fc-after:after {
+	color: #D81B60 !important;
+}
+
+.secondary-fc-light, .secondary-fc-light-after:after {
+	color: #D81B60 !important;
+}
+
+.form-group.form-md-line-input .form-control:focus:not([readonly]) ~ label,
+.form-group.form-md-line-input .form-control:focus:not([readonly]) ~ .form-control-focus,
+.form-group.form-md-line-input .form-control.focus:not([readonly]) ~ label,
+.form-group.form-md-line-input .form-control.focus:not([readonly]) ~ .form-control-focus {
+   color: #27a4b0 !important;
+}
+
+/***********************************
+General Page Spinner Bar
+************************************/
+.page-spinner-bar > div {
+	background: crimson;
+}
+
+.block-spinner-bar > div {
+	background: crimson;
+}
+
+/***********************************
+Body
+************************************/
+
+body {
+	background-color: #ccc !important;
+}
+
+/***********************************
+Page Header
+************************************/
+.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-menu {
+	min-width: 132px;
+}
+
+.navbar {
+	background-color: #006064;
+	background-size: 100%;
+}
+
+.nav-logo.futbol {
+	background-image: url(img/futbol_ball_icon.png);
+	height: 44px;
+	top: 3px;
+	width: 45px;
+}
+
+/***********************************
+Page SideMenu
+************************************/
+.page-sidebar {
+	width: 185px;
+}
+
+	.page-sidebar .page-sidebar-menu > li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {
+		padding: 6px 30px 6px 15px;
+	}
+
+/***********************************
+Dropdown Sports
+************************************/
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-toggle > .username {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 300;
+}
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-toggle > img {
+	float: left;
+	margin-top: -5px;
+	margin-right: 5px;
+	height: 29px;
+	display: inline-block;
+}
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-toggle > i {
+	display: inline-block;
+	margin-top: 5px;
+	margin: 0;
+	font-size: 13px;
+}
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-menu > li > a {
+	font-size: 14px;
+	font-weight: 300;
+	color: #333;
+}
+
+	.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-menu > li > a i {
+		width: 15px;
+		display: inline-block;
+		margin-right: 9px;
+	}
+
+	.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-menu > li > a .badge {
+		margin-right: 10px;
+	}
+
+.page-main-content {
+	background-color: #fafafa;
+}
+
+/***********************************
+Validator directive
+************************************/
+.validatorMessage {
+	text-align: right;
+}
+
+
+/**********************************
+MD Radios
+***********************************/
+
+md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
+
+}
+
+md-radio-button.md-default-theme.md-checked .md-off, md-radio-button.md-checked .md-off {
+
+}
+
+
+/**********************************
+SLICK
+**********************************/
+
+.slick-request-player {
+   margin: 10px;
+}
+
+.slick-player-img {
+	max-width: 75px;
+   width: 75px;
+   max-height: 75px;
+   margin: auto;
+}
+
+.slick-player-label {
+	max-width: 75px;
+	margin: auto;
+}
+
+.slick-player{
+	align-content: center;
+	text-align: center;
+}
+
+
+.block-with-text {
+	overflow: hidden;
+	line-height: 1.2em;
+	max-height: 1.2em;
+	white-space: pre-line; /* CSS3 */
+	white-space: -moz-pre-line; /* Firefox */
+	white-space: -pre-line; /* Opera <7 */
+	white-space: -o-pre-line; /* Opera 7 */
+	word-wrap: normal; /* IE */
+	text-overflow: ellipsis;
+}
+
+.two-lines {
+	max-height: 2.4em;
+}
+
+.tree-lines {
+	max-height: 3.6em;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+	/* points in the end */
+	content: '';
+	/* absolute position */
+	position: absolute;
+	/* set position to right bottom corner of text */
+	right: 0;
+	/* set width and height */
+	width: 1em;
+	height: 1em;
+	margin-top: 0.2em;
+	/* bg color = bg color under block */
+	background: white;
+}
+
+
+/**************************
+Request States
+***************************/
+
+matchstate-badge-not_sended{
+	background-color: #fb9a00;
+}
+
+matchstate-badge-pending, matchstate-badge-reconfirmation_required {
+	background-color: #fcf828;
+}
+
+matchstate-badge-tentative_not {
+	background-color: #0094e0;
+}
+
+matchstate-badge-tentative {
+	background-color: #00fefe;
+}
+
+matchstate-badge-tentative_yes {
+	background-color: #00f69c;
+}
+
+matchstate-badge-propose_time {
+	background-color: #f600e9;
+}
+
+matchstate-badge-confirmed {
+	background-color: #0ec600;
+}
+
+matchstate-badge-rejected {
+	background-color: #bf0000;
+}
+
+matchstate-badge-cancelled {
+	background-color: #bf0000;
+}
+
+matchstate-badge-cancelled {
+	background-color: #333;
+}

@@ -1,0 +1,20 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="portlet bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i sport-class class="icon-settings primary-fc-light"></i>
+						<span sport-class class="caption-subject bold uppercase primary-fc-light"> Solicitudes de {{$parent.settings.sportSelected.Name}} </span>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<img src="img/MOCKUPS/PlayerRequest.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

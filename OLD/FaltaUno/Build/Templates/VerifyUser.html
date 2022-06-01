@@ -1,0 +1,20 @@
+﻿<!-- BEGIN PAGE SPINNER -->
+<div class="page-spinner-bar" data-ng-show="isLoading > 0 || isProcessing > 0">
+   <div class="bounce1"></div>
+   <div class="bounce2"></div>
+   <div class="bounce3"></div>
+</div>
+<!-- END PAGE SPINNER -->
+
+<div class="page-main-content {{$parent.settings.sportSelected.Value}}">
+   <div class="row" data-ng-show="isLoading > 0 || isProcessing > 0">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+         <h3>Verificando usuario</h3>
+      </div>
+   </div>
+   <div class="row" data-ng-show="isLoading == 0 || isProcessing == 0">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+         <h3>El usuario {{data.email}} se verifico con exito.</h3>
+      </div>
+   </div>
+</div>

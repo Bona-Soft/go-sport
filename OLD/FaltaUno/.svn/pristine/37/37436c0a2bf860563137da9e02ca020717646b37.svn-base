@@ -1,0 +1,27 @@
+﻿app.controller('PlayerRequest', ["$scope", "$controller", "alertService", "errorService", "ws_UserMatchPlayerRequests",
+   function ($scope, $controller, alertService, errorService, ws_UserMatchPlayerRequests) {
+      $controller('BaseController', { $scope: $scope });
+
+      var _init = function () {
+
+         _getMatchPlayerRequests();        
+      };
+
+      var _getMatchPlayerRequests = function () {
+
+         ws_UserMatchPlayerRequests.get().then(
+            function (response) {
+               $scope.myMatchRequest = response;
+               $scope.base.isLoading = 0;
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               $scope.base.isLoading = 0;
+            });
+      };
+      _init();
+   }
+]);

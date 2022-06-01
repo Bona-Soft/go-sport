@@ -1,0 +1,193 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content">
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+
+         <div class="portlet bordered">
+            <div class="portlet-title">
+               <div class="caption">
+                  <i sport-class class="icon-settings primary-fc-light"></i>
+                  <span sport-class class="caption-subject bold uppercase primary-fc-light"> {{Match.Name}}&nbsp;&nbsp; </span>
+                  <span class="caption-helper bold">
+                     <span myb-local-datetime="Match.MatchDateTime" myb-local-datetime-format="{{$settings.dateFormat}}"></span>
+                     <span> &nbsp;-&nbsp;</span>
+                     <span myb-local-datetime="Match.MatchDateTime" myb-local-datetime-format="{{$settings.timeFormat}}"></span>
+                  </span>
+               </div>
+            </div>
+            <div class="portlet-body form">
+
+               <div class="portlet-body form">
+                  <div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+                  <div class="row">
+
+                     <div class="col-md-7" id="PlayerRequestListContainer">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="caption caption-md">
+                                 <i class="fa fa-soccer-ball-o primary-fc-light" sport-class></i>
+                                 <span sport-class class="caption-subject bold uppercase primary-fc-light">&nbsp; Creador del partido</span>
+                              </div>
+                              <div class="item-list">
+                                 <div class="item">
+                                    <div class="item-side-left" ng-click="viewPlayerProfile(Match.MatchPlayerOwner)">
+                                       <img class="circle-img" style="height: 50px; max-width: 50px;" src="{{getUserAvatarURL(Match.MatchPlayerOwner.User)}}">
+                                    </div>
+                                    <div class="item-main">
+                                       <div class="item-head">
+                                          <div class="item-details">
+                                             <span class="item-name primary-fc-light bold" sport-class>{{Match.MatchPlayerOwner.User.Name}} {{Match.MatchPlayerOwner.User.LastName}}</span>
+                                          </div>
+                                       </div>
+
+                                       <div class="item-body light-grey">
+                                          <div>
+                                             <span ng-show="showCommentText(item)">{{item.Comment.Text}}</span>
+                                             <span ng-hide="showCommentText(item)">{{item.MatchPlayerRequestState.DefaultComment}}</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="caption caption-md">
+                                 <i class="fa fa-soccer-ball-o primary-fc-light" sport-class></i>
+                                 <span sport-class class="caption-subject bold uppercase primary-fc-light">&nbsp; Confirmados</span>
+                              </div>
+
+                              <div class="item-list" id="playerRequests">
+                                 <div class="item" ng-repeat="item in Match.PlayersRequest | filter: {MatchPlayerRequestState:{Value:'confirmed'}} track by $index">
+                                    <div class="item-side-left" ng-click="viewPlayerProfile(item)">
+                                       <img class="circle-img" style="height: 50px; max-width: 50px;" src="{{getUserAvatarURL(item.PlayerReceiver.User)}}">
+                                    </div>
+                                    <div class="item-main">
+                                       <div class="item-head">
+                                          <span class="item-status">
+                                             <span class="badge badge-empty badge-success" data-ng-class="matchstate-badge-{{item.MatchPlayerRequestState.Value}}"></span> {{item.MatchPlayerRequestState.Description}}
+                                          </span>
+                                          <div class="item-details">
+                                             <span class="item-name primary-fc-light bold" sport-class>{{item.PlayerReceiver.User.Name}} {{item.PlayerReceiver.User.LastName}}</span>
+                                             <span class="item-label grey">
+                                                <span myb-local-datetime="item.LastStateChangeDate" myb-local-datetime-format="{{$settings.dateFormat}}"></span>
+                                                <span> &nbsp;-&nbsp;</span>
+                                                <span myb-local-datetime="item.LastStateChangeDate " myb-local-datetime-format="{{$settings.timeFormat}}"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="item-body light-grey">
+                                          <div>
+                                             <span ng-show="showCommentText(item)">{{item.Comment.Text}}</span>
+                                             <span ng-hide="showCommentText(item)">{{item.MatchPlayerRequestState.DefaultComment}}</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="caption caption-md">
+                                 <i class="fa fa-soccer-ball-o primary-fc-light" sport-class></i>
+                                 <span sport-class class="caption-subject bold uppercase primary-fc-light">&nbsp; Solicitudes</span>
+                              </div>
+
+                              <div class="item-list" id="playerRequests">
+                                 <div class="item" ng-repeat="item in Match.PlayersRequest | filter: {MatchPlayerRequestState:{Value: '!confirmed'}} track by $index">
+                                    <div class="item-side-left" ng-click="viewPlayerProfile(item)">
+                                       <img class="circle-img" style="height: 50px; max-width: 50px;" src="{{getUserAvatarURL(item.PlayerReceiver.User)}}">
+                                    </div>
+                                    <div class="item-main">
+                                       <div class="item-head">
+                                          <span class="item-status">
+                                             <span class="badge badge-empty badge-success" data-ng-class="matchstate-badge-{{item.MatchPlayerRequestState.Value}}"></span> {{item.MatchPlayerRequestState.Description}}
+                                          </span>
+                                          <div class="item-details">
+                                             <span class="item-name primary-fc-light bold" sport-class>{{item.PlayerReceiver.User.Name}} {{item.PlayerReceiver.User.LastName}}</span>
+                                             <span class="item-label grey">
+                                                <span myb-local-datetime="item.LastStateChangeDate" myb-local-datetime-format="{{$settings.dateFormat}}"></span>
+                                                <span> &nbsp;-&nbsp;</span>
+                                                <span myb-local-datetime="item.LastStateChangeDate " myb-local-datetime-format="{{$settings.timeFormat}}"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="item-body light-grey">
+                                          <div>
+                                             <span ng-show="showCommentText(item)">{{item.Comment.Text}}</span>
+                                             <span ng-hide="showCommentText(item)">{{item.MatchPlayerRequestState.DefaultComment}}</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="col-md-5">
+                        <div class="row">
+                           <div sport-class class="panel primary-light">
+                              <div sport-class class="panel-heading primary">Detalle del partido</div>
+                              <div class="panel-body">
+                                 <div>
+                                    <leaflet width="100%" height="180px" markers="mapMarker" lf-center="mapLocation"></leaflet>
+                                 </div>
+                                 <div>
+                                    <label class="bold">Lugar:&nbsp;</label>
+                                    {{Match.Location.Display}}
+                                 </div>
+                                 <div ng-hide="Match.Headquarter.Name == null">
+                                    <label class="bold">Club:&nbsp;</label>
+                                    {{Match.Headquarter.Name}}
+                                 </div>
+                                 <div>
+                                    <label class="bold">Fecha:&nbsp;</label>
+                                    <span myb-local-datetime="Match.MatchDateTime" myb-local-datetime-format="dd/MM/yyyy"></span>
+                                 </div>
+                                 <div>
+                                    <label class="bold">Hora:&nbsp;</label>
+                                    <span myb-local-datetime="Match.MatchDateTime" myb-local-datetime-format="hh:mm a"></span>
+                                 </div>
+                                 <div ng-hide="Match.TeamsRequest == null">
+                                    <label class="bold">Equipos:</label>
+                                    <div ng-repeat="teamRequest in Match.TeamsRequest">
+                                       {{teamRequest.Team.Name}} - {{teamRequest.State}}
+                                    </div>
+                                 </div>
+
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                           <!-- GoSport - Match -->
+                           <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-client="ca-pub-7085005982700735"
+                                data-ad-slot="3422972597"
+                                data-ad-format="auto"
+                                data-full-width-responsive="true"></ins>
+                           <script>
+                              (adsbygoogle = window.adsbygoogle || []).push({});
+                           </script>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="form-actions noborder">
+                  <button type="button" ng-if="editEnabled" sport-class class="btn secondary" data-ng-click="editMatch()">Editar</button>
+                  <button type="button" ng-if="editEnabled" sport-class class="btn secondary" data-ng-click="editMatchPlayerRequest()">Solicitudes</button>
+                  <button type="button" ng-if="!leaveMatchEnabled()" sport-class class="btn secondary" data-ng-click="joinMatch()">Unirse</button>
+                  <button type="button" ng-if="leaveMatchEnabled()" sport-class class="btn secondary" data-ng-click="leaveMatch()">Abandonar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

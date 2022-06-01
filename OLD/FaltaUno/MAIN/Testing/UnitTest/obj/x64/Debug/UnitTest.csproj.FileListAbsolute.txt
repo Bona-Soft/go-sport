@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\debug\MYB.BaseApplication.Testing.UnitTest.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\debug\MYB.BaseApplication.Testing.UnitTest.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\debug\MYB.BaseApplication.Testing.UnitTest.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\UnitTest\obj\x64\Debug\UnitTest.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\UnitTest\obj\x64\Debug\UnitTest.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\UnitTest\obj\x64\Debug\UnitTest.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\UnitTest\obj\x64\Debug\MYB.BaseApplication.Testing.UnitTest.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Testing\UnitTest\obj\x64\Debug\MYB.BaseApplication.Testing.UnitTest.pdb

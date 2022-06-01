@@ -1,0 +1,30 @@
+﻿<div class="page-main-content {{$parent.settings.sportSelected.Value}}">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-8">
+			<div class="panel panel-default" style="background-color: #fff; border-color: #eee;">
+				<div class="panel-body">
+					<h1>Home de usuario</h1>
+				</div>
+			</div>
+		</div>
+		<div class="hidden-xs hidden-sm col-md-4 ">
+			<div class="panel panel-default" style="background-color: #fff; border-color: #eee;">
+				<div class="panel-body">
+					<div class="row">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- GoSport - Home de usuario - vertica -->
+						<ins class="adsbygoogle"
+							  style="display:block"
+							  data-ad-client="ca-pub-7085005982700735"
+							  data-ad-slot="1221859828"
+							  data-ad-format="auto"
+							  data-full-width-responsive="true"></ins>
+						<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+﻿body.basket{
+	background-color: #DF7401 !important;
+}
+
+.navbar.basket {
+	background-image: url(img/header_bar.png);
+	background-size: cover;
+}
+.nav-logo.basket {
+	background-image: url(img/basket_ball_icon.png);
+	height: 44px;
+	top: 3px;
+	width: 45px;
+}

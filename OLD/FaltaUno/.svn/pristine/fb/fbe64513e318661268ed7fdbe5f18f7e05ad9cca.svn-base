@@ -1,0 +1,15 @@
+﻿CREATE PROCEDURE [dbo].[UpdateUserPrivacy]
+	@UserPrivacyID BIGINT,
+	@MobileNumber CHAR(1),
+	@BirthDate CHAR(1)
+AS
+BEGIN
+
+	UPDATE UserPrivacy
+	SET MobileNumber = @MobileNumber
+		 ,BirthDate = @BirthDate
+	WHERE
+		UserPrivacyID = @UserPrivacyID
+
+	RETURN @UserPrivacyID
+END

@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.TranslationManager.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.TranslationManager.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\MYB.BaseApplication.Infrastructure.TranslationManager.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\TranslationManager\obj\Debug\TranslationManager.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\TranslationManager\obj\Debug\TranslationManager.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\TranslationManager\obj\Debug\TranslationManager.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\TranslationManager\obj\Debug\MYB.BaseApplication.Infrastructure.TranslationManager.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Infrastructure\TranslationManager\obj\Debug\MYB.BaseApplication.Infrastructure.TranslationManager.pdb

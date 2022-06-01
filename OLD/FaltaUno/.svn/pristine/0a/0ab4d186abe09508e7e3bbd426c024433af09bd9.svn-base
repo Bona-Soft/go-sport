@@ -1,0 +1,208 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content" ng-show="base.isLoading == 0">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="portlet bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i sport-class class="icon-settings primary-fc-light"></i>
+						<span sport-class class="caption-subject bold uppercase primary-fc-light"> Modo debug </span>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+					<!-- JOBS -->
+					<div class="portlet light bordered ">
+						<div class="portlet-title">
+							<div class="caption caption-md">
+								<i class="icon-bar-chart font-red"></i>
+								<span class="caption-subject font-red bold uppercase">Jobs</span>
+								<span class="caption-helper hide">...</span>
+							</div>
+							<div class="actions">
+								<div class="btn-group btn-group-devided">
+									<label class="btn green btn-outline btn-circle btn-sm active">
+										<input type="button" name="options" class="toggle" id="option1" data-ng-click="singleRunAll()">Run All
+									</label>
+									<label class="btn red btn-outline btn-circle btn-sm">
+										<input type="button" name="options" class="toggle" id="option2"> Stop All
+									</label>
+									<label class="btn blue btn-outline btn-circle btn-sm">
+										<input type="button" name="options" class="toggle" id="option2"> Start All
+									</label>
+									<label class="btn blue btn-outline btn-circle btn-sm">
+										<input type="button" name="options" class="toggle" id="option3" data-ng-click="loadJobs()"> Refresh
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<!--<div class="row number-stats margin-bottom-30">
+								<div class="col-md-6 col-sm-6 col-xs-6">
+									<div class="stat-left">
+										<div class="stat-chart">
+
+											<div id="sparkline_bar"><canvas width="113" height="55" style="display: inline-block; width: 113px; height: 55px; vertical-align: top;"></canvas></div>
+										</div>
+										<div class="stat-number">
+											<div class="title"> Total </div>
+											<div class="number"> 2460 </div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-6">
+									<div class="stat-right">
+										<div class="stat-chart">
+
+											<div id="sparkline_bar2"><canvas width="107" height="55" style="display: inline-block; width: 107px; height: 55px; vertical-align: top;"></canvas></div>
+										</div>
+										<div class="stat-number">
+											<div class="title"> New </div>
+											<div class="number"> 719 </div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+
+
+							<div class="table-scrollable table-scrollable-borderless">
+								<table class="table table-hover table-light">
+									<thead>
+										<tr class="uppercase">
+											<th> ID </th>
+											<th> Name </th>
+											<th> Last Start </th>
+											<th> Last End </th>
+											<th> Interval </th>
+											<th> Running </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in jobs">
+											<td>{{item.BaseSchedulerJobID}}</td>
+											<td>{{item.Name}}</td>
+											<td>
+												<span myb-local-datetime="item.LastTimeExecuteStarted" myb-local-datetime-format="{{$settings.dateFormat}}"></span>
+												<span myb-local-datetime="item.LastTimeExecuteStarted" myb-local-datetime-format="{{$settings.timeFormat}}"></span>
+											</td>
+											<td>
+												<span myb-local-datetime="item.LastTimeExecuteEnded" myb-local-datetime-format="{{$settings.dateFormat}}"></span>
+												<span myb-local-datetime="item.LastTimeExecuteEnded" myb-local-datetime-format="{{$settings.timeFormat}}"></span>
+											</td>
+											<td>{{item.Interval}}</td>
+											<td>
+												<span ng-show="item.IsRunningNow" class="bold font-green">YES</span>
+												<span ng-hide="item.IsRunningNow" class="bold font-red">NO</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2">
+							<md-input-container>
+								<label sport-class>Level</label>
+								<md-select sport-class
+											  myb-md-select
+											  data-ng-model="data.DebugOptions.level">
+									<md-option ng-repeat="item in logLevels"
+												  ng-value="item.value"
+												  ng-selected="item.default">
+										{{item.value}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group form-md-line-input form-md-floating-label" ng-class="">
+								<input type="number"
+										 name="Capacity"
+										 myb-md-input
+										 class="form-control"
+										 ng-model="data.DebugOptions.capacity"
+										 id="Capacity"
+										 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+								<label for="Capacity" sport-class class="primary-light-after">Capacity</label>
+							</div>
+						</div>
+					</div>
+
+						
+
+						
+
+
+					<div class="portlet light bordered ">
+						
+						<div class="portlet-title">
+							<div class="caption caption-md">
+								<i class="icon-bar-chart font-red"></i>
+								<span class="caption-subject font-red bold uppercase">LOGS</span>
+								<span class="caption-helper hide">...</span>
+							</div>
+							<div class="actions">
+								<div class="btn-group btn-group-devided" >
+									<label class="btn red btn-outline btn-circle btn-sm">
+										<input type="button" name="options" class="toggle" id="option1" data-ng-click="loadLog()">Refresh
+									</label>
+									<label class="btn blue btn-outline btn-circle btn-sm">
+										<input type="button" name="options" class="toggle" id="option2" data-ng-click="clearLog()">Clean
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<!--<div class="portlet-title">
+							<div class="caption caption-md">
+								<i class="icon-bar-chart font-red"></i>
+								<span class="caption-subject font-red bold uppercase">LOG</span>
+							</div>
+							<div class="actions">
+								<div class="btn-group btn-group-devided">
+									<label class="btn red btn-outline btn-circle btn-sm" data-toggle="buttons">
+										<input type="radio" name="options" class="toggle" id="option1" data-ng-click="loadLog()">Refresh
+									</label>
+									<label class="btn blue btn-outline btn-circle btn-sm">
+										<input type="radio" name="options" class="toggle" id="option2" data-ng-click="clearLog()"> Clean
+									</label>
+								</div>
+							</div>
+						</div>-->
+						<div class="portlet-body">
+							<div class="table-scrollable table-scrollable-borderless">
+								<table class="table table-hover table-light">
+									<thead>
+										<tr class="uppercase">
+											<th> ID </th>
+											<th> DATE </th>
+											<th> TIME </th>
+											<th> TYPE </th>
+											<th> METHOD </th>
+											<th> MESSAGE </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="logmessage in log | orderBy : 'OccurDateTime' : true">
+											<td><span class="bold">{{$index}}</span></td>
+											<td><span myb-local-datetime="logmessage.OccurDateTime" myb-local-datetime-format="{{$settings.dateFormat}}"></span></td>
+											<td><span myb-local-datetime="logmessage.OccurDateTime" myb-local-datetime-format="{{$settings.timeFormat}}"></span></td>
+											<td>{{logmessage.Level}}</td>
+											<td>{{logmessage.Caller}}</td>
+											<td>{{logmessage.Message}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

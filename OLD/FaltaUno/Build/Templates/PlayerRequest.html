@@ -1,0 +1,212 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="portlet bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i sport-class class="icon-settings primary-fc-light"></i>
+						<span sport-class class="caption-subject bold uppercase primary-fc-light"> Mis Solicitudes </span><br />
+					</div>
+				</div>
+				<div class="portlet-body form">
+
+					<div class="portlet-body form">
+						<div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+						<div class="row">
+
+							<div class="col-md-8" id="PlayerRequestListContainer">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="caption caption-md" style="float:left; margin-top: 15px;">
+											<i class="icon-bar-chart primary-fc-light" sport-class></i>
+											<span sport-class class="caption-subject bold uppercase primary-fc-light">&nbsp; Solicitudes de Partidos</span>
+											<span class="caption-helper">{{myMatchRequest.length}} notifications</span>
+										</div>
+										<div class="inputs" style="float: right;">
+											<div class="portlet-input input-inline input-small ">
+												<div class="input-icon">
+													<i class="icon-magnifier"></i>
+													<input type="text" data-ng-model="matchPlayerRequestSearchText" class="form-control form-control-solid input-circle" placeholder="buscar...">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr />
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+
+										<div class="row" id="PlayerRequestListContainer">
+											<div class="col-xs-12">
+
+												<div class="item-list" id="playerRequests">
+													<div class="item" ng-repeat="item in listPlayersRequest() track by $index" data-ng-click="viewMatch(item.Match)">
+														<div class="item-side-left" ng-click="viewMatch(item.Match)">
+															<img class="circle-img" style="height: 50px; max-width: 50px;" src="{{getUserAvatarURL(item.PlayerSender.User)}}">
+														</div>
+														<div class="item-main">
+															<div class="item-head">
+																<span class="item-status btn-icon" style="text-align: right;">
+																	<div>
+																		<span class="badge badge-empty badge-success" data-ng-class="matchstate-badge-{{item.MatchPlayerRequestState.Value}}"></span> {{item.MatchPlayerRequestState.Description}}
+																	</div>
+                                                   <div>
+                                                      <md-menu md-position-mode="target-right target" data-ng-hide="requestStateService.positiveStates(item,item.Match).length == 0">
+                                                         <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                                                            <i class="fa fa-check-circle" style="color: green;" data-ng-show="item.MatchPlayerRequestState.Value != 'cancelled' && item.MatchPlayerRequestState.Value != 'rejected'"></i>
+                                                            <i class="fa fa-arrow-circle-right" style="color: darkblue;" data-ng-hide="item.MatchPlayerRequestState.Value != 'cancelled' && item.MatchPlayerRequestState.Value != 'rejected'"></i>
+                                                         </md-button>
+                                                         <md-menu-content width="4">
+                                                            <md-menu-item ng-repeat="option in requestStateService.positiveStates(item,item.Match)">
+                                                               <md-button ng-click="positiveClick(option,item)">
+                                                                  <div layout="row" flex>
+                                                                     <p flex>{{option.description}}</p>
+                                                                     <!--ICONO-->
+                                                                  </div>
+                                                               </md-button>
+                                                            </md-menu-item>
+                                                         </md-menu-content>
+                                                      </md-menu>
+                                                      <md-menu md-position-mode="target-right target" data-ng-hide="requestStateService.tentativeStates(item).length == 0">
+                                                         <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                                                            <i class="fa fa-exclamation-circle" style="color: orange;"></i>
+                                                         </md-button>
+                                                         <md-menu-content width="4">
+                                                            <md-menu-item ng-repeat="option in requestStateService.tentativeStates(item)">
+                                                               <md-button ng-click="tentativeClick(option,item)">
+                                                                  <div layout="row" flex>
+                                                                     <p flex>{{option.description}}</p>
+                                                                     <!--ICONO-->
+                                                                  </div>
+                                                               </md-button>
+                                                            </md-menu-item>
+                                                         </md-menu-content>
+                                                      </md-menu>
+                                                      <md-menu md-position-mode="target-right target" data-ng-hide="requestStateService.negativeStates(item).length == 0">
+                                                         <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                                                            <i class="fa fa-minus-circle" style="color: darkred;"></i>
+                                                         </md-button>
+                                                         <md-menu-content width="4">
+                                                            <md-menu-item ng-repeat="option in requestStateService.negativeStates(item)">
+                                                               <md-button ng-click="negativeClick(option,item)">
+                                                                  <div layout="row" flex>
+                                                                     <p flex>{{option.description}}</p>
+                                                                     <!--ICONO-->
+                                                                  </div>
+                                                               </md-button>
+                                                            </md-menu-item>
+                                                         </md-menu-content>
+                                                      </md-menu>
+                                                      <!--
+         <a class="btn"><i class="fa fa-trash"></i></a>
+      <a class="btn"><i class="fa fa-trash"></i></a>
+      <a class="btn"><i class="fa fa-trash"></i></a>
+   -->
+                                                   </div>
+																</span>
+                                                <div class="item-details">
+                                                   <span class="item-name primary-fc-light bold block-with-text one-line" data-ng-click="goMatchView(item.Match)" sport-class>{{item.Match.Name}}</span>
+                                                   <div class="item-label grey">
+                                                      <div class="pull-left" myb-local-datetime="item.LastStateChangeDate" myb-local-datetime-format="{{$settings.dateFormat}}"></div>
+                                                      <div class="pull-left" data-ng-hide="item.LastStateChangeDate == null">&nbsp;-&nbsp;</div>
+                                                      <div class="pull-left" myb-local-datetime="item.LastStateChangeDate" myb-local-datetime-format="{{$settings.timeFormat}}"></div>
+                                                   </div>
+                                                   
+                                                </div>
+																<div class="item-body light-grey">
+                                                   <div>
+                                                      <span class="item-name light-grey bold block-with-text one-line" data-ng-click="goPlayerView(item.PlayerSender)" sport-class>{{item.PlayerSender.User.Name}} {{item.PlayerSender.User.LastName}}</span><br />
+                                                      <span ng-show="showCommentText(item)">{{item.Comment.Text}}</span>
+                                                      <span ng-hide="showCommentText(item)">{{item.MatchPlayerRequestState.DefaultComment}}</span>
+                                                   </div>
+																</div>
+															</div>
+
+														</div>
+													</div>
+
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+
+							<div class="hidden-xs col-md-4">
+								<div class="row">
+									<div myb-affixer="searchMatchDeatailInfoAffixer" myb-affixer-top="70">
+										<div sport-class class="panel primary-light">
+											<div sport-class class="panel-heading primary">Detalle del partido</div>
+											<div class="panel-body">
+												<div>
+													<myb-leaflet-map width="100%" height="180px" ng-model="selectedMatch.Location"></myb-leaflet-map>
+												</div>
+												<div>
+													<label class="bold">Lugar:&nbsp;</label>
+													{{selectedMatch.Location.Display}}
+												</div>
+												<div ng-hide="selectedMatch.Headquarter.Name == null">
+													<label class="bold">Club:&nbsp;</label>
+													{{selectedMatch.Headquarter.Name}}
+												</div>
+												<div>
+													<label class="bold">Fecha:&nbsp;</label>
+													<span myb-local-datetime="selectedMatch.MatchDateTime" myb-local-datetime-format="dd/MM/yyyy"></span>
+												</div>
+												<div>
+													<label class="bold">Hora:&nbsp;</label>
+													<span myb-local-datetime="selectedMatch.MatchDateTime" myb-local-datetime-format="hh:mm a"></span>
+												</div>
+												<div ng-hide="selectedMatch.TeamsRequest == null">
+													<label class="bold">Equipos:</label>
+													<div ng-repeat="teamRequest in selectedMatch.TeamsRequest">
+														{{teamRequest.Team.Name}} - {{teamRequest.State}}
+													</div>
+												</div>
+												<div ng-hide="selectedMatch.PlayersRequest == null">
+													<label class="bold">Jugadores Confirmados: {{(selectedMatch.PlayersRequest | filter: { MatchPlayerRequestState : { Value : 'confirmed'} } : true).length }} / {{selectedMatch.MaxPlayers}}</label>
+													<div ng-repeat="playerRequest in selectedMatch.PlayersRequest | filter: { MatchPlayerRequestState : { Value : 'confirmed'}} : true track by $index">
+														{{$index + 1}} - {{playerRequest.PlayerReceiver.User.Name}} {{playerRequest.PlayerReceiver.User.LastName}}
+													</div>
+												</div>
+												<div ng-show="existsMatchSubstitutes()">
+													<label class="bold">Jugadores Suplentes:</label>
+													<div ng-repeat="playerRequest in selectedMatch.PlayersRequest | filter: { MatchPlayerRequestState : { Value : 'confirmed_substitute'}} : true track by $index">
+														{{$index + 1}} - {{playerRequest.PlayerReceiver.User.Name}} {{playerRequest.PlayerReceiver.User.LastName}}
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- GoSport - Match -->
+									<ins class="adsbygoogle"
+										  style="display:block"
+										  data-ad-client="ca-pub-7085005982700735"
+										  data-ad-slot="3422972597"
+										  data-ad-format="auto"
+										  data-full-width-responsive="true"></ins>
+									<script>
+                              (adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

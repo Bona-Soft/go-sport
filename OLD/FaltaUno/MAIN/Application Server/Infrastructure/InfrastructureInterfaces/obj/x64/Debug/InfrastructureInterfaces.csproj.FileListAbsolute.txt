@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Infrastructure.Interfaces.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Infrastructure.Interfaces.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Infrastructure.Interfaces.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Infrastructure\InfrastructureInterfaces\obj\x64\Debug\InfrastructureInterfaces.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Infrastructure\InfrastructureInterfaces\obj\x64\Debug\InfrastructureInterfaces.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Infrastructure\InfrastructureInterfaces\obj\x64\Debug\MYB.FaltaUno.Infrastructure.Interfaces.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Infrastructure\InfrastructureInterfaces\obj\x64\Debug\MYB.FaltaUno.Infrastructure.Interfaces.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Infrastructure\InfrastructureInterfaces\obj\x64\Debug\InfrastructureInterfaces.csprojAssemblyReference.cache

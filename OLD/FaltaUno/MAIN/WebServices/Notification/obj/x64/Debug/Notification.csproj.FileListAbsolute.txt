@@ -1,0 +1,10 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\Notification.aspx
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\Notification.aspx.cs
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\Notification.aspx.designer.cs
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebServices.Notification.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebServices.Notification.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\Notification\obj\x64\Debug\Notification.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\Notification\obj\x64\Debug\Notification.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\Notification\obj\x64\Debug\Notification.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\Notification\obj\x64\Debug\MYB.FaltaUno.WebServices.Notification.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\Notification\obj\x64\Debug\MYB.FaltaUno.WebServices.Notification.pdb

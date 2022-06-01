@@ -1,0 +1,5 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\DataBase\Database.dacpac
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\DataBase\Database.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\DataBase\Database.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\DataBase\Database\obj\x64\Debug\Database.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\DataBase\Database\obj\x64\Debug\Database.pdb

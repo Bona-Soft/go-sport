@@ -1,0 +1,15 @@
+﻿.playerSearch .avatar{
+   width: 100px;
+   height: 100px;
+}
+
+/*******************
+	Affixers TODO: Hacer que transicione
+*******************/
+
+.searchMatchDeatailInfoAffixer {
+	position: fixed !important;
+	top: 70px;
+	transition: 1s ease all;
+}
+

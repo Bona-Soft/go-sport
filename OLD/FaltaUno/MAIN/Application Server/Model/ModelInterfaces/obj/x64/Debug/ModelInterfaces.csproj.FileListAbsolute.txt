@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Model.Interfaces.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Model.Interfaces.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.Model.Interfaces.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Model\ModelInterfaces\obj\x64\Debug\ModelInterfaces.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Model\ModelInterfaces\obj\x64\Debug\ModelInterfaces.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Model\ModelInterfaces\obj\x64\Debug\ModelInterfaces.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Model\ModelInterfaces\obj\x64\Debug\MYB.FaltaUno.Model.Interfaces.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\Application Server\Model\ModelInterfaces\obj\x64\Debug\MYB.FaltaUno.Model.Interfaces.pdb

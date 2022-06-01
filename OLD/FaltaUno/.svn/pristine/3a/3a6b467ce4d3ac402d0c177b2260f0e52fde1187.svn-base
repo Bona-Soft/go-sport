@@ -1,0 +1,104 @@
+﻿<!-- BEGIN MODAL LOGIN -->
+
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="dialog" data-ng-click="cancel($event)">
+		<span aria-hidden="true">&times;</span>
+		<span class="sr-only">Close</span>
+	</button>
+   <h3>Ingresar</h3>
+</div>
+<div class="modal-body">
+   <div ng-show="procesando" class="page-spinner-bar">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+   </div>
+   <div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+	<form name="LoginForm">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<!-- TODO:: Cambiar data.User.Username === modelo de datos en el backend -->
+				<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+					<input type="text"
+							 name="UserName"
+							 myb-md-input
+							 myb-validator="required emailFormat"
+							 class="form-control"
+							 data-ng-model="user.username"
+							 id="UserName"
+							 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 1000, blur: 100}}">
+					<label for="UserName" sport-class class="primary-light-after">Email</label>
+					<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingrese su direccion de correo electronico</span>
+					<span myb-validator-error-message></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+					<input type="password"
+							 name="Password"
+							 myb-md-input
+							 myb-validator="required"
+							 class="form-control"
+							 data-ng-model="user.password"
+							 id="Password"
+							 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 1000, blur: 100}}">
+					<label for="Password" sport-class class="primary-light-after">Contraseña</label>
+					<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingrese su contraseña</span>
+					<span myb-validator-error-message></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<!-- TODO: Revisar myb-md-checkbox puede poner solo las clases-->
+				<div myb-md-checkbox class="form-group form-md-checkboxes">
+					<div class="md-checkbox-list">
+						<div class="md-checkbox">
+							<input type="checkbox"
+									 name="Remember"
+									 id="Remember"
+									 data-ng-model="user.remember"
+									 class="md-check">
+							<label for="Remember">
+								<span></span>
+								<span sport-class class="check secondary-border"></span>
+								<span class="box"></span> Recordarme
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<label style="padding-top: 10px;">Olvide mi contrase&ntilde;a</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<button class="btn green col-xs-12" myb-validator-on-click myb-validator-preventEventsOnInvalid data-ng-click="ok()">Ingresar</button>
+				</div>
+			</div>
+		</div>
+		</form>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<hr />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<div class="form-group">
+					<button class="btn blue col-md-12 col-sm-12 col-xs-12" data-ng-click="FBLogin()">Facebook</button>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<div class="form-group">
+					<button data-ng-click="" class="btn col-md-12 col-sm-12 col-xs-12">Gmail</button>
+				</div>
+			</div>
+		</div>
+</div>
+
+<!-- END MODAL LOGIN -->

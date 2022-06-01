@@ -1,0 +1,154 @@
+﻿<div class="page-spinner-bar" ng-show="base.isLoading > 0 || base.isProcessing > 0">
+	<div class="bounce1"></div>
+	<div class="bounce2"></div>
+	<div class="bounce3"></div>
+</div>
+
+<div class="page-main-content" data-ng-hide="base.isLoading > 0">
+	<div class="row">
+		<div class="col-md-3 col-sm-3 col-xs-12">
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+			<div data-ng-show="!success">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<h2>Registrarse</h2>
+					</div>
+				</div>
+				<form name="RegisterForm">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+								<input type="text"
+										 name="Name"
+										 myb-md-input
+										 myb-validator="required"
+										 class="form-control"
+										 data-ng-model="data.name"
+										 id="Name"
+										 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+								<label for="Name" sport-class class="primary-light-after">Nombre</label>
+								<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingresa tu nombre</span>
+								<span myb-validator-error-message></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+								<input type="text"
+										 name="LastName"
+										 myb-md-input
+										 myb-validator="required"
+										 class="form-control"
+										 data-ng-model="data.lastName"
+										 id="LastName"
+										 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+								<label for="LastName" sport-class class="primary-light-after">Apellido</label>
+								<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingresa tu apellido</span>
+								<span myb-validator-error-message></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+								<input type="text"
+										 name="Mail"
+										 myb-md-input
+										 myb-validator="required emailFormat"
+										 class="form-control"
+										 data-ng-model="data.mail"
+										 id="Mail"
+										 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+								<label for="Mail" sport-class class="primary-light-after">Direccion de correo</label>
+								<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingresa tu direccion de correo electronico</span>
+								<span myb-validator-error-message></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div myb-validator-group class="form-group">
+								<md-input-container>
+									<label sport-class>Deporte</label>
+									<md-select sport-class 
+												  myb-md-select 
+												  
+												  ng-model="data.sport">
+										<md-option ng-repeat="item in sports" ng-value="item">
+											{{item.Name}}
+										</md-option>
+									</md-select>
+								</md-input-container>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+								<input type="password"
+										 name="Password"
+										 myb-md-input
+										 myb-validator="password required"
+										 class="form-control"
+										 data-ng-model="data.password"
+										 id="Password"
+										 autocomplete="new-password"
+										 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+								<label for="Password" sport-class class="primary-light-after">Contraseña</label>
+								<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Ingresa una contraseña</span>
+								<span myb-validator-error-message></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+								<input type="password"
+										 name="RepeatPassword"
+										 myb-md-input
+										 myb-validator="repeatPassword required"
+										 class="form-control"
+										 data-ng-model="data.repeatPassword"
+										 id="RepeatPassword"
+										 autocomplete="new-password"
+										 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+								<label for="RepeatPassword" sport-class class="primary-light-after">Repetir Contraseña</label>
+								<span sport-class myb-validator-onErrorHide class="help-block primary-fc-light">Reingrese la contraseña</span>
+								<span myb-validator-error-message></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<br /><br />
+							<div class="form-group">
+								<button type="button" myb-validator-on-click myb-validator-preventEventsOnInvalid data-ng-click="register()" class="btn green col-md-12 col-sm-12 col-xs-12">Crear cuenta</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<hr />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<button data-ng-click="" class="btn blue col-md-12 col-sm-12 col-xs-12">Facebook</button>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<button data-ng-click="" class="btn col-md-12 col-sm-12 col-xs-12">Gmail</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12">
+			</div>
+		</div>
+	</div>
+</div>

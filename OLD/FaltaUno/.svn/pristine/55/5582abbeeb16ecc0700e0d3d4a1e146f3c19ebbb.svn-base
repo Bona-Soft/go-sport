@@ -1,0 +1,7 @@
+﻿CREATE FUNCTION [dbo].[Scalar_MatchState_InProgress]
+()
+RETURNS TINYINT
+AS
+BEGIN
+	RETURN 4
+END

@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.AuthenticationUI.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.AuthenticationUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.AuthenticationUI.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\AuthenticationUI\obj\x64\Debug\AuthenticationUI.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\AuthenticationUI\obj\x64\Debug\AuthenticationUI.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\AuthenticationUI\obj\x64\Debug\MYB.FaltaUno.WebUI.AuthenticationUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\AuthenticationUI\obj\x64\Debug\MYB.FaltaUno.WebUI.AuthenticationUI.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\AuthenticationUI\obj\x64\Debug\AuthenticationUI.csprojAssemblyReference.cache

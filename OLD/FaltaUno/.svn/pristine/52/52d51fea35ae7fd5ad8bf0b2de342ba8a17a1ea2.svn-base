@@ -1,0 +1,117 @@
+﻿using MYB.BaseApplication.Framework.Helpers;
+using MYB.BaseApplication.Framework.Helpers.JTools;
+using MYB.FaltaUno.Application.MainApplication.Services;
+using MYB.FaltaUno.Model.Interfaces.Entities;
+using MYB.FaltaUno.Model.Interfaces.Entities.Filters;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using static MYB.BaseApplication.Framework.Helpers.JTools.JTool;
+
+namespace MYB.FaltaUno.Application.UIService
+{
+	public class PlayerUIService : UIServices
+	{
+		private static PlayerUIService m_Instancia;
+
+		public static PlayerUIService Instancia
+		{
+			get
+			{
+				if (m_Instancia == null)
+				{
+					m_Instancia = new PlayerUIService();
+				}
+				return m_Instancia;
+			}
+		}
+
+		public PlayerUIService()
+		{
+			Views = new Dictionary<UIView, JObject>{
+				{ UIView.Custom1, JObject.Parse(@"{
+						PlayerID: 3,
+						Name: 'Nombre de Match'
+					}")
+				}
+			};
+		}
+
+		public JArray GetTopPlayers()
+		{
+			return PlayerService.GetTopPlayers().ToJArray();
+		}
+
+		public JObject GetPlayer(long playerID, UIView uiView)
+		{
+			IPlayer player = PlayerService.GetPlayer(playerID);
+			JObject jobj = player.ToJObject(uiView);
+			jobj["User"] = player.User.ToJObject(uiView, Mappers.GetPrivacyMapper(player.User));
+			return jobj;
+		}
+
+		public JArray GetFrecuentlyPlayers()
+		{
+			return PlayerService.GetFrecuentlyPlayers().ToJArray();
+		}
+
+		public JArray GetRecommendedPlayers(long matchID)
+		{
+			return PlayerService.GetRecommendedPlayers(MatchFactory.New(matchID)).ToJArray();
+		}
+
+		public JObject CreatePlayer(JObject joPlayer)
+		{
+			IPlayer entity = Fill(joPlayer);
+			entity = PlayerService.CreatePlayer(entity);
+
+			return entity.ToJObject(joPlayer);
+		}
+
+		public JArray SearchPlayers(Filter filter) => SearchPlayers(filter, UIView.Full);
+
+		public JArray SearchPlayers(Filter filter, UIView uiView)
+		{
+			Filter<FPlayerSearch> filterPlayers = filter.Convert<FPlayerSearch>();
+
+			return PlayerService.SearchPlayers(filterPlayers).ToJArray(uiView);
+		}
+
+		public JObject GetPlayer(long userID = 0, short sportID = 0, UIView uiView = UIView.Full)
+		{
+			return PlayerService.GetPlayer(userID, sportID).ToJObject(uiView);
+		}
+
+		public JArray GetCurrentUserMatchPlayerRequests()
+		{
+			List<IMatchPlayerRequest> mprs = PlayerService.GetCurrentUserMatchPlayerRequests();
+			JArray arr = mprs.ToJArray();
+			for (int i = 0; i < mprs.Count; i++)
+			{
+				arr[i]["Match"]["PlayersRequest"] = mprs[i].Match.PlayersRequest.ToJArray();
+			}
+			return arr;
+		}
+
+		public JObject EnablePlayer(long playerID, bool enabled)
+		{
+			JObject obj = new JObject();
+			obj["PlayerID"] = playerID;
+			obj["Active"] = PlayerService.EnablePlayer(playerID, enabled);
+			return obj;
+		}
+
+		public IPlayer Fill(JObject joPlayer)
+		{
+			IPlayer entity = UIServices.PlayerFactory.New();
+			entity = joPlayer.ToClass(entity);
+			return entity;
+		}
+
+		public JObject Fill(IPlayer player, UIView uiView = UIView.Full)
+		{
+			JObject jPlayer = player.ToJObject(uiView);
+			jPlayer["User"] = player.User.ToJObject(uiView);
+			return jPlayer;
+		}
+	}
+}

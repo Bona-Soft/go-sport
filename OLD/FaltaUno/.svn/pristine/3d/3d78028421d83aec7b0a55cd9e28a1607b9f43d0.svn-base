@@ -1,0 +1,47 @@
+﻿CREATE PROCEDURE [dbo].[SearchPlayers]
+	@SearchText NVARCHAR(255) = NULL,
+	@SportID TINYINT,
+	@UserID BIGINT = NULL,
+	@Top INT = 10
+AS
+BEGIN
+
+	DECLARE @_SearchText NVARCHAR(255) = '%'+ @SearchText +'%'
+
+	SELECT TOP (@Top) * 
+	FROM Players P
+		INNER JOIN Users u ON (u.UserID = p.UserID)
+	WHERE
+		p.SportID = @SportID
+		AND u.UserID <> @UserID
+		AND p.Active = 1
+		AND(u.[Name] like @_SearchText
+			OR u.LastName like @_SearchText
+			OR u.Alias like @_SearchText
+			OR p.Alias like @_SearchText)
+		
+	/*
+	DECLARE 
+		@_SearchText NVARCHAR(255) = '%' + NULLIF(@SearchText,'') + '%',
+		@_SportID TINYINT = @SportID,
+		@_UserID BIGINT = NULLIF(@UserID,0)
+
+
+	SELECT TOP (@Top)
+		p.[PlayerID],
+		p.[UserID],
+		p.[SportID],
+		u.[Name],
+		p.[Alias]
+	FROM
+		UserBondScore b
+		RIGHT JOIN Players p ON (p.SportID = @_SportID AND b.UserID = p.UserID)
+		INNER JOIN Users u ON (u.UserID = p.UserID)
+	WHERE
+		p.[Deleted] = 0 AND u.[Deleted] = 0	
+		AND u.UserID <> @_UserID		
+		AND (p.Alias LIKE @_SearchText
+			OR u.[Name] LIKE @_SearchText)
+	ORDER BY Score DESC
+	*/
+END

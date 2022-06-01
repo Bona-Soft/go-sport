@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <log4net update="overwrite" threshold="ALL">
+    <appender name="RFASOAPXML" type="log4net.Appender.RollingFileAppender" >
+      <file type="log4net.Util.PatternString" value="SOAPXML.log" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <param name="AppendToFile" value="true" />
+      <rollingStyle value="Composite" />
+      <datePattern value="yyyyMMdd" />
+      <param name="MaxSizeRollBackups" value="10" />
+      <param name="MaximumFileSize" value="15MB" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date - [ID:%property{LoggerSoapExtensionThreadID}] - %level - %message%newline" />
+      </layout>
+    </appender>
+
+    <appender name="RFATRACE" type="log4net.Appender.RollingFileAppender" >
+      <file type="log4net.Util.PatternString" value="Trace.log" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <param name="AppendToFile" value="true" />
+      <rollingStyle value="Composite" />
+      <datePattern value="yyyyMMdd" />
+      <param name="MaxSizeRollBackups" value="10" />
+      <param name="MaximumFileSize" value="15MB" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date - [ID:%property{LoggerSoapExtensionThreadID}] - %level - %message%newline" />
+      </layout>
+    </appender>
+
+    <appender name="RFAPERFORMANCE" type="Log4NETSoapExtensions.Performance.PerformanceAppender, Log4NETSoapExtensions" >
+      <file type="log4net.Util.PatternString" value="Performance.log" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <param name="AppendToFile" value="true" />
+      <rollingStyle value="Composite" />
+      <datePattern value="yyyyMMdd" />
+      <param name="MaxSizeRollBackups" value="10" />
+      <param name="MaximumFileSize" value="15MB" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date - [ID:%property{LoggerSoapExtensionThreadID}] - %level - %message%newline" />
+      </layout>
+      <param name="WaitThreshold" value="60"/>
+      <param name="LogFrequency" value="30"/>
+      <param name="ErrorWaitThreshold" value="120"/>
+    </appender>
+
+    <root>
+      <!-- Set root level to inherit into all loggers with no specified level -->
+      <!-- Log level valid values (least logging capabilities to most logging capabilities)
+          OFF
+          EMERGENCY
+          FATAL
+          ALERT
+          CRITICAL
+          SEVERE
+          ERROR
+          WARN
+          NOTICE
+          INFO
+          DEBUG
+          TRACE
+          VERBOSE
+          ALL
+      -->
+      <level value="ERROR" />
+    </root>
+
+    <logger name="SOAPXMLLogger" additivity="false">
+      <!-- Valid levels for SOAPXMLLogger = OFF, ERROR, or between VERBOSE and ALL -->
+      <level value="VERBOSE" />
+      <appender-ref ref="RFASOAPXML" />
+    </logger>
+
+    <logger name="TraceLogger" additivity="false">
+      <!-- Valid levels for TraceLogger = OFF, ERROR, or between TRACE and ALL -->
+      <level value="TRACE" />
+      <appender-ref ref="RFATRACE" />
+    </logger>
+
+    <logger name="PerformanceLogger" additivity="false">
+      <!-- Valid levels for PerformanceLogger = OFF, ERROR, or between WARN and ALL -->
+      <level value="WARN" />
+      <appender-ref ref="RFAPERFORMANCE" />
+    </logger>
+
+  </log4net>
+</configuration>

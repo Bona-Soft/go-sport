@@ -1,0 +1,458 @@
+﻿using MYB.BaseApplication.Application.CoreApplication;
+using MYB.BaseApplication.Framework.Helpers;
+using MYB.FaltaUno.Model.Interfaces.Entities;
+using MYB.FaltaUno.Model.Interfaces.Entities.Filters;
+using MYB.FaltaUno.Model.Interfaces.SubEntities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using static MYB.FaltaUno.Application.MainApplication.Services.Services;
+
+namespace MYB.FaltaUno.Application.MainApplication.Services
+{
+	public static class MatchService
+	{
+		#region "Match"
+
+		private static long SaveMatch(IMatch match)
+		{
+			long result = 0;
+			Key.SetEmptyObjectToNull(match);
+
+			try
+			{
+				Services.BaseRepoService.BeginTransaction(match);
+
+				if (match.Location != null)
+				{
+					if (match.Location.LocationID == 0)
+					{
+						match.Location = MainService.SaveLocation(match.Location);
+					}
+				}
+
+				result = Services.MatchRepoService.Save(match);
+
+				//BaseService.MatchRepoService.SaveMatchPlayers(match.Players);
+
+				Services.BaseRepoService.CommitTransaction(match);
+			}
+			catch (Exception ex)
+			{
+				try
+				{
+					Services.BaseRepoService.RollbackTransaction(match);
+				}
+				catch { }
+
+				throw ex;
+			}
+			return result;
+		}
+
+		public static List<IMatch> FilterMatches(Filter<FMatchSearch> filter)
+		{
+			List<IMatch> matches = MatchService.SearchMatch(filter);
+
+			if (matches != null && matches.Count > 0)
+				FillMatches(matches);
+
+			return matches;
+		}
+
+		public static List<IMatch> SearchMatch(Filter<FMatchSearch> filter)
+		{
+			short sportID = 0;
+			if (UserService.GetCurrentUser() != null)
+			{
+				if (UserService.GetCurrentUser().ActiveSport != null)
+				{
+					sportID = UserService.GetCurrentUser().ActiveSport.SportID;
+				}
+			}
+
+			filter["SportID"] = sportID;
+
+			List<IMatch> matches = Services.MatchRepoService.SearchMatch(filter);
+
+			return matches;
+		}
+
+		public static long UpdateMatch(IMatch match)
+		{
+			match.MatchState = MatchService.GetMatchState(1);
+
+			try
+			{
+				BaseApp.BaseRepoService.BeginTransaction("UpdateMatch");
+
+				if (match.Location != null && match.Location.LocationID == 0)
+				{
+					match.Location.User = UserService.GetCurrentUser();
+					match.Location.Sport = UserService.GetActiveSport();
+					match.Location = MainService.SaveLocation(match.Location);
+				}
+				else if (match.Location.User != null && match.Location.User.UserID != UserService.GetCurrentUser().UserID)
+				{
+					BaseApp.ErrorManager.AddError(BaseApp.TranslationManager.Get("UpdateMatch", "LocationUserNotMatch", "The user of the selected location is not correctly"));
+					return -3;
+				}
+
+				SaveMatch(match);
+
+				BaseApp.BaseRepoService.CommitTransaction("UpdateMatch");
+			}
+			catch (Exception ex)
+			{
+				BaseApp.BaseRepoService.RollbackTransaction("UpdateMatch");
+				throw ex;
+			}
+
+			return match.MatchID;
+		}
+
+		public static long CreateMatch(IMatch match)
+		{
+			IPlayer matchPlayerOwner = PlayerService.GetPlayer(UserService.GetCurrentUser(), match.Sport);
+			if (matchPlayerOwner == null)
+			{
+				BaseApp.ErrorManager.AddError(BaseApp.TranslationManager.Get("NoPlayerForSelectedSport", "You do not have a configured player for current sport"));
+				return -2;
+			}
+
+			match.MatchPlayerOwner = matchPlayerOwner;
+			match.MatchState = MatchService.GetMatchState(1);
+
+			long matchID = -1;
+
+			try
+			{
+				BaseApp.BaseRepoService.BeginTransaction("CreateMatch");
+
+				if (match.Location != null && match.Location.LocationID == 0)
+				{
+					match.Location.User = UserService.GetCurrentUser();
+					match.Location.Sport = UserService.GetActiveSport();
+					match.Location = MainService.SaveLocation(match.Location);
+				}
+				if (match.Sport == null || match.Sport.SportID == 0)
+				{
+					match.Sport = UserService.GetActiveSport();
+				}
+
+				matchID = SaveMatch(match);
+
+            SendMatchOwnerPlayerRequest(matchID);
+
+				BaseApp.BaseRepoService.CommitTransaction("CreateMatch");
+			}
+			catch (Exception ex)
+			{
+            try
+            {
+               BaseApp.BaseRepoService.RollbackTransaction("CreateMatch");
+            }
+            catch { }
+
+				throw ex;
+			}
+
+			return matchID;
+		}
+
+		public static long EditMatch(IMatch match)
+		{
+			//Funcion en base que hay que testear,
+			// le pasa el match, el id, y la funcion que get de match
+			// ejecuta CheckKeys, si necesita hace el getMatch pasandole el ID
+			// y luego mergea el match traido por getMatch sobre los nulls de la entidad match
+
+			Key.RefillEntity<IMatch, long>(match, match.MatchID, GetMatch);
+
+			return SaveMatch(match);
+		}
+
+		public static IMatch GetFullMatch(long matchID)
+		{
+			IMatch match = GetMatch(matchID);
+
+			match.PlayersRequest = GetMatchPlayerRequests(matchID);
+			match.TeamsRequest = Services.MatchRepoService.GetMatchTeamRequest(matchID);
+
+			return match;
+		}
+
+		public static IMatch GetMatch(long matchID)
+		{
+			IMatch match = Services.MatchRepoService.GetByID(matchID);
+
+			match.MatchPlayerOwner = PlayerService.GetPlayer(match.MatchPlayerOwner.PlayerID);
+			match.Location = Services.MainRepoService.GetLocation(match.Location.LocationID);
+
+			if (match.Headquarter != null)
+			{
+				match.Headquarter = Services.HeadquarterRepoService.GetByID(match.Headquarter.HeadquarterID);
+			}
+			//TODO: Traer objetos completos del subentities manager, no de la DB.
+			return match;
+		}
+
+		#endregion "Match"
+
+		#region "Match states"
+
+		private static List<IMatchState> _matchStates;
+
+		public static IMatchState GetMatchState(short matchStateID)
+		{
+			if (_matchStates == null)
+			{
+				LoadMatchStates();
+			}
+
+			return _matchStates.First(matchState => matchState.MatchStateID == matchStateID);
+		}
+
+		public static IMatchState GetMatchState(string value)
+		{
+			if (_matchStates == null)
+			{
+				LoadMatchStates();
+			}
+
+			return _matchStates.First(matchState => matchState.Value == value);
+		}
+
+		public static void LoadMatchStates()
+		{
+			_matchStates = Services.MatchRepoService.GetMatchStates();
+		}
+
+		public static List<IMatchState> GetMatchStates()
+		{
+			if (_matchStates == null)
+			{
+				LoadMatchStates();
+			}
+			return _matchStates;
+		}
+
+		#endregion "Match states"
+
+		#region "Match Types"
+
+		//TODO: hacer lo mmismo que field _fields Load()
+		public static List<IMatchType> GetMatchTypes()
+		{
+			List<IMatchType> matchTypes = Services.MatchRepoService.GetMatchTypes();
+			foreach (IMatchType matchType in matchTypes)
+			{
+				matchType.DefaultField = SportService.GetField(matchType.DefaultField.FieldID);
+			}
+			return matchTypes;
+		}
+
+		public static List<IMatchType> GetMatchTypes(short sportID)
+		{
+			return Services.MatchRepoService.GetMatchTypes(sportID);
+		}
+
+		public static IMatchType GetMatchType(short id)
+		{
+			IMatchType matchTypes = GetMatchTypes().First(matchType => matchType.MatchTypeID == id);
+
+			return matchTypes;
+		}
+
+		#endregion "Match Types"
+
+		#region "Match Fills"
+
+		public static List<IMatch> FillMatches(List<IMatch> list)
+		{
+			return list.Select(FillMatch).ToList();
+		}
+
+		public static IMatch FillMatch(IMatch match)
+		{
+			match.ChallengeType = MainService.GetChallengeType(match.ChallengeType.ChallengeTypeID);
+			match.Field = SportService.GetField(match.Field.FieldID);
+			if (match.Headquarter != null)
+				match.Headquarter = HeadquarterService.GetHeadquarter(match.Headquarter.HeadquarterID);
+			match.Location = MainService.GetLocation(match.Location.LocationID);
+			match.MatchPlayerOwner = PlayerService.GetPlayer(match.MatchPlayerOwner.PlayerID);
+			match.MatchState = MatchService.GetMatchState(match.MatchState.MatchStateID);
+			match.MatchType = MatchService.GetMatchType(match.MatchType.MatchTypeID);
+			match.PlayersRequest = MatchService.GetMatchPlayerRequests(match.MatchID);
+			//TODO: match.TeamsRequest =
+
+			return match;
+		}
+
+		#endregion "Match Fills"
+
+		#region "Match Requests"
+
+		public static List<IMatchPlayerRequest> GetMatchPlayerRequests(long matchID)
+		{
+			List<IMatchPlayerRequest> matchPlayerRequests = Services.MatchRepoService.GetMatchPlayerRequests(matchID);
+			foreach (IMatchPlayerRequest mpr in matchPlayerRequests)
+			{
+				Fill(mpr);
+			}
+			return matchPlayerRequests;
+		}
+
+		public static IMatchPlayerRequest GetMatchPlayerRequest(long matchPlayerRequestID)
+		{
+			IMatchPlayerRequest mpr = Services.MatchRepoService.GetMatchPlayerRequest(matchPlayerRequestID);
+			Fill(mpr);
+			return mpr;
+		}
+
+		public static List<IMatchPlayerRequest> SendMatchPlayerRequests(List<IMatchPlayerRequest> matchPlayerRequests)
+		{
+			List<IMatchPlayerRequest> mprs = new List<IMatchPlayerRequest>();
+
+			foreach (IMatchPlayerRequest mpr in matchPlayerRequests)
+			{
+				mprs.Add(SendMatchPlayerRequest(mpr));
+			}
+
+			return mprs;
+		}
+
+      public static IMatchPlayerRequest SendMatchOwnerPlayerRequest(long matchID)
+      {
+         IMatchPlayerRequest userOwnerRequest = Services.MatchFactory.NewMatchPlayerRequest();
+         userOwnerRequest.PlayerReceiver = PlayerService.GetCurrentPlayer();
+         userOwnerRequest.PlayerSender = PlayerService.GetCurrentPlayer();
+         userOwnerRequest.Match = Services.MatchFactory.New(matchID);
+         userOwnerRequest.MatchPlayerRequestState = MainService.GetRequestState(RequestState.Confirmed);
+         return SendMatchPlayerRequest(userOwnerRequest);
+      }
+
+		private static class ValidateRequest
+		{
+			public static bool SamePlayer(IMatchPlayerRequest original, IMatchPlayerRequest requested)
+			{
+				if (original.PlayerReceiver.PlayerID != requested.PlayerSender.PlayerID)
+				{
+					BaseApp.ErrorManager.AddError(BaseApp.TranslationManager.Get(
+							"SendMatchPlayerRequest",
+							"PlayerNotOriginalSenderOrOwner",
+							"You are not allowed to send request to this player:")
+							+ " " + original.PlayerReceiver.User.CompleteName);
+					return false;
+				}
+				return true;
+			}
+			public static bool NotClosed(IMatchPlayerRequest original, IMatchPlayerRequest requested)
+			{
+				if (original.MatchPlayerRequestState.Closed)
+				{
+					BaseApp.ErrorManager.AddError(BaseApp.TranslationManager.Get(
+							"SendMatchPlayerRequest",
+							"StateClosed",
+							"You can not modfied this request anymore"));
+					return false;
+				}
+				return true;
+			}
+		}
+
+		public static IMatchPlayerRequest SendMatchPlayerRequest(IMatchPlayerRequest matchPlayerRequest)
+		{
+			
+
+		//TODO: Validad player del mismo deporte, que no este ya enviada, que tengas permisos.
+		   IMatchPlayerRequest mpr;
+
+			matchPlayerRequest.PlayerSender = PlayerService.GetPlayer(UserService.GetCurrentUser(), MatchService.GetMatch(matchPlayerRequest.Match.MatchID).Sport);
+			if (matchPlayerRequest.MatchPlayerRequestID == 0)
+			{
+            if(matchPlayerRequest.MatchPlayerRequestState == null)
+            {
+               matchPlayerRequest.MatchPlayerRequestState = Services.MatchFactory.NewRequestState(RequestState.Pending);
+            }				   
+			}
+			else
+			{
+				mpr = GetMatchPlayerRequest(matchPlayerRequest.MatchPlayerRequestID);
+
+				if(!ValidateRequest.NotClosed(mpr, matchPlayerRequest))
+					return mpr;
+
+				switch ((RequestState)matchPlayerRequest.MatchPlayerRequestState.RequestStateID)
+				{
+					case RequestState.Pending:
+					case RequestState.Tentative_not:
+					case RequestState.Tentative:
+					case RequestState.Tentative_yes:
+					case RequestState.Propose_time:
+					case RequestState.Rejected:
+						{
+							if (!ValidateRequest.SamePlayer(mpr, matchPlayerRequest))
+								return mpr;
+							break;
+						}
+               default:
+                  break;
+				}
+			}
+
+         try
+         {
+            BaseApp.BaseRepoService.BeginTransaction("SendMatchPlayerRequest");
+
+            if (matchPlayerRequest.Comment != null 
+               && !(matchPlayerRequest.Comment.CommentID > 0) 
+               && !String.IsNullOrEmpty(matchPlayerRequest.Comment.Text))
+            {
+               matchPlayerRequest.Comment.User = UserService.GetCurrentUser();
+               matchPlayerRequest.Comment = MainService.SaveComment(matchPlayerRequest.Comment);
+            }
+
+            mpr = Services.MatchRepoService.SaveMatchPlayerRequest(matchPlayerRequest);
+
+            Fill(mpr);
+
+            BaseApp.BaseRepoService.CommitTransaction("SendMatchPlayerRequest");
+
+            return mpr;
+         }
+         catch (Exception ex)
+         {
+            try
+            {
+               BaseApp.BaseRepoService.RollbackTransaction("SendMatchPlayerRequest");
+            }
+            catch { }
+
+            throw ex;
+         }
+
+         //TODO: send email, notification o cualquier medio que este registrado
+
+		}
+
+		
+
+		public static IMatchPlayerRequest Fill(IMatchPlayerRequest mpr)
+		{
+			if (mpr == null)
+				return null;
+
+			mpr.MatchPlayerRequestState = MainService.GetRequestState(mpr.MatchPlayerRequestState.RequestStateID);
+			mpr.PlayerReceiver = PlayerService.GetPlayer(mpr.PlayerReceiver.PlayerID);
+			mpr.PlayerReceiver.User = UserService.GetUser(mpr.PlayerReceiver.User.UserID);
+
+			mpr.PlayerSender = PlayerService.GetPlayer(mpr.PlayerSender.PlayerID);
+			mpr.PlayerSender.User = UserService.GetUser(mpr.PlayerSender.User.UserID);
+
+			return mpr;
+		}
+
+		#endregion "Match Requests"
+	}
+}

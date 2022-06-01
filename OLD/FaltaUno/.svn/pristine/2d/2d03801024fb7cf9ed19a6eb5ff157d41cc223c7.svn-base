@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[MatchStates]
+(
+	[MatchStateID] SMALLINT NOT NULL PRIMARY KEY, 
+    [Value] NVARCHAR(50) NOT NULL, 
+    [Description] NVARCHAR(50) NOT NULL, 
+    [Closed] BIT NOT NULL DEFAULT 0
+)

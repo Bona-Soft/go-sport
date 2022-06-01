@@ -1,0 +1,17 @@
+﻿CREATE PROCEDURE [dbo].[GetMatchesCurrentUser]
+	@UserID BIGINT,
+	@SportID TINYINT = NULL
+AS
+BEGIN
+
+	SELECT M.*
+	FROM
+		Matches M
+		INNER JOIN MatchPlayerRequests R ON R.MatchID = M.MatchID 
+		INNER JOIN MatchPlayerRequestStates RS ON RS.MatchPlayerRequestStateID = R.MatchPlayerRequestID AND RS.Type = 'P'
+		INNER JOIN Players P ON P.PlayerID = R.PlayerRequestReceiverID
+	WHERE
+		P.UserID = @UserID
+		AND (@SportID IS NULL OR M.SportID = @SportID)
+END
+

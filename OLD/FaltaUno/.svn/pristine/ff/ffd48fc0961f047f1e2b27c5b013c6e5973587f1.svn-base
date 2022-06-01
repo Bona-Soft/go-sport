@@ -1,0 +1,33 @@
+﻿using MYB.BaseApplication.Application.CoreApplication;
+using MYB.BaseApplication.Framework.Helpers;
+using MYB.BaseApplication.Framework.Helpers.TypesExt;
+using MYB.FaltaUno.Application.UIService;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace MYB.FaltaUno.WebServices.Player
+{
+   public partial class PlayerSearch : AppWebServices
+   {
+
+      protected override void ProcessGET(Filter filter)
+      {
+         ErrorManager.MandatoryError<string>(filter,"SearchText", TranslationManager.Get("Players","Player.PlayerSearch","SearchTextMandatory","Player search text empty"));
+
+         if (filter.ContainsKey("SearchText") && filter["SearchText"].ToDefString().Length <= 2)
+         {
+            ErrorManager.AddError(TranslationManager.Get("Players", "Player.PlayerSearch", "SearchTextMinLenght", "The searcheable text must be more than 2 characters"));
+         }
+         ErrorManager.Verify();
+
+         JArray obj = PlayerUIService.SearchPlayers(filter, GetRequestView());
+         sendSerializeObject(obj);
+
+      }
+   }
+}

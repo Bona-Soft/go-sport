@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<configuration>
+    
+  <configSections>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+           <section name="KtcAR.CZTT.Common.Security.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+        </sectionGroup>
+      <sectionGroup name="czttSecurity">
+        <section name="securitySection" type="KtcAR.CZTT.Common.Security.Configuration.SecuritySection,KtcAR.CZTT.Common.Security.Configuration"/>
+        <section name="publicPages" type="KtcAR.CZTT.Common.Security.Configuration.PagesSection,KtcAR.CZTT.Common.Security.Configuration"/>
+      </sectionGroup>
+    </configSections>
+
+  <czttSecurity>
+    <!-- application    :: CSWebModules.CSWebModule, CSWebModules.TollCalculatorWebModule, CSWebModules.CSOBWebModule -->
+    <!-- signkey        :: HMACSHA256 Signature key in base64 -->
+    <!-- encKey         :: Rijndael (AES) Encryption key in base64 -->
+    <!-- cookieName     :: Authentication Cookie Name -->
+    <!-- cookieProtocol :: Set Authentication Cookie as Secure or not: https (secure), http (not secure)-->
+    <!-- cookiePath     :: Determines when the cookie is send to the server: "/selfcare", "/CSOBWebSite", "/TollCalculator" -->
+    <!-- sessionExp     :: Session duration (in minutes) for an authenticated user (ticket) -->
+    <!-- sessionExpIWP  :: Token Expiry time (in minutes) of the Incident Web Portal -->
+    <securitySection application="CSWebModules.CSWebModule" signKey="zdQDmXN55cNNX8yTdHCPg4xGcfw/IVuJvl6GSV81ctc=" encKey="zdQDmXN55cNNX8yTdHCPg4xGcfw/IVuJvl6GSV81ctc=" cookieName=".SelfCareAuth" cookieProtocol="https" cookiePath="/selfcare" sessionExp="20" sessionExpIWP="5"/>
+
+    <publicPages>
+      <pages>
+        <page name="Prelogin.aspx"/>
+        <page name="Step1.aspx"/>
+        <page name="Step2.aspx"/>
+        <page name="CancelPreRegistrationMessage.aspx"/>
+        <page name="SessionExpired.aspx"/>
+        <page name="Step3.aspx"/>
+        <page name="Step4.aspx"/>
+        <page name="Step5.aspx"/>
+        <page name="Step5Fleet.aspx"/>
+        <page name="Step8.aspx"/>
+        <page name="Step6.aspx"/>
+        <page name="SuggestSalutations.aspx"/>
+        <page name="GetCountries.aspx"/>
+        <page name="ValidVRMandPAN.aspx"/>
+        <page name="IsValidPassword.aspx"/>
+        <page name="GetLanguages.aspx"/>
+        <page name="DoRegisterPrepayClient.aspx"/>
+        <page name="ResetPassword.aspx"/>
+        <page name="Message.aspx"/>
+        <page name="Error.aspx"/>
+        <page name="LanguageStrings.aspx"/>
+        <page name="SuggestRegions.aspx"/>
+        <page name="SuggestCities.aspx"/>
+      </pages>
+    </publicPages>
+  </czttSecurity>
+
+  <applicationSettings>
+        <KtcAR.CZTT.Common.Security.Properties.Settings>
+            <setting name="KtcAR_CZTT_Common_Security_DALWEB_DALWEB" serializeAs="String">
+                <value>http://localhost:8085/WEB/DALWEB.asmx</value>
+            </setting>
+        </KtcAR.CZTT.Common.Security.Properties.Settings>
+  </applicationSettings>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5"/></startup></configuration>

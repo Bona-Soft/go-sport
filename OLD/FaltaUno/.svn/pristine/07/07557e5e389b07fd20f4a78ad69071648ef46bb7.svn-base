@@ -1,0 +1,45 @@
+﻿/******************************************************
+                     MODAL LOGIN
+******************************************************/
+/*----- Modal Controller -----*/
+// Please note that $uibModalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+angular.module('Authentication').controller('loginCtrl', ["$scope", "$uibModalInstance", "ws_Login", "alertService", "authenticationService", "errorService",
+   function ($scope, $uibModalInstance, ws_Login, alertService, authenticationService, errorService) {
+      alertService.clear();
+
+      $scope.init = function () {
+         $scope.user = {
+            username: '',
+            password: '',
+            isLogged: false,
+            user: {},
+         }
+      }
+
+      $scope.ok = function () {
+         //llamar webservice de logeo
+         authenticationService.login($scope.user).then(
+            function (user) {
+               $uibModalInstance.close(user);
+            },
+            function (error) {
+               if (!errorService.controlExc(error)) {
+                  alertService.clear();
+                  alertService.addHttpAlerts(error, $scope);
+               }
+            }
+         );
+      };
+
+      $scope.cancel = function () {
+         $uibModalInstance.dismiss('cancel');
+      };
+
+      $scope.FBLogin = function () {
+         authenticationService.fbLogin();
+      }
+
+      $scope.init();
+   }]);

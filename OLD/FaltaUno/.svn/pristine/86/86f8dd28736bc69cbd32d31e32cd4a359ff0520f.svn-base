@@ -1,0 +1,151 @@
+﻿app.module('Player', [
+   "ui.router",
+   "ui.bootstrap",
+   "oc.lazyLoad",
+   "ngSanitize",
+   "ngResource"
+])
+
+   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+      $stateProvider
+
+         .state('Player/Profile', {
+            url: "/PlayerProfile/:SID",
+            templateUrl: "Templates/PlayerProfile.html",
+            data: {
+               pageTitle: 'Player Profile',
+               access: {
+                  authenticationRequired: true,
+                  authenticationFailState: 'Inicio',
+                  sportSelectedRequired: true,
+                  parametersRequired: []
+               }
+            },
+            params: { 'SportID': null },
+            controller: "PlayerProfile",
+            resolve: {
+               SportID: ['$stateParams', function ($stateParams) {
+                  if ($stateParams.SportID == null) {
+                     if ($stateParams.SID == null) {
+                        return 0;
+                     }
+                     else {
+                        return $stateParams.SID;
+                     }
+                  }
+                  return $stateParams.SportID;
+               }],
+               deps: ['$ocLazyLoad', '$injector', function ($ocLazyLoad, $injector) {
+                  return $ocLazyLoad.load({
+                     name: appName,
+                     insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                     files: [
+                        'Assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                        'Assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                        'Assets/global/plugins/angularjs/plugins/ui-uploader/uploader.js'
+                     ]
+                  }).then(function () {
+                     app.module('Player', ["ui.uploader"]);
+                     return $ocLazyLoad.load('Controllers/PlayerProfile.js');
+                  });
+               }]
+            }
+         })
+         .state('Player/Ranking', {
+            url: "/PlayerRanking",
+            templateUrl: "Templates/PlayerRanking.html",
+            data: { pageTitle: 'Player Ranking' },
+            controller: "PlayerRanking",
+            resolve: {
+               deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                  return $ocLazyLoad.load({
+                     name: appName,
+                     insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                     files: [
+                        'Controllers/PlayerRanking.js'
+                     ]
+                  });
+               }]
+            }
+         })
+         .state('Player/Request', {
+            url: "/PlayerRequest",
+            templateUrl: "Templates/PlayerRequest.html",
+            data: { pageTitle: 'Player Request' },
+            controller: "PlayerRequest",
+            resolve: {
+               deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                  return $ocLazyLoad.load({
+                     name: appName,
+                     insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                     files: [
+                        'Controllers/PlayerRequest.js'
+                     ]
+                  });
+               }]
+            }
+         })
+         .state('Player/Search', {
+            url: "/SearchPlayer",
+            templateUrl: "Templates/PlayerSearch.html",
+            data: { pageTitle: 'Search Player' },
+            controller: "PlayerSearch",
+            resolve: {
+               deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                  return $ocLazyLoad.load({
+                     name: appName,
+                     insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                     files: [
+                        'Controllers/PlayerSearch.js'
+                     ]
+                  });
+               }]
+            }
+         });
+   }])
+
+   /*-----------------------------------   PLAYERS WS   ---------------------------------*/
+
+   .factory('ws_Player', ['$http', 'settings', function ($http, settings) {
+      return {
+         get: function (oData) {
+            return $http.get(settings.wsVirtualPath + '/Player.aspx?', { params: oData });
+         },
+         post: function (oData) {
+            return $http.post(settings.wsVirtualPath + '/Player.aspx', oData);
+         }
+      };
+   }])
+
+   .factory('ws_PlayerEnable', ['$http', 'settings', function ($http, settings) {
+      return {
+         put: function (oData) {
+            return $http.put(settings.wsVirtualPath + '/PlayerEnable.aspx', oData);
+         }
+      };
+   }])
+
+   .factory('ws_PlayerFrecuently', ['$http', 'settings', function ($http, settings) {
+      return {
+         get: function (oData) {
+            return $http.get(settings.wsVirtualPath + '/PlayerFrecuently.aspx?', { params: oData });
+         }
+      };
+   }])
+
+   .factory('ws_PlayerRecommended', ['$http', 'settings', function ($http, settings) {
+      return {
+         get: function (oData) {
+            return $http.get(settings.wsVirtualPath + '/PlayerRecommended.aspx?', { params: oData });
+         }
+      };
+   }])
+   .factory('ws_UserMatchPlayerRequests', ['$http', 'settings', function ($http, settings) {
+      return {
+         get: function () {
+            return $http.get(settings.wsVirtualPath + '/UserMatchPlayerRequests.aspx');
+         }
+      };
+   }]);
+
+	/*----------------------------------- END PLAYERS WS ---------------------------------*/

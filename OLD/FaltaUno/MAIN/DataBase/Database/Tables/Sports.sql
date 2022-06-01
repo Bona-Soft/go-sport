@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Sports]
+(
+	[SportID] TINYINT NOT NULL PRIMARY KEY,
+	[Value] VARCHAR(255) NOT NULL,
+	[Name] VARCHAR(255) NOT NULL
+)

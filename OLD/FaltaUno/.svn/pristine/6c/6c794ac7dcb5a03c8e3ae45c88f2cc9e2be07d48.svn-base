@@ -1,0 +1,75 @@
+﻿using MYB.FaltaUno.Application.UIService;
+using MYB.BaseApplication.Application.CoreApplication;
+using Newtonsoft.Json.Linq;
+using MYB.BaseApplication.Framework.Helpers.TypesExt;
+
+namespace MYB.FaltaUno.WebServices.Match
+{
+	public partial class MatchPlayerRequests : AppWebServices
+	{
+		//protected override void ProcessPOST(JArray jArr)
+		//{
+		//	foreach(JObject jObj in jArr)
+		//	{
+		//		ErrorManager.MandatoryError<JArray, long>(jObj, "Match", "MatchID", TranslationManager.Get("MatchPlayerRequest","Match.MatchID.Mandatory", "Match not provided"));
+		//		ErrorManager.MandatoryError<JArray, long>(jObj, "PlayerReceiver", "PlayerID", TranslationManager.Get("MatchPlayerRequest", "PlayerReceiver.PlayerID", "Player not provided"));
+
+		//		ErrorManager.Verify();
+		//	}
+
+		//	jArr = MatchUIService.SendMatchPlayerRequests(jArr);
+
+		//	sendSerializeObject(jArr);
+		//}
+
+		protected override void ProcessPOST()
+		{	
+         //TODO: llamar data en vez de object al JArray
+			if(Data["object"] != null && Data["object"].Type == JTokenType.Array)
+			{
+				JArray jArr = (JArray)Data["object"];
+				
+				for(int i = 0; i <jArr.Count -1; i++)
+				{
+					if(jArr[i] != null && jArr.Type != JTokenType.Null)
+					{
+						JObject obj = (JObject)jArr[i];
+						ErrorManager.MandatoryError<JObject, long>(obj, "Match", "MatchID", TranslationManager.Get("MatchPlayerRequest", "Match.MatchID.Mandatory", "Match not provided"));
+						ErrorManager.MandatoryError<JObject, long>(obj, "PlayerReceiver", "PlayerID", TranslationManager.Get("MatchPlayerRequest", "PlayerReceiver.PlayerID", "Player not provided"));
+
+						ErrorManager.Verify();
+					}
+					else
+					{
+						jArr.RemoveAt(i);
+					}
+				}
+
+				jArr = MatchUIService.SendMatchPlayerRequests(jArr);
+
+				sendSerializeObject(jArr);
+			}
+			else
+			{
+				ErrorManager.MandatoryError<JArray, long>(Data, "Match", "MatchID", TranslationManager.Get("MatchPlayerRequest", "Match.MatchID.Mandatory", "Match not provided"));
+				ErrorManager.MandatoryError<JArray, long>(Data, "PlayerReceiver", "PlayerID", TranslationManager.Get("MatchPlayerRequest", "PlayerReceiver.PlayerID", "Player not provided"));
+
+				ErrorManager.Verify();
+
+				sendSerializeObject(MatchUIService.SendMatchPlayerRequest(Data));
+			}
+		}
+
+		//protected override void ProcessGET()
+		//{
+		//	JObject obj;
+		//	long ID = getRequestParam<long>("ID", 0);
+
+		//	ErrorManager.MandatoryError(ID, TranslationManager.Get("module", "constanteName", "Your default message"));
+		//	ErrorManager.Verify();
+
+		//	//obj = UIService.Get(ID);
+		//	//sendSerializeObject(obj);
+		//}
+	}
+}

@@ -1,0 +1,21 @@
+﻿CREATE PROCEDURE [dbo].[AddPlayer]
+	@SportID INT, 
+	@UserID BIGINT
+AS
+BEGIN
+
+	IF NOT EXISTS(SELECT 1 FROM Players WHERE UserID = @UserID AND SportID = @SportID)
+	BEGIN
+		INSERT INTO PLAYERS
+			(SportID,
+			UserID)
+		VALUES
+			(@SportID,
+			@UserID)
+
+		RETURN SCOPE_IDENTITY()
+	END
+	
+	RETURN -1
+
+END

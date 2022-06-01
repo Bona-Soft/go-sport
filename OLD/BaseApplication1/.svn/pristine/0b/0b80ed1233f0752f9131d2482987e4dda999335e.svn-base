@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <section name="BaseConnectionStrings" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigConnectionStringSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="BaseConnectionData" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigConnectionDataSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="BaseMongoConnectionStrings" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigMonoConnectionStringSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="BaseMongoConnectionData" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigMonoConnectionDataSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="ResolveHostList" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigResolveHostListSection, MYB.BaseApplication.Security.Configuration" />
+    <section name="CustomConfigSection" type=" MYB.BaseApplication.Security.Configuration.Sections.ConfigSection`1[[TestApp.TestConfigElement, TestApp]], MYB.BaseApplication.Security.Configuration" />
+  </configSections>
+  <BaseConnectionStrings>
+    <connectionString connectionString="Provider=SQLOLEDB;Data Source=bonait.com.ar;Initial Catalog=BaseApplication;User Id=webadmin;Password=Homero32" providerName="System.Data.SqlClient" />
+    <connectionString connectionString="Provider=SQLOLEDB;Data Source=bonait.com.ar;Initial Catalog=BaseApplication;User Id=webadmin;Password=Homero32" host="localhost" providerName="System.Data.SqlClient" />
+    <connectionString connectionString="Provider=SQLOLEDB;Data Source=bonait.com.ar;Initial Catalog=BaseApplication;User Id=webadmin;Password=Homero32" host="bonait.com.ar" providerName="System.Data.SqlClient" />
+  </BaseConnectionStrings>
+  <BaseConnectionData>
+    <connectionData host="localhost" provider="SQLOLEDB" dataSource="bonait.com.ar" initialCatalog="BaseApplication" userID="webadmin" password="Homero32" />
+    <connectionData provider="SQLOLEDB" dataSource="bonait.com.ar" initialCatalog="BaseApplication" userID="webadmin" password="Homero32" />
+  </BaseConnectionData>
+  <BaseMongoConnectionStrings>
+    <connectionString connectionString="mongodb://localhost:27017" />
+    <connectionString host="bonait.com.ar" connectionString="mongodb://ausername:apassword@flame.mongohq.com:27065/dunedin" />
+  </BaseMongoConnectionStrings>
+  <BaseMongoConnectionData>
+    <connectionData host="localhost" dataSource="localhost" port="27017" />
+    <connectionData host="www.testApp.com.ar" dataSource="host1" port="27017" dataBase="[database]" username="[username]" password="password@" />
+    <connectionData dataSource="bonait.com.ar" port="27017" />
+  </BaseMongoConnectionData>
+  <connectionStrings>
+    <remove name="MainConnectionString" />
+    <remove name="MongoConnectionString" />
+    <add name="MainConnectionString" connectionString="Provider=SQLOLEDB;Data Source=bonait.com.ar;Initial Catalog=BaseApplication;User Id=webadmin;Password=Homero32" providerName="System.Data.SqlClient" />
+    <add name="MongoConnectionString" connectionString="mongodb://[username:password@]host1[:port1][/[database][?options]]" />
+  </connectionStrings>
+  <!--
+    For a description of web.config changes see http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    The following attributes can be set on the <httpRuntime> tag.
+      <system.Web>
+        <httpRuntime targetFramework="4.7.2" />
+      </system.Web>
+  -->
+  <system.web>
+    <compilation debug="true" targetFramework="4.7.2" />
+    <httpRuntime targetFramework="4.5.2" />
+  </system.web>
+  <ResolveHostList>
+    <domain ID="localhost" host="TestApp.com" />
+    <domain ID="localhost" host="app.TestApp.com" />
+    <domain ID="localhost" host="test.TestApp.com" />
+  </ResolveHostList>
+  <CustomConfigSection>
+    <testConfig ID="pepe" />
+    <testConfig ID="juan" Name="Juan perez de la cruz" />
+  </CustomConfigSection>
+  <system.webServer>
+    <modules>
+      <remove name="Session" />
+      <add name="Session" type="System.Web.SessionState.SessionStateModule" />
+    </modules>
+    <handlers>
+      <remove name="WebDAV" />
+      <remove name="PageHandlerFactory-Integrated-4.0" />
+      <remove name="PageHandlerFactory-Integrated" />
+      <add name="PageHandlerFactory-Integrated" path="*.aspx" verb="GET,HEAD,POST,DEBUG,PUT,DELETE" type="System.Web.UI.PageHandlerFactory" resourceType="Unspecified" requireAccess="Script" preCondition="integratedMode" />
+      <add name="PageHandlerFactory-Integrated-4.0" path="*.aspx" verb="GET,HEAD,POST,DEBUG,PUT,DELETE" type="System.Web.UI.PageHandlerFactory" resourceType="Unspecified" requireAccess="Script" preCondition="integratedMode,runtimeVersionv4.0" />
+    </handlers>
+  </system.webServer>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30AD4FE6B2A6AEED" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-9.0.0.0" newVersion="9.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-11.0.0.0" newVersion="11.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <system.codedom>
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:6 /nowarn:1659;1699;1701" />
+      <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:14 /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+" />
+    </compilers>
+  </system.codedom>
+</configuration>

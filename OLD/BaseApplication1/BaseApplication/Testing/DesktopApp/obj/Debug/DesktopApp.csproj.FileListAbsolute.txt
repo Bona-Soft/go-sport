@@ -1,0 +1,10 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Testing\MYB.BaseApplication.Infrastructure.DesktopApp.exe.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Testing\MYB.BaseApplication.Infrastructure.DesktopApp.exe
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\Build\Testing\MYB.BaseApplication.Infrastructure.DesktopApp.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\DesktopApp\obj\Debug\DesktopApp.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\DesktopApp\obj\Debug\MYB.BaseApplication.Infrastructure.DesktopApp.Properties.Resources.resources
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\DesktopApp\obj\Debug\DesktopApp.csproj.GenerateResource.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\DesktopApp\obj\Debug\DesktopApp.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\DesktopApp\obj\Debug\DesktopApp.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\DesktopApp\obj\Debug\MYB.BaseApplication.Infrastructure.DesktopApp.exe
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\BaseApplication\BaseApplication\Testing\DesktopApp\obj\Debug\MYB.BaseApplication.Infrastructure.DesktopApp.pdb

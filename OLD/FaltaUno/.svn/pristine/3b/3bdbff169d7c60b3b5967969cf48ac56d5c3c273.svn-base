@@ -1,0 +1,275 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content">
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+         <div class="portlet bordered">
+            <div class="portlet-title">
+               <div class="caption">
+                  <i sport-class class="icon-settings primary-fc-light"></i>
+                  <span sport-class class="caption-subject bold uppercase primary-fc-light"> Buscar jugador para partido de {{$parent.settings.sportSelected.Name}}</span>
+               </div>
+            </div>
+            <div class="portlet-body form">
+               <div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+
+               <form role="form" name="MatchSearchForm">
+                  <div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+
+								<div class="row" id="TagSearchFilterContainer" ng-hide="showFilters">
+									<div class="col-xs-12">
+										<div class="myb-tag-container">
+											<div class="myb-tag-tools">
+												<a href="javascript:;" data-ng-click="toggleFilters()"><i class="fa fa-angle-down"></i></a>
+											</div>
+											<div class="myb-tag-items">
+												<span class="myb-tag myb-tag-default myb-tag-xs" myb-tag="data.PlayerSearch.Alias">
+													{{data.PlayerSearch.Alias}}
+													<a class="close" ng-click="data.PlayerSearch.Alias = null; research();"><i class="glyphicon glyphicon-remove"></i></a>
+												</span>
+												<span class="myb-tag myb-tag-default myb-tag-xs" myb-tag="data.PlayerSearch.Name">
+													{{data.PlayerSearch.Name}}
+													<a class="close" ng-click="data.PlayerSearch.Name = null; research();"><i class="glyphicon glyphicon-remove"></i></a>
+												</span>
+												<span class="myb-tag myb-tag-default myb-tag-xs" myb-tag="data.PlayerSearch.LastName">
+													{{data.PlayerSearch.LastName}}
+													<a class="close" ng-click="data.PlayerSearch.LastName = null; research();"><i class="glyphicon glyphicon-remove"></i></a>
+												</span>
+												<span class="myb-tag myb-tag-default myb-tag-xs" myb-tag="data.PlayerSearch.MinAge">
+													{{data.PlayerSearch.MinAge}} - {{data.PlayerSearch.MaxAge}}
+													<a class="close" ng-click="data.PlayerSearch.MinAge = null;data.PlayerSearch.MaxAge = null; research();"><i class="glyphicon glyphicon-remove"></i></a>
+												</span>
+												<span class="myb-tag myb-tag-default myb-tag-xs" myb-tag="data.PlayerSearch.Email">
+													{{data.PlayerSearch.Email}}
+													<a class="close" ng-click="data.PlayerSearch.Email = null; research();"><i class="glyphicon glyphicon-remove"></i></a>
+												</span>
+												<span class="myb-tag myb-tag-default myb-tag-xs" myb-tag="data.PlayerSearch.Lat">
+													{{locationSuggestSelected.Location.Display}}
+													<a class="close" ng-click="data.PlayerSearch.Lat = null; data.PlayerSearch.Lng = null; data.PlayerSearch.LocationID = null;data.PlayerSearch.HeadquarterID = null; research();"><i class="glyphicon glyphicon-remove"></i></a>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row myb-collapse" id="SearchFilterContainer" ng-hide="!showFilters">
+									<div class="col-xs-12">
+										<div class="row">
+
+											<!--ALIAS-->
+											<div class="col-xs-12 col-sm-2 col-md-4">
+												<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+													<input type="text"
+															 name="Alias"
+															 myb-md-input
+															 class="form-control"
+															 data-ng-model="data.PlayerSearch.Alias"
+															 id="Alias"
+															 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+													<label for="Alias" sport-class class="primary-light-after">Apodo</label>
+												</div>
+											</div>
+											<!--NAME-->
+											<div class="col-xs-12 col-sm-5 col-md-4">
+												<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+													<input type="text"
+															 name="Name"
+															 myb-md-input
+															 class="form-control"
+															 data-ng-model="data.PlayerSearch.Name"
+															 id="Name"
+															 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+													<label for="Name" sport-class class="primary-light-after">Nombre</label>
+												</div>
+											</div>
+											<!--LASTNAME-->
+											<div class="col-xs-12 col-sm-5 col-md-4">
+												<div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+													<input type="text"
+															 name="LastName"
+															 myb-md-input
+															 class="form-control"
+															 data-ng-model="data.PlayerSearch.LastName"
+															 id="LastName"
+															 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+													<label for="LastName" sport-class class="primary-light-after">Apellido</label>
+												</div>
+											</div>
+
+
+										</div>
+                              <div class="row">
+                                 <!--EMAIL-->
+                                 <div class="col-xs-12 col-sm-8 col-md-8">
+                                    <div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+                                       <input type="text"
+                                              name="Email"
+                                              myb-md-input
+                                              class="form-control"
+                                              data-ng-model="data.PlayerSearch.Email"
+                                              id="Email"
+                                              data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+                                       <label for="Email" sport-class class="primary-light-after">Direccion de correo</label>
+                                    </div>
+                                 </div>
+
+
+                                
+                                 
+                                 <!--AGE-->
+                                 <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="row">
+                                       <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+                                             <input type="text"
+                                                    name="MinAge"
+                                                    myb-md-input
+                                                    class="form-control"
+                                                    data-ng-model="data.PlayerSearch.MinAge"
+                                                    id="MinAge"
+                                                    data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+                                             <label for="MinAge" sport-class class="primary-light-after">Edad Min</label>
+                                          </div>
+                                       </div>
+                                       <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <div myb-validator-group class="form-group form-md-line-input form-md-floating-label" ng-class="">
+                                             <input type="text"
+                                                    name="MaxAge"
+                                                    myb-md-input
+                                                    class="form-control"
+                                                    data-ng-model="data.PlayerSearch.MaxAge"
+                                                    id="MaxAge"
+                                                    data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+                                             <label for="MaxAge" sport-class class="primary-light-after">Edad Max</label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                              </div>
+                              <div class="row">
+
+                                 <!--LOCATION-->
+                                 <div class="col-xs-12 col-sm-10 col-md-10">
+                                    <div myb-validator-group class="form-group form-md-line-input form-md-floating-label">
+                                       <div sport-class myb-validator-group class="form-group">
+                                          <md-autocomplete sport-class
+                                                           myb-md-input-autocomplete
+                                                           md-input-name="Loc"
+                                                           md-selected-item="locationSuggestSelected"
+                                                           md-selected-item-change="setLocationGroup(item,locSearchText)"
+                                                           md-search-text="locSearchText"
+                                                           md-min-lenght="3"
+                                                           md-no-cache="noCache"
+                                                           md-item-text="inputMethods.getLocationGroupText(item)"
+                                                           md-items="item in inputMethods.getLocationGroups(locSearchText)"
+                                                           md-floating-label="Cancha, club o ubicación">
+                                             <md-item-template>
+                                                <i class="fa fa-home" ng-hide="item.Headquarter.Name == null"></i>
+                                                {{item.Headquarter.Name.trim()}}
+                                                <i class="fa fa-map-pin"></i>
+                                                {{item.Location.Display.trim()}}
+                                             </md-item-template>
+                                          </md-autocomplete>
+                                          <span myb-validator-error-message></span>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-xs-12 col-sm-2 col-md-2 text-right" style="vertical-align: bottom;">
+                                    <br /><br />
+                                    <button type="button" sport-class class="btn secondary" myb-validator-on-click myb-validator-preventEventsOnInvalid data-ng-click="toggleFilters(); search();">Buscar</button>
+                                 </div>
+                              </div>
+									</div>
+								</div>
+
+								<div class="row" id="SearchResultContainer">
+
+
+									<div ng-show="showNoPlayers()" style="height: 200px;">
+										<br /><br /><br />
+										<h3 style="text-align: center; vertical-align: central; color: grey;">
+											NO SE ENCONTRARON JUGADORES REGISTRADOS.
+											&nbsp;&nbsp;&nbsp;&nbsp;REDIFINE TUS FILTROS DE BUSQUEDA
+										</h3>
+									</div>
+									<div class="col-xs-12">
+
+										<div class="item-list">
+											<div class="item" ng-repeat="item in searchResults track by $index">
+												<div class="item-side-left">
+													<img class="circle-img" style="height: 70px;" data-ng-click="goPlayerView(item)"  src="{{getCurrentUserAvatarURL(item.User)}}">
+												</div>
+												<div class="item-main">
+													<div class="item-head">
+
+
+														<span class="item-status btn-icon" style="text-align: right;">
+															<div>
+																<md-menu md-position-mode="target-right target" data-ng-hide="requestStateService.negativeStates(item).length == 0">
+																	Enviar solicitud a
+																	<md-button aria-label="Open demo menu" class="md-raised" ng-click="$mdMenu.open($event)">
+																		Partido
+																	</md-button>
+																	<md-menu-content width="4">
+																		<md-menu-item ng-repeat="option in getCurrentUserMatches()">
+																			<md-button ng-click="matchClick(option,item)">
+																				<div layout="row" flex>
+																					<p flex>{{option.description}}</p>
+																					<!--ICONO-->
+																				</div>
+																			</md-button>
+																		</md-menu-item>
+																	</md-menu-content>
+																</md-menu>
+																<!--
+				<a class="btn"><i class="fa fa-trash"></i></a>
+			<a class="btn"><i class="fa fa-trash"></i></a>
+			<a class="btn"><i class="fa fa-trash"></i></a>
+		-->
+															</div>
+														</span>
+
+
+														<div class="item-details">
+															<span  class="item-name primary-fc-light bold"  data-ng-click="goPlayerView(item)" sport-class>{{item.User.Name}}&nbsp;{{item.User.LastName}}</span>
+															<span ng-show="item.User.Alias" class="item-name light-grey bold block-with-text one-line" data-ng-click="goPlayerView(item)" sport-class> ({{item.User.Alias}})</span>
+														</div>
+													</div>
+													<div class="item-body light-grey">
+														<!--<div>
+															<span ng-show="item.Headquarter">
+																{{item.Headquarter.Name}}
+															</span>
+
+															{{item.Location.Display}}
+														</div>
+														<div>
+															{{item.MatchType.Description}} - {{item.ChallengeType.Description}}
+														</div>-->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+                     <div class="col-xs-12 col-sm-3 col-md-4">
+                        <canvas id="playerHG"
+                                class="chart chart-radar"
+                                chart-data="dataGrafo"
+                                chart-labels="labels"
+                                chart-options="options"></canvas>
+                     </div>
+                  </div>
+               </form>
+            </div>
+
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,38 @@
+﻿using MYB.FaltaUno.Application.UIService;
+using MYB.BaseApplication.Application.CoreApplication;
+using Newtonsoft.Json.Linq;
+using MYB.BaseApplication.Framework.Helpers.TypesExt;
+using System;
+
+namespace MYB.FaltaUno.WebServices.Player
+{
+	public partial class UserPrivacy : AppWebServices
+	{
+		protected override void ProcessPUT()
+		{
+			string str = Data["param"].ToDefString();
+			JObject obj = (JObject)Data["JsonObj"];
+
+			ErrorManager.MandatoryError(Data["UserPrivacyID"], TranslationManager.Get("PlayerUserPrivacy", "MandatoryUserPrivacyID", "There was an error saving your privacy"));
+			ErrorManager.MandatoryError(Data["Name"], TranslationManager.Get("PlayerUserPrivacy", "MandatoryName", "The name can not be empty"));
+			ErrorManager.MandatoryError(Data["LastName"], TranslationManager.Get("PlayerUserPrivacy", "MandatoryLastName", "The lastname can not be empty"));
+			ErrorManager.MandatoryError<DateTime>(Data, "BirthDate", TranslationManager.Get("PlayerUserPrivacy", "MandatoryBirthDate", "The birth date can not be empty"));
+			ErrorManager.Verify();
+
+			UserUIService.EditPrivacy(Data);
+
+		}
+
+		protected override void ProcessGET()
+		{
+			JObject obj;
+			long id = getRequestParam<long>("UserPrivacyID", 0);
+
+			ErrorManager.MandatoryError(id, TranslationManager.Get("PlayerUserPrivacy", "MandatoryUserPrivacyID", "There was an unexpected error. Please try again later."));
+			ErrorManager.Verify();
+
+			obj = UserUIService.GetPrivacy(id);
+			sendSerializeObject(obj);
+		}
+	}
+}

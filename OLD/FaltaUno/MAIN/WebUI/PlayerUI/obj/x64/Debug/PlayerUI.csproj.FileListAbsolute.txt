@@ -1,0 +1,8 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.PlayerUI.dll.config
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.PlayerUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebUI.PlayerUI.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\PlayerUI\obj\x64\Debug\PlayerUI.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\PlayerUI\obj\x64\Debug\PlayerUI.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\PlayerUI\obj\x64\Debug\MYB.FaltaUno.WebUI.PlayerUI.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\PlayerUI\obj\x64\Debug\MYB.FaltaUno.WebUI.PlayerUI.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebUI\PlayerUI\obj\x64\Debug\PlayerUI.csprojAssemblyReference.cache

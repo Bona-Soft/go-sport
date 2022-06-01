@@ -1,0 +1,37 @@
+﻿app.controller('MatchView', ["$scope", "$controller", "$state", "alertService", "errorService", "userService", "ws_Match", "MatchID",
+   function ($scope, $controller, $state, alertService, errorService, userService, ws_Match, MatchID) {
+      $controller('BaseController', { $scope: $scope });
+
+      $scope.init = function () {
+         $scope.base.isLoading = 1;
+
+         $scope.loadMatch();
+
+      };
+
+      $scope.loadMatch = function (callback) {
+         $scope.match = null;
+
+         $scope.data.filters = {
+            MatchID: MatchID,
+            ViewType: 2
+         };
+
+         ws_Match.get($scope.data.filters).then(
+            function (response) {
+               $scope.match = response.data;
+               $scope.editEnabled = $scope.match.MatchPlayerOwner.User.UserID == userService.user().UserID;
+               $scope.base.isLoading = 0;
+            }, function (error) {
+               alertService.clear();
+               errorService.controlExc(error);
+               $scope.base.isLoading = 0;
+            });
+      };
+
+      $scope.editMatch = function () {
+         $state.go("Match", { MatchID: $scope.match.MatchID });
+      }
+
+      $scope.init();
+   }]);

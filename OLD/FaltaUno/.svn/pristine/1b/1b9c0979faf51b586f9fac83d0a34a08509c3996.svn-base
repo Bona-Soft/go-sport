@@ -1,0 +1,196 @@
+﻿app.controller('MatchPlayersEdit', ['$scope', '$rootScope', '$state', '$stateParams', '$controller', 'errorService', 'alertService', 'Match', 'userService', 'ws_PlayerFrecuently', 'ws_PlayerRecommended', 'ws_Match','ws_MatchPlayerRequests',
+   function ($scope, $rootScope, $state, $stateParams, $controller, errorService, alertService, Match, userService, ws_PlayerFrecuently, ws_PlayerRecommended, ws_Match, ws_MatchPlayerRequests) {
+      $controller('BaseController', { $scope: $scope });
+
+      if (Match == null || Match.MatchID == 0) {
+         $state.go("Home");
+         return;
+      }
+
+      var _init = function () {
+         $scope.base.isLoading = 1;
+
+         $scope.slickConfig = {
+            enabled: true,
+            dots: false,
+            autoplay: false,
+            draggable: true,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            infinite: false,
+            //centerMode: false,
+            //focusOnSelect: true,
+            method: {},
+            event: {
+               beforeChange: function (event, slick, currentSlide, nextSlide) {
+               },
+               afterChange: function (event, slick, currentSlide, nextSlide) {
+               }
+            },
+            responsive: [
+               {
+                  breakpoint: 1072,
+                  settings: {
+                     slidesToShow: 4,
+                     slidesToScroll: 4
+                  }
+               },
+               {
+                  breakpoint: 930,
+                  settings: {
+                     slidesToShow: 3,
+                     slidesToScroll: 3
+                  }
+               },
+               {
+                  breakpoint: 768,
+                  settings: {
+                     slidesToShow: 5,
+                     slidesToScroll: 5
+                  }
+               },
+               {
+                  breakpoint: 675,
+                  settings: {
+                     slidesToShow: 4,
+                     slidesToScroll: 4
+                  }
+               },
+               {
+                  breakpoint: 570,
+                  settings: {
+                     slidesToShow: 3,
+                     slidesToScroll: 3
+                  }
+               },
+               {
+                  breakpoint: 420,
+                  settings: {
+                     slidesToShow: 2,
+                     slidesToScroll: 2
+                  }
+               }
+            ]
+         };
+
+         $scope.data.Match = Match;
+
+         async.parallel([
+            _getFrecuently,
+            _getRecommended,
+            _loadMatch
+         ],
+            function (err, results) {
+               $scope.base.isLoading = 0;
+            });
+
+      };
+
+      var _getFrecuently = function (callback) {
+         return ws_PlayerFrecuently.get().then(
+            function (response) {
+               $scope.data.frecuentlyPlayers = response.data;
+               callback();
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               callback(error);
+            });
+      };
+
+      var _getRecommended = function (callback) {
+         var data = {
+            MatchID: $scope.data.Match.MatchID
+         };
+         return ws_PlayerRecommended.get(data).then(
+            function (response) {
+               $scope.data.recommendedPlayers = response.data;
+               callback();
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               callback(error);
+            });
+      };
+
+      var _loadMatch = function (callback) {
+         var data = {
+            MatchID: $scope.data.Match.MatchID,
+            ViewType: 3
+         };
+
+         return ws_Match.get(data).then(function (response) {
+            $scope.data.Match = response.data;
+            callback();
+         }, function (error) {
+            alertService.clear();
+            if (!errorService.controlExc(error)) {
+               alertService.addHttpAlerts(error, $scope);
+            }
+            callback(error);
+         });
+      };
+
+      $scope.sendAllRequest = function () {
+         
+         if ($scope.base.isProcessing > 0) {
+            return;
+         }
+         $scope.base.isProcessing = 1;
+
+         var data = { object: $scope.data.Match.PlayersRequest };
+
+         ws_MatchPlayerRequests.post(data).then(
+            function (response) {
+               alertService.clear();
+               $scope.data.Match.PlayersRequest = response.data;
+
+               $scope.base.isProcessing = 0;
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               $scope.base.isProcessing = 0;
+            }
+         );  
+      };
+
+      $scope.addRequest = function (player) {
+         var obj = {
+            Match: {
+               MatchID: $scope.data.Match.MatchID
+            },
+            PlayerReceiver: player,
+            Comment: {
+               CommentID: -1,
+               User: userService.user(),
+               Text: "Todavia no enviaste la solicitud a este jugador."
+            },
+            MatchPlayerRequestState: {
+               MatchPlayerRequestStateID: 0,
+               Value: "not_sended",
+               Description: "Solicitud no enviada"
+            },
+            RecieveDate: null,
+            LastStateChangeDate: new Date()
+         };
+
+         $scope.data.Match.PlayersRequest.push(obj);
+         //$scope.data.frecuentlyPlayers.splice($scope.data.frecuentlyPlayers.indexOf(player), 1);
+      };
+
+      $scope.showCommentText = function (item) {
+         return item.Comment != null && item.Comment.Text != null && item.Comment.Text.length > 0;
+      };
+
+      _init();
+   }
+]);

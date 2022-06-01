@@ -1,0 +1,337 @@
+﻿app.controller('MatchPlayersEdit', ['$mdDialog','$scope', '$rootScope', '$state', '$stateParams', '$controller', '$filter', 'errorService', 'alertService', 'Match', 'userService', 'ws_PlayerFrecuently', 'ws_PlayerRecommended', 'ws_Match','ws_MatchPlayerRequests',
+   function ($mdDialog, $scope, $rootScope, $state, $stateParams, $controller, $filter, errorService, alertService, Match, userService, ws_PlayerFrecuently, ws_PlayerRecommended, ws_Match, ws_MatchPlayerRequests) {
+      $controller('BaseController', { $scope: $scope });
+
+      if (Match == null || Match.MatchID == 0) {
+         $state.go("Home");
+         return;
+      }
+
+      var _init = function () {
+         $scope.base.isLoading = 1;
+
+         $scope.slickConfig = {
+            enabled: true,
+            dots: false,
+            autoplay: false,
+            draggable: true,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            infinite: false,
+            //centerMode: false,
+            //focusOnSelect: true,
+            method: {},
+            event: {
+               beforeChange: function (event, slick, currentSlide, nextSlide) {
+               },
+               afterChange: function (event, slick, currentSlide, nextSlide) {
+               }
+            },
+            responsive: [
+               {
+                  breakpoint: 1072,
+                  settings: {
+                     slidesToShow: 4,
+                     slidesToScroll: 4
+                  }
+               },
+               {
+                  breakpoint: 930,
+                  settings: {
+                     slidesToShow: 3,
+                     slidesToScroll: 3
+                  }
+               },
+               {
+                  breakpoint: 768,
+                  settings: {
+                     slidesToShow: 5,
+                     slidesToScroll: 5
+                  }
+               },
+               {
+                  breakpoint: 675,
+                  settings: {
+                     slidesToShow: 4,
+                     slidesToScroll: 4
+                  }
+               },
+               {
+                  breakpoint: 570,
+                  settings: {
+                     slidesToShow: 3,
+                     slidesToScroll: 3
+                  }
+               },
+               {
+                  breakpoint: 420,
+                  settings: {
+                     slidesToShow: 2,
+                     slidesToScroll: 2
+                  }
+               }
+            ]
+         };
+
+         $scope.data.Match = Match;
+
+         async.parallel([
+            _getFrecuently,
+            _getRecommended,
+            _loadMatch
+         ],
+            function (err, results) {
+               $scope.base.isLoading = 0;
+            });
+
+      };
+
+      var _getFrecuently = function (callback) {
+         return ws_PlayerFrecuently.get().then(
+            function (response) {
+               $scope.data.frecuentlyPlayers = response.data;
+               callback();
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               callback(error);
+            });
+      };
+
+      var _getRecommended = function (callback) {
+         var data = {
+            MatchID: $scope.data.Match.MatchID
+         };
+         return ws_PlayerRecommended.get(data).then(
+            function (response) {
+               $scope.data.recommendedPlayers = response.data;
+               callback();
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               callback(error);
+            });
+      };
+
+      var _loadMatch = function (callback) {
+         var data = {
+            MatchID: $scope.data.Match.MatchID,
+            ViewType: 3
+         };
+
+         return ws_Match.get(data).then(function (response) {
+            $scope.data.Match = response.data;
+            callback();
+         }, function (error) {
+            alertService.clear();
+            if (!errorService.controlExc(error)) {
+               alertService.addHttpAlerts(error, $scope);
+            }
+            callback(error);
+         });
+      };
+
+      $scope.sendAllRequest = function () {
+
+         if ($scope.base.isProcessing > 0) {
+            return;
+         }
+         $scope.base.isProcessing = 1;
+
+         var data = { object: $scope.data.Match.PlayersRequest };
+
+         ws_MatchPlayerRequests.post(data).then(
+            function (response) {
+               alertService.clear();
+               $scope.data.Match.PlayersRequest = response.data;
+
+               $scope.base.isProcessing = 0;
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               $scope.base.isProcessing = 0;
+            }
+         );
+      };
+
+      $scope.existsPlayerRequest = function (player) {
+         return ($filter('filter')($scope.data.Match.PlayersRequest, { PlayerReceiver: { PlayerID: player.PlayerID } })).length > 0;
+      };
+
+      $scope.addRequest = function (player) {
+         if ($scope.base.isProcessing == 1)
+            return;
+
+         if ($scope.existsPlayerRequest(player)) {
+            return;
+         };
+
+         $scope.base.isProcessing = 1;
+
+         var obj = {
+            Match: {
+               MatchID: $scope.data.Match.MatchID
+            },
+            PlayerReceiver: player,
+            Comment: {
+               CommentID: -1,
+               User: userService.user(),
+               Text: "Todavia no enviaste la solicitud a este jugador."
+            },
+            MatchPlayerRequestState: {
+               MatchPlayerRequestStateID: 0,
+               Value: "not_sended",
+               Description: "Solicitud no enviada"
+            },
+            RecieveDate: null,
+            LastStateChangeDate: new Date()
+         };
+
+         $scope.data.Match.PlayersRequest.push(obj);
+
+         $scope.base.isProcessing = 0;
+      };
+
+      $scope.showCommentText = function (item) {
+         return item.Comment != null && item.Comment.Text != null && item.Comment.Text.length > 0;
+      };
+
+      _init();
+
+      var originatorEv;
+
+      var _requestStateMenuBnts = [
+         {
+            id: 2,
+            value: "tentative_not",
+            text: "No creo que pueda",
+            icon: "fa fa-trash"
+         },
+         {
+            id: 3,
+            value: "tentative",
+            text: "No se todavía",
+            icon: "fa fa-trash"
+         },
+         {
+            id: 4,
+            value: "tentative_yes",
+            text: "Creo que puedo",
+            icon: "fa fa-trash"
+         },
+         {
+            id: 5,
+            value: "proposal",
+            text: "Proponer...",
+            icon: "fa fa-trash"
+         },
+         {
+            id: 6,
+            value: "confirmed",
+            text: "Confirmar",
+            icon: "fa fa-trash"
+         },
+         {
+            id: 8,
+            value: "rejected",
+            text: "Rechazar",
+            icon: "fa fa-trash"
+         },
+         {
+            id: 9,
+            value: "cancelled",
+            text: "Cancelar",
+            icon: "fa fa-trash"
+         }
+      ];
+
+      $scope.positiveStates = function (mpr) {
+         if (mpr.MatchPlayerRequestState.Value != 'confirmed'
+            || mpr.MatchPlayerRequestState.Value != 'rejected'
+            || mpr.MatchPlayerRequestState.Value != 'cancelled'
+            || mpr.MatchPlayerRequestState.Value != 'completed')
+            return $filter('filter')(_requestStateMenuBnts, { value: "confirmed" });
+      };
+
+      $scope.tentativeStates = function (mpr) {
+         return $filter('filter')(_requestStateMenuBnts, { value: "tentative" });
+      };
+
+      $scope.negativeStates = function (mpr) {
+         return $filter('filter')(_requestStateMenuBnts, { value: "rejected" });
+      };
+
+
+      $scope.openMenu = function ($mdMenu, ev) {
+         originatorEv = ev;
+         $mdMenu.open(ev);
+      };
+
+      $scope.positiveClick = function (option, item) {
+            item.MatchPlayerRequestState.RequestStateID = option.id;
+            _sendRequest(item);
+      };
+
+      $scope.tentativeClick = function (option, item) {
+            item.MatchPlayerRequestState.RequestStateID = option.id;
+            _sendRequest(item);
+
+      };
+
+      $scope.negativeClick = function (option, item) {
+
+            item.MatchPlayerRequestState.RequestStateID = option.id;
+            _sendRequest(item);
+ 
+         /*
+         $mdDialog.show(
+            $mdDialog.alert()
+               .title('You clicked!')
+               .textContent('You clicked the menu item at index ' + index)
+               .ok('Nice')
+               .targetEvent(originatorEv)
+         );
+         originatorEv = null;*/
+      };
+
+      var _sendRequest = function (request) {
+
+         if ($scope.base.isProcessing > 0) {
+            return;
+         }
+         $scope.base.isProcessing = 1;
+
+         ws_MatchPlayerRequests.post(request).then(
+            function (response) {
+               alertService.clear();
+
+               for (var i = 0; i < $scope.data.Match.PlayersRequest.length; i++) {
+                  if ($scope.data.Match.PlayersRequest[i].MatchPlayerRequestID == response.data.MatchPlayerRequestID) {
+                     $scope.data.Match.PlayersRequest[i] = response.data;
+                     break;
+                  }
+               }
+               
+               $scope.base.isProcessing = 0;
+            },
+            function (error) {
+               alertService.clear();
+               if (!errorService.controlExc(error)) {
+                  alertService.addHttpAlerts(error, $scope);
+               }
+               $scope.base.isProcessing = 0;
+            }
+         );
+      };
+
+   }
+]);

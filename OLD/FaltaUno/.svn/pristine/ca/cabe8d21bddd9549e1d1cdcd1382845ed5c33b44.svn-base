@@ -1,0 +1,9 @@
+﻿CREATE PROCEDURE [dbo].[GetUserPrivacy]
+	@UserPrivacyID BIGINT
+AS
+	SELECT * 
+	FROM 
+		UserPrivacy 
+	WHERE
+		UserPrivacyID = @UserPrivacyID
+

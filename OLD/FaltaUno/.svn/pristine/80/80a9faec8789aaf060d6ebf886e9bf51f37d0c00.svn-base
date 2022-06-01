@@ -1,0 +1,84 @@
+﻿/***********************************
+Dropdown menu
+************************************/
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown.open > .dropdown-toggle {
+   color: #333;
+   font-weight: 300;
+   background-color: rgba(245, 245, 220, 0.7);
+}
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown a {
+   font-weight: 300;
+   font-size: 16px;
+   margin: 7px 3px;
+   padding: 8px;
+   border-radius: 8px;
+   color: #fff;
+   background-color: transparent;
+}
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown-icon a {
+   padding-top: 6px;
+   padding-bottom: 6px;
+}
+
+   .navbar .navbar-collapse .navbar-nav > li.dropdown a:hover {
+      color: #333;
+      background-color: rgba(245, 245, 220, 0.7);
+   }
+
+   .navbar .navbar-collapse .navbar-nav > li.dropdown a:focus {
+      color: #333;
+      background-color: rgba(245, 245, 220, 0.7);
+   }
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown ul li a {
+   padding: 8px 10px;
+   margin: 0;
+}
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown-user .dropdown-toggle {
+   padding: 8px;
+}
+
+.navbar .navbar-collapse .navbar-nav > li.dropdown-sports .dropdown-menu {
+   margin-top:3px;
+}
+
+.nav.pull-right > li > .dropdown-menu:before, .nav > li > .dropdown-menu.pull-right:before {
+   right: 15px;
+   left: auto;
+}
+
+.nav.pull-right > li > .dropdown-menu:after, .nav > li > .dropdown-menu.pull-right:after {
+   right: 15px;
+   left: auto;
+}
+
+/***********************************
+END Dropdown menu
+************************************/
+
+.playerSearch .avatar{
+   width: 100px;
+   height: 100px;
+}
+
+.badge.badge-notification {
+   position: absolute;
+   left: 0px;
+   top: 20px;
+   background-color: #ed6b75;
+   background-image: none;
+}
+
+/*******************
+	Affixers TODO: Hacer que transicione
+*******************/
+.searchMatchDeatailInfoAffixer {
+   position: fixed !important;
+   top: 70px;
+   transition: 1s ease all;
+}
+

@@ -1,0 +1,5 @@
+﻿<div class="row" data-ng-show="alerts != null">
+   <div class="col-md-12">
+      <div uib-alert ng-repeat="item in alerts" ng-class="'alert-' + (item.type || 'danger')" close="item.close(item);">{{item.msg}}</div>
+   </div>
+</div>

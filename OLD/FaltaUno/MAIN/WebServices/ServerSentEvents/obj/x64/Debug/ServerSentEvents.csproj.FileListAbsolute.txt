@@ -1,0 +1,7 @@
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebServices.SSE.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\Build\bin\MYB.FaltaUno.WebServices.SSE.pdb
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\ServerSentEvents\obj\x64\Debug\ServerSentEvents.csprojAssemblyReference.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\ServerSentEvents\obj\x64\Debug\ServerSentEvents.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\ServerSentEvents\obj\x64\Debug\ServerSentEvents.csproj.CopyComplete
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\ServerSentEvents\obj\x64\Debug\MYB.FaltaUno.WebServices.SSE.dll
+D:\GoogleDrive\- Profesional\MASTER\Desarrollos\FaltaUno\MAIN\WebServices\ServerSentEvents\obj\x64\Debug\MYB.FaltaUno.WebServices.SSE.pdb

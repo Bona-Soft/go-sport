@@ -1,0 +1,43 @@
+﻿CREATE PROCEDURE [dbo].[POP_MatchPlayerRequestStates]
+AS
+BEGIN
+
+	;MERGE INTO [dbo].[MatchPlayerRequestStates] AS Target
+	USING (VALUES
+		(1,'pending','Pendiente','El jugador todavía no a aceptado o rechazado la invitación',0),
+		(2,'tentative_not','Tal vez no pueda','Posibilemente no pueda ir a jugar, todavía no confirmó',0),
+		(3,'tentative','No sabe todavia','Tal vez pueda ir a jugar, todavía no confirmó',0),
+		(4,'tentative_yes','Tal vez pueda','Posiblemente pueda ir a jugar, todavía no confirmó',0),
+		(5,'proposal','Propone una modificacion','Propone cambiar algun detalle del partido',0),
+		(6,'confirmed','Confirmado','Confirmado que puede ir a jugar',0),
+		(7,'reconfirmation_required','Pendiente de reconfirmar','Habia confirmado anteriormente, pero no reconfirmo todavia el cambio dado',0),
+		(8,'rejected','Rechazado','Rechazó la solicitud, no puede ir a jugar',1),
+		(9,'cancelled','Cancelado','La solicitud fue cancelada',1),
+		(10,'completed','Completado','La solicitud a finalizado',1),
+		(11,'approval_required','Aprobacion pendiente','La solicitud todavia no fue aprobada por el creador del partido',0)
+	) AS Source ([MatchPlayerRequestStateID],[Value],[Description],[DefaultComment],[Closed])
+	ON (Target.[MatchPlayerRequestStateID] = Source.[MatchPlayerRequestStateID])
+	WHEN MATCHED THEN
+		UPDATE 
+		SET [Value] = Source.[Value],
+			[Description] = Source.[Description],
+			[DefaultComment] = Source.[DefaultComment],
+			[Closed] = Source.[Closed]
+	WHEN NOT MATCHED BY TARGET THEN
+		INSERT
+			([MatchPlayerRequestStateID],
+			[Value],
+			[Description],
+			[DefaultComment],
+			[Closed])
+		VALUES
+			(Source.[MatchPlayerRequestStateID],
+			Source.[Value],
+			Source.[Description],
+			Source.[DefaultComment],
+			Source.[Closed])
+	WHEN NOT MATCHED BY SOURCE THEN
+		DELETE;
+
+END
+

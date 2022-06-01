@@ -1,0 +1,71 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content" ng-show="base.isLoading == 0">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="portlet bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i sport-class class="icon-settings primary-fc-light"></i>
+						<span sport-class class="caption-subject bold uppercase primary-fc-light"> Modo debug </span>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<md-input-container>
+								<label sport-class>Level</label>
+								<md-select sport-class
+											  myb-md-select
+											  data-ng-model="data.DebugOptions.level">
+									<md-option ng-repeat="item in logLevels"
+												  ng-value="item.value"
+												  ng-selected="item.default">
+										{{item.value}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<div class="form-group form-md-line-input form-md-floating-label" ng-class="">
+								<input type="number"
+										 name="Capacity"
+										 myb-md-input
+										 class="form-control"
+										 ng-model="data.DebugOptions.capacity"
+										 id="Capacity"
+										 data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+								<label for="Capacity" sport-class class="primary-light-after">Capacity</label>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-3 col-md-3">
+							<button type="button" sport-class class="btn secondary" data-ng-click="loadLog()">Refresh</button>
+							<button type="button" sport-class class="btn" data-ng-click="clearLog()">Clean</button>
+						</div>
+					</div>
+					<div class="row" ng-repeat="logmessage in log | orderBy : 'OccurDateTime' : true">
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<strong>{{$index}}:&nbsp;&nbsp;</strong>
+							<span myb-local-datetime="logmessage.OccurDateTime" myb-local-datetime-format="{{$settings.dateFormat}}"></span>
+							<br />
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span myb-local-datetime="logmessage.OccurDateTime" myb-local-datetime-format="{{$settings.timeFormat}}"></span>
+						</div>
+						<div class="col-xs-6 col-sm-1 col-md-1">
+							{{logmessage.Level}}
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							{{logmessage.Caller}}
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							{{logmessage.Message}}
+						</div>
+						<hr />
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

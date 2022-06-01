@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VerifyUser.aspx.cs" Inherits="MYB.FaltaUno.WebServices.Authentication.VerifyUser" %>

@@ -1,0 +1,183 @@
+<!-- BEGIN HEADER BOUNDS -->
+	<div class="nav-inner">
+		<button type="button" ng-click="toggleLeft()" data-ng-if="userService.isAuthenticated();" class="navbar-toggle navbar-toggle-menu">
+			<span class="fa fa-bars"></span>
+		</button>
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navMenu">
+			<span class="fa fa-chevron-down"></span>
+		</button>
+		<!-- BEGIN LOGO -->
+		<a ui-sref="Home" ui-sref-opts="{reload: true}" class="nav-logo {{settings.sportSelected.Value}}"></a>
+		<!--<div class="menu-toggler sidebar-toggler"></div>-->
+		<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+		<!-- END LOGO -->
+
+		
+
+		<!-- BEGIN HEADER SEARCH BOX -->
+		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+		<!-- BEGIN TOP NAVIGATION MENU -->
+
+		<div class="navbar-collapse collapse" id="navMenu" aria-expanded="false" style="height: 1px;">
+			<ul class="nav navbar-nav pull-right">
+				<!-- BEGIN REGISTER DROPDOWN -->
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown style -->
+				<li class="dropdown" id="header_notification_bar" data-ng-show="!userService.isAuthenticated();">
+					<a href="#" data-ng-click="goRegister();" class="dropdown-toggle">
+						<i class="fa fa-id-card-o"></i> Registrarse
+					</a>
+				</li>
+				<!-- END REGISTER DROPDOWN -->
+				<!-- BEGIN SIGN-IN DROPDOWN -->
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown style -->
+				<li class="dropdown" id="header_notification_bar" data-ng-show="!userService.isAuthenticated();">
+					<a href="javascript:;" data-ng-click="login();" class="dropdown-toggle">
+						<i class="fa fa-sign-in"></i> Ingresar
+					</a>
+					<!--<ul class="dropdown-menu extended tasks"></ul>-->
+				</li>
+				<li class="dropdown dropdown-user" data-ng-show="userService.isAuthenticated();">
+					<a href="javascript:;" class="dropdown-toggle">
+						<span class="badge badge-danger" ng-show="getCurrentUserNotificationNumber() > 0"> {{getCurrentUserNotificationNumber()}} </span>
+						<img alt="" class="img-circle" src="{{getCurrentUserAvatarURL()}}">
+						<span class="username username-hide-on-mobile"> {{userService.user().Name}} </span>
+					</a>
+					<!--<ul class="dropdown-menu extended tasks"></ul>-->
+				</li>
+				<!-- END SIGN IN DROPDOWN -->
+				<!-- BEGIN USER LOGIN DROPDOWN -->
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown style -->
+				<li class="dropdown dropdown-sports">
+					<!--dropdown-user-->
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true" aria-expanded="false" role="button">
+						<i class="fa fa-soccer-ball-o"></i>
+						<span id="dropdown-sports-title" class="dropdown-title">{{settings.sportSelected.Name}}</span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-default">
+						<li>
+							<a href="#" data-ng-click="changeSport(sportAll);">
+								<i data-ng-class="{'fa fa-dot-circle-o' : settings.sportSelected.Value == sportAll.Value, 'fa fa-circle-o' : settings.sportSelected.Value != sportAll.Value}"></i> {{sportAll.Name}}
+							</a>
+						</li>
+						<li data-ng-repeat="item in sports track by $index">
+							<a href="#" data-ng-click="changeSport(item);">
+								<i data-ng-class="{'fa fa-dot-circle-o' : settings.sportSelected.Value == item.Value, 'fa fa-circle-o' : settings.sportSelected.Value != item.Value}"></i> {{item.Name}}
+							</a>
+						</li>
+					</ul>
+					<!--<ul class="dropdown-menu dropdown-menu-default">
+					<li>
+						<a href="#/v3.html?URL=/seguridad.dll/passchange">
+							<i class="icon-user"></i> Mi Perfil
+						</a>
+					</li>
+					<li>
+						<a href="#/v3.html?URL=/seguridad.dll/agendames">
+							<i class="icon-calendar"></i> Agenda
+						</a>
+					</li>
+					<li>
+						<a href="#/v3.html?URL=/seguridad.dll/notaslista">
+							<i class="fa fa-book"></i> Notas
+						</a>
+					</li>
+					<li>
+						<a href="#/v3.html?URL=/ayuda.dll/ticketam">
+							<i class="fa fa-tags"></i> Tickets
+						</a>
+					</li>
+					<li class="divider"> </li>
+					<li ng-show="false">
+						<a href="#">
+							<i class="icon-lock"></i> Lock Screen
+						</a>
+					</li>
+					<li>
+						<a href="#/v3.html?URL=/ayuda.dll/AcercaDe">
+							<i class="fa fa-exclamation-circle"></i> Acerca de
+						</a>
+					</li>
+					<li>
+						<a href="../Seguridad.dll/Logout?L=O">
+							<i class="icon-key"></i> Log Out
+						</a>
+					</li>
+				</ul>
+				-->
+				</li>
+				<!-- END USER LOGIN DROPDOWN -->
+				<!-- BEGIN QUICK SIDEBAR TOGGLER -->
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+				<li class="dropdown dropdown-quick-sidebar-toggler">
+					<a href="javascript:;" data-ng-show="userService.isAuthenticated();" data-ng-click="Logout();" class="dropdown-toggle">
+						<i class="fa fa-sign-out"></i>
+						<span class="dropdown-title">Salir</span>
+					</a>
+				</li>
+				<!-- END QUICK SIDEBAR TOGGLER -->
+			</ul>
+		</div>
+		<!-- END TOP NAVIGATION MENU -->
+
+
+		<div class="row">
+
+			<md-autocomplete class="header-search"
+								  myb-md-input-autocomplete
+								  md-input-name="Search"
+								  md-selected-item="playerSelected"
+								  md-selected-item-change="selectPlayer(playerSelected)"
+								  md-search-text="playerSearchText"
+								  md-min-length="3"
+								  md-no-cache="noCache"
+								  md-items="item in searchPlayers(playerSearchText)"
+								  md-item-text="item.User.Name + ' ' + item.User.LastName"
+								  md-floating-label="Buscar">
+				<md-item-template>
+					<div class="playerSearch">
+						<img src="{{getUserAvatarURL(item.User)}}" style="height: 40px; width: 40px;" class="img-circle">
+						&nbsp;
+						<strong>{{item.User.Name + " " + item.User.LastName}}</strong>
+						<div data-ng-show="item.User.Alias">&nbsp;{{item.User.Alias}}</div>
+					</div>
+				</md-item-template>
+				<span md-highlight-text="playerSearchText">{{item.Name}}</span>
+			</md-autocomplete>
+
+			<!--<div class="col-xs-1 col-sm-1 col-md-1">
+		</div>
+		<div class="col-xs-8 col-sm-8 col-md-8">
+			<md-autocomplete style="top: 5px;"
+								  md-input-name="Search"
+								  md-selected-item="playerSelected"
+								  md-selected-item-change="selectPlayer(playerSelected)"
+								  md-search-text="playerSearchText"
+								  md-min-length="3"
+								  md-no-cache="noCache"
+								  md-items="item in searchPlayers(playerSearchText)"
+								  md-item-text="item.User.Name + ' ' + item.User.LastName">
+				<md-item-template>
+					<div class="playerSearch">
+						<img src="{{getUserAvatarURL(item.User)}}" style="height: 40px; width: 40px;" class="img-circle">
+						&nbsp;
+						<strong>{{item.User.Name + " " + item.User.LastName}}</strong>
+						<div data-ng-show="item.User.Alias">&nbsp;{{item.User.Alias}}</div>
+					</div>
+				</md-item-template>
+				<span md-highlight-text="playerSearchText">{{item.Name}}</span>
+			</md-autocomplete>
+		</div>-->
+		</div>
+
+		<!--<form class="navbar-form" action="#" method="GET">
+		<input type="text" class="form-control" placeholder="Buscar..." name="query">
+		<button class="btn btn-default" type="submit">
+			<i class="icon-magnifier"></i>
+		</button>
+	</form>-->
+		<!-- END HEADER SEARCH BOX -->
+		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+		<!-- END RESPONSIVE MENU TOGGLER -->
+	</div>
+<!-- END HEADER INNER -->

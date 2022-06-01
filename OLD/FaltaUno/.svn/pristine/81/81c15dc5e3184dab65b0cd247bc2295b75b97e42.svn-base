@@ -1,0 +1,269 @@
+﻿<div data-ng-include="'Templates/Loading.html'" name="loading" data-height-reference=""> </div>
+
+<div sport-class class="page-main-content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="portlet bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i sport-class class="icon-settings primary-fc-light"></i>
+						<span sport-class class="caption-subject bold uppercase primary-fc-light"> Seleccion de jugadores</span>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<div data-ng-include="'Templates/AlertServiceTmp.html'"></div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<form role="form" name="MatchEditPlayersForm">
+								<div class="row">
+									<div class="col-xs-12 col-sm-7 col-md-7">
+										<div class="row">
+											<div class="col-xs-12">
+												<div sport-class myb-validator-group class="form-group">
+													<md-autocomplete sport-class
+																		  myb-md-input-autocomplete
+																		  md-input-name="PlayerConfirmed"
+																		  md-selected-item="playerSelected"
+																		  md-search-text="playerSearchText"
+																		  md-min-length="3"
+																		  md-no-cache="noCache"
+																		  md-items="item in inputMethods.searchPlayers(playerSearchText)"
+																		  md-item-text="item.User.Name + ' ' + item.User.LastName"
+																		  md-floating-label="Buscar Jugador">
+														<md-item-template>
+															<div class="playerSearch">
+																<img src="{{getUserAvatarURL(item.User)}}" class="img-circle">  <strong>{{item.User.Name + " " + item.User.LastName}}</strong> <div data-ng-show="item.User.Alias">&nbsp;{{item.User.Alias}}</div>
+															</div>
+														</md-item-template>
+														<span md-highlight-text="playerSearchText">{{item.Name}}</span>
+													</md-autocomplete>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+                                 <div class="col-xs-12">
+                                    <div class="caption caption-md">
+                                       <i class="fa fa-soccer-ball-o primary-fc-light" sport-class></i>
+                                       <span sport-class class="caption-subject bold uppercase primary-fc-light">&nbsp; Jugadores frecuentes</span>
+                                    </div>
+                                 </div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12">
+												<div ng-if="base.isLoading == 0">
+													<slick id="slickFrecuentlyPlayers" class="base-slick slick-request-player" settings="slickConfig" init-onload="true" data="data.frecuentlyPlayers">
+
+														<div class="slick-player" data-ng-class="{'disabled': existsPlayerRequest(player)}" data-ng-click="addRequest(player)" ng-repeat="player in data.frecuentlyPlayers">
+															<img src="{{getUserAvatarURL(player.User)}}" class="slick-player-img img-circle" />
+															<div class="slick-player-label block-with-text two-lines">{{player.User.Name}} {{player.User.LastName}}</div>
+														</div>
+													</slick>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+                                 <div class="col-xs-12">
+                                    <div class="caption caption-md">
+                                       <i class="fa fa-soccer-ball-o primary-fc-light" sport-class></i>
+                                       <span sport-class class="caption-subject bold uppercase primary-fc-light">&nbsp; Jugadores recomendados</span> 
+                                    </div>
+                                 </div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12">
+												<div ng-if="base.isLoading == 0">
+													<slick id="slickRecommendedPlayers" class="base-slick slick-request-player" settings="slickConfig" init-onload="true" data="data.recommendedPlayers">
+														<div class="slick-player" data-ng-class="{'disabled': existsPlayerRequest(player)}" data-ng-click="addRequest(player)" ng-repeat="player in data.recommendedPlayers">
+															<img src="{{getUserAvatarURL(player.User)}}" class="slick-player-img img-circle" />
+															<div class="slick-player-label block-with-text two-lines">{{player.User.Name}} {{player.User.LastName}}</div>
+														</div>
+													</slick>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xs-12 col-sm-5 col-md-5">
+										<div sport-class class="panel primary-light">
+											<div sport-class class="panel-heading primary">Detalle del partido</div>
+											<div class="panel-body">
+                                    <div class="row">
+                                       <div class="col-sm-2">
+                                          <label class="bold">Partido:&nbsp;</label>
+                                       </div>
+                                       <div class="col-sm-10">
+                                          {{data.Match.Name}}
+                                       </div>                                       
+                                    </div>
+                                    <div class="row" ng-hide="data.Match.Headquarter.Name == null">                                       
+                                       <div class="col-sm-2">
+                                          <label class="bold">Club:&nbsp;</label>
+                                       </div>
+                                       <div class="col-sm-10">
+                                          {{data.Match.Headquarter.Name}}
+                                       </div>
+                                    </div>
+                                    <div class="row" ng-hide="data.Match.Location.Display == null">                                       
+                                       <div class="col-sm-2">
+                                          <label class="bold">Lugar:&nbsp;</label>
+                                       </div>
+                                       <div class="col-sm-10">
+                                          {{data.Match.Location.Display}}
+                                       </div>
+                                    </div>
+                                    <div class="row">                                       
+                                       <div class="col-sm-2">
+                                          <label class="bold">Fecha:&nbsp;</label>
+                                       </div>
+                                       <div class="col-sm-10" myb-local-datetime="data.Match.MatchDateTime" myb-local-datetime-format="{{$settings.dateFormat}}">
+
+                                       </div>
+                                    </div>
+                                    <div class="row">                                       
+                                       <div class="col-sm-2">
+                                          <label class="bold">Hora:&nbsp;</label>
+                                       </div>
+                                       <div class="col-sm-10" myb-local-datetime="data.Match.MatchDateTime" myb-local-datetime-format="{{$settings.timeFormat}}">
+
+                                       </div>
+                                    </div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="caption caption-md" style="float:left; margin-top: 15px;">
+								<i class="icon-bar-chart primary-fc-light" sport-class></i>
+                        <span sport-class class="caption-subject bold uppercase primary-fc-light">&nbsp; Solicitudes</span>
+								<span class="caption-helper">{{data.Match.PlayersRequest.length }} notifications</span>
+							</div>
+							<div class="inputs" style="float: right;">
+								<div class="portlet-input input-inline input-small ">
+									<div class="input-icon right">
+										<i class="icon-magnifier"></i>
+										<input type="text" class="form-control form-control-solid input-circle" placeholder="buscar...">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+
+							<div class="row" id="PlayerRequestListContainer">
+								<div class="col-xs-12">
+
+									<div class="item-list" id="playerRequests">
+										<div class="item" ng-repeat="item in data.Match.PlayersRequest track by $index">
+											<div class="item-side-left" ng-click="viewPlayerProfile(item)">
+												<img class="circle-img" style="height: 50px; max-width: 50px;" src="{{getUserAvatarURL(item.PlayerReceiver.User)}}">
+											</div>
+											<div class="item-main">
+												<div class="item-head">
+													<span class="item-status btn-icon" style="text-align: right;">
+                                          <div>
+                                             <span class="badge badge-empty badge-success" data-ng-class="matchstate-badge-{{item.MatchPlayerRequestState.Value}}"></span> {{item.MatchPlayerRequestState.Description}}
+                                          </div>
+														<div>
+															<md-menu md-position-mode="target-right target" data-ng-hide="positiveStates(item).length == 0">
+                                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                                                   <i class="fa fa-check-circle" style="color: green;" data-ng-show="item.MatchPlayerRequestState.Value != 'cancelled' && item.MatchPlayerRequestState.Value != 'rejected'"></i>
+                                                   <i class="fa fa-arrow-circle-right" style="color: darkblue;" data-ng-hide="item.MatchPlayerRequestState.Value != 'cancelled' && item.MatchPlayerRequestState.Value != 'rejected'"></i>
+                                                </md-button>
+																<md-menu-content width="4">
+																	<md-menu-item ng-repeat="option in positiveStates(item)">
+																		<md-button ng-click="positiveClick(option,item)">
+																			<div layout="row" flex>
+																				<p flex>{{option.text}}</p>
+																				<!--ICONO-->
+																			</div>
+																		</md-button>
+																	</md-menu-item>
+																</md-menu-content>
+															</md-menu>
+															<md-menu md-position-mode="target-right target" data-ng-hide="tentativeStates(item).length == 0">
+																<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+																	<i class="fa fa-exclamation-circle" style="color: orange;"></i>
+																</md-button>
+																<md-menu-content width="4">
+																	<md-menu-item ng-repeat="option in tentativeStates(item)">
+																		<md-button ng-click="tentativeClick(option,item)">
+																			<div layout="row" flex>
+																				<p flex>{{option.text}}</p>
+																				<!--ICONO-->
+																			</div>
+																		</md-button>
+																	</md-menu-item>
+																</md-menu-content>
+															</md-menu>
+															<md-menu md-position-mode="target-right target" data-ng-hide="negativeStates(item).length == 0">
+																<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+																	<i class="fa fa-minus-circle" style="color: darkred;"></i>
+																</md-button>
+																<md-menu-content width="4">
+																	<md-menu-item ng-repeat="option in negativeStates(item)">
+																		<md-button ng-click="negativeClick(option,item)">
+																			<div layout="row" flex>
+																				<p flex>{{option.text}}</p>
+																				<!--ICONO-->
+																			</div>
+																		</md-button>
+																	</md-menu-item>
+																</md-menu-content>
+															</md-menu>
+															<!--
+			<a class="btn"><i class="fa fa-trash"></i></a>
+		<a class="btn"><i class="fa fa-trash"></i></a>
+		<a class="btn"><i class="fa fa-trash"></i></a>
+	-->
+														</div>
+                                       </span>
+													<div class="item-details">
+														<span class="item-name primary-fc-light bold" sport-class>{{item.PlayerReceiver.User.Name}} {{item.PlayerReceiver.User.LastName}}</span>
+														<div class="item-label grey">
+                                             <div class="pull-left" myb-local-datetime="item.LastStateChangeDate" myb-local-datetime-format="{{$settings.dateFormat}}"></div>
+                                             <div class="pull-left" data-ng-hide="item.LastStateChangeDate == null">&nbsp;-&nbsp;</div>
+                                             <div class="pull-left" myb-local-datetime="item.LastStateChangeDate" myb-local-datetime-format="{{$settings.timeFormat}}"></div>
+													</div>
+
+												</div>
+												<div class="item-body light-grey">
+													<div>
+														<span ng-show="showCommentText(item)">{{item.Comment.Text}}</span>
+														<span ng-hide="showCommentText(item)">{{item.MatchPlayerRequestState.DefaultComment}}</span>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="form-actions noborder">
+						<button type="button" sport-class class="btn secondary" data-ng-click="sendAllRequest()">Enviar solicitudes</button>
+					</div>
+
+				</div>
+				<!-- END PORTLET-->
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>
+	</div>
+</div>

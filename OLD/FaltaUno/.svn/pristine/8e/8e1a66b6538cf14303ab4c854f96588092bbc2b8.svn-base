@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.Net.Compilers.3.1.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.3.1.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D72AE979-968C-4B95-9BD3-964907D4AF18}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MYB.FaltaUno.WebUI.MainApp</RootNamespace>
+    <AssemblyName>MYB.FaltaUno.WebUI.MainApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Build\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.InteropServices" />
+    <Reference Include="System.Threading.Thread" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controllers\SelectSport.js" />
+    <Content Include="img\Avatars\acrobat.png" />
+    <Content Include="img\Avatars\akebono-taro-1.png" />
+    <Content Include="img\Avatars\akebono-taro.png" />
+    <Content Include="img\Avatars\american-football.png" />
+    <Content Include="img\Avatars\athlete.png" />
+    <Content Include="img\Avatars\baseball-player-1.png" />
+    <Content Include="img\Avatars\baseball-player.png" />
+    <Content Include="img\Avatars\basketball-player.png" />
+    <Content Include="img\Avatars\boxer-1.png" />
+    <Content Include="img\Avatars\boxer-2.png" />
+    <Content Include="img\Avatars\boxer.png" />
+    <Content Include="img\Avatars\cyclist-1.png" />
+    <Content Include="img\Avatars\cyclist.png" />
+    <Content Include="img\Avatars\fencer.png" />
+    <Content Include="img\Avatars\fitness-1.png" />
+    <Content Include="img\Avatars\fitness-2.png" />
+    <Content Include="img\Avatars\fitness.png" />
+    <Content Include="img\Avatars\football-player-1.png" />
+    <Content Include="img\Avatars\football-player.png" />
+    <Content Include="img\Avatars\football.png" />
+    <Content Include="img\Avatars\gymnast-1.png" />
+    <Content Include="img\Avatars\gymnast.png" />
+    <Content Include="img\Avatars\hockey-player-1.png" />
+    <Content Include="img\Avatars\hockey-player.png" />
+    <Content Include="img\Avatars\hockey.png" />
+    <Content Include="img\Avatars\jockey-1.png" />
+    <Content Include="img\Avatars\jockey.png" />
+    <Content Include="img\Avatars\judo.png" />
+    <Content Include="img\Avatars\parachuter-1.png" />
+    <Content Include="img\Avatars\parachuter.png" />
+    <Content Include="img\Avatars\pilot.png" />
+    <Content Include="img\Avatars\referee-1.png" />
+    <Content Include="img\Avatars\referee-2.png" />
+    <Content Include="img\Avatars\referee.png" />
+    <Content Include="img\Avatars\rollers.png" />
+    <Content Include="img\Avatars\runner-1.png" />
+    <Content Include="img\Avatars\runner-2.png" />
+    <Content Include="img\Avatars\runner.png" />
+    <Content Include="img\Avatars\scuba-diver-1.png" />
+    <Content Include="img\Avatars\scuba-diver.png" />
+    <Content Include="img\Avatars\skater.png" />
+    <Content Include="img\Avatars\skier-1.png" />
+    <Content Include="img\Avatars\skier.png" />
+    <Content Include="img\Avatars\skiing.png" />
+    <Content Include="img\Avatars\snowboarder.png" />
+    <Content Include="img\Avatars\Sport_1.png" />
+    <Content Include="img\Avatars\Sport_2.png" />
+    <Content Include="img\Avatars\surfer.png" />
+    <Content Include="img\Avatars\swimmer-1.png" />
+    <Content Include="img\Avatars\swimmer.png" />
+    <Content Include="img\Avatars\tennis-player-1.png" />
+    <Content Include="img\Avatars\tennis-player.png" />
+    <Content Include="img\Avatar_Sport_1.png" />
+    <Content Include="img\Avatar_Sport_2.png" />
+    <Content Include="img\Avatar_Sport_blank.png" />
+    <Content Include="img\av_futbol.jpg" />
+    <Content Include="img\Sports\Balls\basket_ball_icon.jpg" />
+    <Content Include="img\Sports\Balls\futbol_ball_icon.png" />
+    <Content Include="img\Sports\Balls\volleyball_icon.png" />
+    <Content Include="img\Sports\Balls\volleyball_icon2.png" />
+    <Content Include="Scripts\AppDirectives.js" />
+    <Content Include="Scripts\HandleOnResize.js" />
+    <Content Include="Scripts\MainModule.js" />
+    <Content Include="Scripts\RequestStateService.js" />
+    <Content Include="Scripts\Themes.js" />
+    <Content Include="Styles\global\global.css" />
+    <Content Include="Styles\layouts\default\img\avatar.png" />
+    <Content Include="Styles\layouts\basket\basket-theme.css" />
+    <Content Include="Styles\layouts\basket\img\basket_ball_icon.png" />
+    <Content Include="Styles\layouts\basket\img\header_bar.png" />
+    <Content Include="Styles\layouts\futbol\futbol-theme.css" />
+    <Content Include="Styles\layouts\futbol\img\news\futbol_news1.jpg" />
+    <Content Include="Styles\layouts\futbol\img\news\futbol_news2.jpg" />
+    <Content Include="Styles\layouts\futbol\img\news\futbol_news3.jpg" />
+    <Content Include="Styles\layouts\futbol\img\news\futbol_news4.jpg" />
+    <Content Include="Styles\layouts\futbol\img\news\futbol_news5.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar.png" />
+    <Content Include="Styles\layouts\futbol\img\header_bar1.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar10.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar11.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar13.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar14.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar2.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar3.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar4.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar4.png" />
+    <Content Include="Styles\layouts\futbol\img\header_bar5.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar6.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar7.jpg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar8.jpeg" />
+    <Content Include="Styles\layouts\futbol\img\header_bar9.jpg" />
+    <Content Include="Styles\layouts\futbol\img\logo.png" />
+    <Content Include="Styles\layouts\default\default-theme.css" />
+    <Content Include="Styles\layouts\futbol\img\ajax-loading.gif" />
+    <Content Include="Styles\layouts\futbol\img\ajax-modal-loading.gif" />
+    <Content Include="Styles\layouts\futbol\img\arrow-down.png" />
+    <Content Include="Styles\layouts\futbol\img\avatar.png" />
+    <Content Include="Styles\layouts\futbol\img\hor-menu-red-arrow.png" />
+    <Content Include="Styles\layouts\futbol\img\icon-color-close.png" />
+    <Content Include="Styles\layouts\futbol\img\icon-color.png" />
+    <Content Include="Styles\layouts\futbol\img\icon-img-down.png" />
+    <Content Include="Styles\layouts\futbol\img\icon-img-up.png" />
+    <Content Include="Styles\layouts\futbol\img\inbox-nav-arrow-blue.png" />
+    <Content Include="Styles\layouts\futbol\img\loading-spinner-blue.gif" />
+    <Content Include="Styles\layouts\futbol\img\loading-spinner-default.gif" />
+    <Content Include="Styles\layouts\futbol\img\loading-spinner-grey.gif" />
+    <Content Include="Styles\layouts\futbol\img\loading.gif" />
+    <Content Include="Styles\layouts\futbol\img\menu-toggler.png" />
+    <Content Include="Styles\layouts\futbol\img\remove-icon-small.png" />
+    <Content Include="Styles\layouts\futbol\img\search_icon_light.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar-menu-arrow-reverse.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar-menu-arrow-right.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar-menu-arrow.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_arrow_icon_light.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_arrow_icon_light_rtl.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_inline_toggler_icon_blue.jpg" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_inline_toggler_icon_darkblue.jpg" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_inline_toggler_icon_default.jpg" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_inline_toggler_icon_grey.jpg" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_inline_toggler_icon_light.jpg" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_inline_toggler_icon_light2.jpg" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_toggler_icon_blue.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_toggler_icon_darkblue.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_toggler_icon_default.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_toggler_icon_grey.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_toggler_icon_light.png" />
+    <Content Include="Styles\layouts\futbol\img\sidebar_toggler_icon_light2.png" />
+    <Content Include="Styles\layouts\volley\img\header_bar.png" />
+    <Content Include="Styles\layouts\volley\img\volley_ball_icon.png" />
+    <Content Include="Styles\layouts\volley\volley-theme.css" />
+    <Content Include="Controllers\Global.js" />
+    <Content Include="Controllers\Home.js" />
+    <Content Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Index.html" />
+    <Content Include="Scripts\Base.js" />
+    <Content Include="Templates\BlankLayout.html" />
+    <Content Include="Templates\Footer.html" />
+    <Content Include="Templates\Header.html" />
+    <Content Include="Templates\Home.html" />
+    <Content Include="Templates\Inicio.html" />
+    <Content Include="Templates\Loading.html" />
+    <Content Include="Templates\SelectSport.html" />
+    <Content Include="Templates\SideMaterialMenu.html" />
+    <Content Include="Templates\SideMenu.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
+    <Folder Include="UploadedFiles\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\..\Build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\..\Build\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55197</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55197/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY  "$(ProjectDir)*.aspx"  "$(TargetDir)..\"  /Y /C /E
+XCOPY  "$(ProjectDir)img"  "$(TargetDir)..\img\"  /Y /C /E 
+XCOPY  "$(ProjectDir)Scripts"  "$(TargetDir)..\Scripts\"  /Y /C /E 
+XCOPY  "$(ProjectDir)ScriptsControllers"  "$(TargetDir)..\ScriptsControllers\"  /Y /C /E
+XCOPY  "$(ProjectDir)Templates"  "$(TargetDir)..\Templates\"  /Y /C /E
+XCOPY  "$(ProjectDir)Styles"  "$(TargetDir)..\Styles\"  /Y /C /E
+XCOPY  "$(ProjectDir)Themes"  "$(TargetDir)..\Themes\"  /Y /C /E
+XCOPY  "$(ProjectDir)Controllers"  "$(TargetDir)..\Controllers\"  /Y /C /E
+XCOPY  "$(ProjectDir)Assets"  "$(TargetDir)..\Assets\" /Y  /C /E
+XCOPY  "$(ProjectDir)*.html"  "$(TargetDir)..\" /Y  /C</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.3.1.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.3.1.1\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

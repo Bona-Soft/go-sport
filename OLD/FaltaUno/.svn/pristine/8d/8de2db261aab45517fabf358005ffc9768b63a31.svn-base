@@ -1,0 +1,71 @@
+﻿CREATE PROCEDURE [dbo].[SearchMatch]
+	@SportID TINYINT,
+	@Name NVARCHAR(255) = NULL,
+	@PlayerID BIGINT = NULL,
+	@MinAge TINYINT = NULL,
+	@MaxAge TINYINT = NULL,
+	@LocationID BIGINT = NULL,
+	@HeadquarterID INT = NULL,
+	@Lat FLOAT = NULL,
+	@Lng FLOAT = NULL,
+	@MatchTypeID SMALLINT = NULL,
+	@FieldID INT = NULL,
+	@ChallengeType TINYINT = NULL,
+	@MinPlayers TINYINT = NULL,
+	@MaxPlayers TINYINT = NULL,
+	@MatchDateStart DATETIME = NULL,
+	@MatchDateEnd DATETIME = NULL,
+	@MatchStartTime DATETIME = NULL,
+	@MatchEndTime DATETIME = NULL,
+	@IsHotMatch BIT = NULL
+AS
+BEGIN
+	
+	select * from Matches
+	--DECLARE @_SportID TINYINT = @SportID,
+	--	@_Name NVARCHAR(255) = '%' + @Name + '%',
+	--	@_PlayerID BIGINT = @PlayerID,
+	--	@_MinAge TINYINT = @MinAge,
+	--	@_MaxAge TINYINT = @MaxAge,
+	--	@_LocationID BIGINT = @LocationID,
+	--	@_HeadquarterID INT = @HeadquarterID,
+	--	@_Lat FLOAT = @Lat,
+	--	@_Lng FLOAT = @Lng,
+	--	@_MatchTypeID SMALLINT = @MatchTypeID,
+	--	@_MatchFieldID TINYINT = @MatchFieldID,
+	--	@_ChallengeTypeID TINYINT = @ChallengeTypeID,
+	--	@_MinPlayers TINYINT = @MinPlayers,
+	--	@_MaxPlayers TINYINT = @MaxPlayers,
+	--	@_MatchDateStart DATETIME = @MatchDateStart,
+	--	@_MatchDateEnd DATETIME = @MatchDateEnd,
+	--	@_MatchStartTime DATETIME = @MatchStartTime,
+	--	@_MatchEndTime DATETIME = @MatchEndTime,
+	--	@_IsHotMatch BIT = @IsHotMatch
+
+	--SELECT * 
+	--FROM
+	--	Matches M
+	--	INNER JOIN Locations L ON (L.LocationID = M.LocationID)
+	--	--TODO: seguir
+	--WHERE
+	--	M.SportID = @_SportID 
+	--	AND (@_Name IS NULL OR M.[Name] LIKE @_Name)
+	--	AND (@_PlayerID IS NULL OR  M.PlayerID = @_PlayerID )
+	--	--AND (@_MinAge IS NULL OR M. @_MinAge)
+	--	--AND (@_MaxAge IS NULL OR M. @_MaxAge)
+	--	AND (@_LocationID IS NULL OR M.LocationID = @_LocationID )
+	--	AND (@_HeadquarterID IS NULL OR M.HeadquarterID = @_HeadquarterID)
+	--	AND ((@_Lat IS NULL AND @_Lng IS NULL) 
+	--		OR (L.Lat = @_Lat AND L.Lng = @_Lng))
+	--	AND (@_MatchTypeID IS NULL OR M.MatchTypeID = @_MatchTypeID )
+	--	AND (@_MatchFieldID IS NULL OR M.FieldID = @_MatchFieldID)
+	--	AND (@_MinPlayers IS NULL OR M.MinPlayers = @_MinPlayers )
+	--	AND (@_MaxPlayers IS NULL OR M. @_MaxPlayers )
+	--	AND (@_MatchDateStart IS NULL OR M. @_MatchDateStart )
+	--	AND (@_MatchDateEnd IS NULL OR M. @_MatchDateEnd )
+	--	AND (@_MatchStartTime IS NULL OR M. @_MatchStartTime )
+	--	AND (@_MatchEndTime IS NULL OR M. @_MatchEndTime )
+	--	AND (@_IsHotMatch IS NULL OR  M. @_IsHotMatch )
+
+
+END

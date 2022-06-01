@@ -1,0 +1,67 @@
+﻿<div class="row">
+   <div class="col-xs-12 col-sm-5 col-md-5">
+      <label>Cantidad de jugadores</label>
+      <md-radio-group ng-model="$parent.data.Match.playersQty">
+         <md-radio-button ng-repeat="playerMaxMinDesc in $parent.playersQtyValues track by $index"
+                          ng-value="playerMaxMinDesc.qty">
+            {{playerMaxMinDesc.Description}}
+         </md-radio-button>
+      </md-radio-group> 
+   </div>
+	<div class="col-xs-12 col-sm-7 col-md-7">
+		<div class="form-group">
+			<label style="padding-top: 5px; color: #888888;">O seleccione un minimo y maximo de jugadores</label>
+		</div>
+      <div class="row">
+         <div class="col-xs-6 col-sm-2 col-md-2">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="">
+               <input type="number"
+                      name="MinPlayers"
+                      myb-md-input
+                      class="form-control"
+							 ng-focus="changePlayerQty();" 
+							 ng-change="changePlayerQty();"                       
+							 ng-model="$parent.customMinPlayers"
+							 id="MinPlayers"
+                      data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+               <label for="Name" sport-class class="primary-light-after">Min</label>
+            </div>
+         </div>
+         <div class="col-xs-6 col-sm-2 col-md-2">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="">
+               <input type="number"
+                      name="MaxPlayers"
+                      myb-md-input
+                      class="form-control"
+                      ng-focus="changePlayerQty();" 
+							 ng-change="changePlayerQty();"                       
+							 ng-model="$parent.customMaxPlayers"
+                      id="MaxPlayers"
+                      data-ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 100}}">
+               <label for="Name" sport-class class="primary-light-after">Max</label>
+            </div>
+         </div>
+         <div class="col-xs-12 col-sm-8 col-md-8">
+            <br />
+            <!-- TODO: Revisar myb-md-checkbox puede poner solo las clases-->
+            <div myb-md-checkbox class="form-group form-md-checkboxes">
+               <div class="md-checkbox-list">
+                  <div class="md-checkbox">
+                     <input type="checkbox"
+                            name="NoLimitPlayers"
+                            id="NoLimitPlayers"
+                            class="md-check"
+									 ng-model="$parent.playersQtyNoLimit"
+									 ng-change="changePlayersQtyNoLimit();">
+                     <label for="NoLimitPlayers">
+                        <span></span>
+                        <span sport-class class="check secondary-light-border"></span>
+                        <span class="box"></span> Sin limite de jugadores
+                     </label>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+	</div>
+</div>

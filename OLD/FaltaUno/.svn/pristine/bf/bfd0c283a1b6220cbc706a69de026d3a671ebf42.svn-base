@@ -1,0 +1,28 @@
+﻿using MYB.BaseApplication.Framework.Helpers;
+using MYB.FaltaUno.Model.Entities.SubEntities;
+using MYB.FaltaUno.Model.Interfaces.Entities;
+using MYB.FaltaUno.Model.Interfaces.SubEntities;
+using System;
+using System.Collections.Generic;
+
+namespace MYB.FaltaUno.Model.Entities
+{
+	public class UserPrivacy : Entity, IUserPrivacy
+	{
+		public key<long> UserPrivacyID { get; private set; }
+		public string MobileNumber { get; set; }
+		public string BirthDate { get; set; }
+
+		public UserPrivacy(long id)
+		{
+			UserPrivacyID = id;
+		}
+
+		public UserPrivacy()
+		{
+			UserPrivacyID = 0;
+         MobileNumber = "N";
+         BirthDate = "N";
+		}
+	}
+}

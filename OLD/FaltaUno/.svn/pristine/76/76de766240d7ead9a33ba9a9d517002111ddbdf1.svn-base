@@ -1,0 +1,17 @@
+﻿using MYB.BaseApplication.Application.CoreInterfaces.LifeStyles;
+using MYB.BaseApplication.Framework.Helpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MYB.FaltaUno.Model.Interfaces.Entities
+{
+	public interface IUserPrivacy 
+	{
+		key<long> UserPrivacyID { get; }
+		string MobileNumber { get; set; }
+		DateTime BirthDate { get; set; }
+	}
+}

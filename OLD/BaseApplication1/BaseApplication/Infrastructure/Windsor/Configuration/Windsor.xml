@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+   <facilities>
+      <facility id="nhibernate"
+                isWeb="true"
+                type="Castle.Facilities.NHibernateIntegration.NHibernateFacility, Castle.Facilities.NHibernateIntegration"
+                defaultFlushMode="commit">
+         <factory id="nhibernate.factory">
+            <settings>
+               <item key="connection.connection_string">
+                  Password=sql023;Persist Security Info=True;User ID=sa;Initial Catalog=WebCombo2.0;Data Source=SOLANAXPS\DESARROLLO
+               </item>
+               <item key="dialect">
+                  NHibernate.Dialect.MsSql2005Dialect
+               </item>
+               <item key="proxyfactory.factory_class">
+                  NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
+               </item>
+            </settings>
+            <listeners>
+               <!--listener type="WebCombo.ApplicationServer.Core.Infrastructure.Seguridad.PermisosServiceNHPostLoad, WebCombo.ApplicationServer.Core.Infrastructure" event="PostLoad" />
+               <listener type="WebCombo.ApplicationServer.Core.Infrastructure.Seguridad.PermisosServiceNHPreInsert, WebCombo.ApplicationServer.Core.Infrastructure" event="PreInsert" />
+               <listener type="WebCombo.ApplicationServer.Core.Infrastructure.Seguridad.PermisosServiceNHPreUpdate, WebCombo.ApplicationServer.Core.Infrastructure" event="PreUpdate" />
+               <listener type="WebCombo.ApplicationServer.Core.Infrastructure.Seguridad.PermisosServiceNHPreDelete, WebCombo.ApplicationServer.Core.Infrastructure" event="PreDelete" /-->
+            </listeners>
+               <resources>
+               <resource name="bin\Mappings\ObjectExtensionModel.hbm.xml" />
+               <resource name="bin\Mappings\CoreModel.hbm.xml" />
+            </resources>
+         </factory>
+      </facility>
+   </facilities>
+   
+   <components>
+
+   </components>
+
+   <include uri="ObjectExtensionKernel.xml" />
+   <include uri="CoreKernel.xml" />
+   <include uri="UsuariosKernel.xml" />
+   
+</configuration>
